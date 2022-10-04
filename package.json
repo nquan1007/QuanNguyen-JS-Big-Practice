@@ -1,0 +1,23 @@
+{
+  "name": "quannguyen-js-big-practice",
+  "version": "1.0.0",
+  "description": "Big Practice is a project I do to practice coding with JavaScript to dig deeper in this programming language.",
+  "main": "index.js",
+  "scripts": {
+    "start": "json-server --watch json-server/db.json",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nquan1007/QuanNguyen-JS-Big-Practice.git"
+  },
+  "author": "Quan Nguyen",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nquan1007/QuanNguyen-JS-Big-Practice/issues"
+  },
+  "homepage": "https://github.com/nquan1007/QuanNguyen-JS-Big-Practice#readme",
+  "dependencies": {
+    "json-server": "^0.17.0"
+  }
+}
