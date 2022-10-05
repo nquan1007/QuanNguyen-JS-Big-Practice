@@ -29,6 +29,7 @@ footer, header, hgroup, menu, nav, section, img {
 
 body {
   line-height: 1;
+  font-family: var(--font-family-primary);
 }
 
 ol, ul {
@@ -53,3 +54,7 @@ table {
 button {
   cursor: pointer;
 }
+
+/* a {
+  text-decoration: none;
+} */

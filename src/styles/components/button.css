@@ -1,0 +1,13 @@
+.btn-primary {
+  background-color: var(--color-bg-btn-primary);
+  width: 100%;
+  max-width: 320px;
+  height: 64px;
+  color: var(--color-text-btn-primary);
+  font-family: var(--font-family-bold);
+  font-weight: var(--font-weight-title-highlight);
+  font-size: var(--font-size-secondary);
+  border: none;
+  border-radius: 2px;
+  padding: 0;
+}

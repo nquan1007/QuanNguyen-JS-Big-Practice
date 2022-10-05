@@ -3,30 +3,27 @@
   --font-family-primary: Barlow;
 
   /* font size */
+  --font-size-title: 48px;
+  --font-size-subtitle: 32px;
   --font-size-primary: 16px;
   --font-size-secondary: 24px;
-  --font-size-subtitle: 32px;
-  --font-size-title: 48px;
 
   /* font weight */
-  --font-weight-subtitle: 700;
-  --font-weight-title: 400;
-  --font-weight-title-highlight: 900;
-  --font-weight-primary: 300;
+  --font-weight-title: 800;
+  --font-weight-subtitle: 600;
+  --font-weight-primary: 400;
 
   /* line height */
   --line-height-title: 56px;
   --line-height-subtitle: 40px;
   --line-height-primary: 32px;
-  --line-height-secondary: 36px;
 
   /* color */
-  --color-primary: #5f0f40;
+  --color-primary: #141414;
   --color-secondary: #000000;
-  --color-tertiary: #bdbdbd;
-  --color-bg-btn-primary: #fb8b24;
-  --color-text-btn-primary: #ffffff;
 
   /* background-color */
-  --background-color-primary: #FBFBFB;
+  --background-color-primary: #ffffff;
+  --background-color-secondary: #f5f2ea;
+  --background-color-btn: #fdc886;
 }
