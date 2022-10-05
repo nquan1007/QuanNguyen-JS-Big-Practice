@@ -30,6 +30,7 @@ footer, header, hgroup, menu, nav, section, img {
 body {
   line-height: 1;
   font-family: var(--font-family-primary);
+  background-color: var(--background-color-secondary);
 }
 
 ol, ul {

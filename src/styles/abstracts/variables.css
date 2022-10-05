@@ -2,16 +2,16 @@
   /* font family */
   --font-family-primary: Barlow;
 
-  /* font size */
+  /** font size **/
   --font-size-title: 48px;
   --font-size-subtitle: 25px;
   --font-size-primary: 16px;
   --font-size-secondary: 24px;
 
   /* font weight */
-  --font-weight-title: 800;
-  --font-weight-subtitle: 600;
-  --font-weight-primary: 400;
+  --font-weight-title: 600;
+  --font-weight-subtitle: 400;
+  --font-weight-primary: 300;
 
   /* line height */
   --line-height-title: 56px;
