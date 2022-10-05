@@ -6,7 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Log In - Sneakers Shop</title>
     <link rel="stylesheet" href="../styles/main.css" />
-    <script src="https://kit.fontawesome.com/60de9841a4.js" crossorigin="anonymous"></script>
+    <script
+      src="https://kit.fontawesome.com/60de9841a4.js"
+      crossorigin="anonymous"
+    ></script>
   </head>
   <body>
     <header class="login-header">
@@ -14,7 +17,7 @@
     </header>
 
     <div class="login-main">
-      <img src="../assets/images/login-image.jpg" alt="login-image">
+      <img src="../assets/images/login-image.jpg" alt="login-image" />
       <form action="#" class="form" id="login-form" method="POST">
         <h1 class="text-title">LOGIN</h1>
 
@@ -22,8 +25,8 @@
           <label for="login-username" class="text-subtitle">Username</label>
           <i class="fa-solid fa-user"></i>
           <input type="text" id="login-username" />
-          <i class="fa-solid fa-circle-exclamation"></i>
-          <i class="fa-sharp fa-solid fa-circle-check"></i>
+          <i class="fa-solid fa-circle-exclamation failure-icon"></i>
+          <i class="fa-sharp fa-solid fa-circle-check success-icon"></i>
           <div class="form-invalid-message"></div>
         </div>
 
@@ -31,20 +34,20 @@
           <label for="loginPassword" class="text-subtitle">Password</label>
           <i class="fa-solid fa-lock"></i>
           <input type="password" id="loginPassword" />
-          <i class="fa-solid fa-circle-exclamation"></i>
-          <i class="fa-sharp fa-solid fa-circle-check"></i>
+          <i class="fa-solid fa-circle-exclamation failure-icon"></i>
+          <i class="fa-sharp fa-solid fa-circle-check success-icon"></i>
           <div class="form-invalid-message"></div>
         </div>
 
-        <button class="form-submit btn-primary">Log In</button>
-        <h3>Don't have an account yet? Please <a href="#">Sign Up</a></h3>
+        <button class="btn-primary">Log In</button>
+        <h3 class="text-secondary">
+          Don't have an account yet? Please <a href="#">Sign Up</a>
+        </h3>
       </form>
     </div>
 
     <footer class="footer">
-      <p>
-        © Copyright by Quan Nguyen. All Rights Reserved
-      </p>
+      <p>© Copyright by Quan Nguyen. All Rights Reserved</p>
     </footer>
   </body>
 </html>

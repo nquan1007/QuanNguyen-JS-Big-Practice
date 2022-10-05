@@ -1,13 +1,18 @@
 .btn-primary {
   background-color: var(--background-color-btn);
   width: 100%;
-  max-width: 350px;
   height: 55px;
-  color: var(--color-primary);
   font-family: var(--font-family-primary);
   font-weight: var(--font-weight-title);
   font-size: var(--font-size-subtitle);
   border: none;
   border-radius: 15px;
-  padding: 0;
+  margin-top: 30px;
+  letter-spacing: 1px;
+  transition: all 0.1s ease;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.btn-primary:hover {
+  opacity: .8;
 }

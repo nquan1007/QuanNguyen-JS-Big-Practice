@@ -21,6 +21,8 @@
   /* color */
   --color-primary: #141414;
   --color-secondary: #c4c4c4;
+  --color-error: red;
+  --color-success: green;
 
   /* background-color */
   --background-color-primary: #ffffff;

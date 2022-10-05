@@ -2,7 +2,7 @@
   font-weight: var(--font-weight-primary);
   font-size: var(--font-size-primary);
   line-height: var(--line-height-primary);
-  color: var(--color-secondary);
+  color: var(--color-primary);
   margin: 0;
 }
 
@@ -10,7 +10,7 @@
   font-weight: var(--font-weight-primary);
   font-size: var(--font-size-secondary);
   line-height: var(--line-height-primary);
-  color: var(--color-secondary);
+  color: var(--color-primary);
   margin: 0;
 }
 

@@ -5,9 +5,19 @@
   min-width: 600px;
 }
 
+.form-group {
+  position: relative;
+  padding-bottom: 30px;
+}
+
 .form h1 {
   text-align: center;
   margin-bottom: 30px;
+}
+
+.form h3 {
+  text-align: center;
+  margin-top: 30px;
 }
 
 .form-group label {
@@ -17,15 +27,37 @@
 .form-group input {
   width: 100%;
   height: 50px;
+  font-family: var(--font-family-primary);
   font-size: var(--font-size-secondary);
-  padding: 3px 0 3px 30px;
+  padding: 3px 0 3px 40px;
   border: 2px solid var(--color-secondary);
   border-radius: 10px;
-  box-shadow: 2px 2px 4px rgba(0, 0, 0, .1);
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .form-group i {
   position: absolute;
-  padding: 20px 10px;
-  font-style: 20px;
+  padding: 15px 15px;
+  font-size: var(--font-size-secondary);
+}
+
+.failure-icon,
+.success-icon {
+  right: 0;
+  opacity: 0;
+}
+
+.success-icon {
+  color: var(--color-success);
+}
+
+.failure-icon,
+.form-invalid-message {
+  color: var(--color-error);
+}
+
+.form-invalid-message {
+  position: absolute;
+  bottom: 0;
+  font-size: var(--font-size-secondary);
 }
