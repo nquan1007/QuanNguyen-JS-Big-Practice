@@ -6,7 +6,7 @@
   --font-size-title: 48px;
   --font-size-subtitle: 25px;
   --font-size-primary: 16px;
-  --font-size-secondary: 24px;
+  --font-size-secondary: 20px;
 
   /* font weight */
   --font-weight-title: 600;
@@ -20,7 +20,7 @@
 
   /* color */
   --color-primary: #141414;
-  --color-secondary: #000000;
+  --color-secondary: #c4c4c4;
 
   /* background-color */
   --background-color-primary: #ffffff;
