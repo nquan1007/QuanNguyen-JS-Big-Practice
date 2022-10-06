@@ -12,29 +12,34 @@
   width: 400px;
 }
 
-.header-action {
+.header-nav {
   display: flex;
   width: 300px;
 }
 
-.header-action div a:hover {
+.header-nav div a:hover {
+  color: var(--color-hover);
   opacity: .8;
 }
 
 .header-info div,
-.header-action div {
+.header-nav div {
   display: flex;
   padding: 5px 0 5px 30px;
 }
 
 .header-info div p,
-.header-action div a {
+.header-nav div a {
   padding-left: 10px;
   color: var(--color-primary);
 }
 
 .header-info div p a {
   color: var(--color-primary);
+}
+
+.header-info div p a:hover {
+  color: var(--color-hover);
 }
 
 .header-logo a {

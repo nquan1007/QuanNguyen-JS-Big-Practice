@@ -24,6 +24,7 @@
   --color-secondary: #c4c4c4;
   --color-error: red;
   --color-success: green;
+  --color-hover: rgb(218, 47, 17);
 
   /* background-color */
   --background-color-primary: #ffffff;
