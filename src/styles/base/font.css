@@ -2,3 +2,8 @@
   font-family: Barlow;
   src: url(/src/assets/font/BarlowSemiCondensed-Medium.ttf);
 }
+
+@font-face {
+  font-family: Madrigal;
+  src: url(/src/assets/font/RoSpritendoSemiboldBeta-vmVwZ.otf);
+}

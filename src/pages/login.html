@@ -12,6 +12,7 @@
     ></script>
   </head>
   <body>
+    
     <header class="login-header">
       <img src="../assets/images/logo.png" alt="Logo" />
     </header>
@@ -20,26 +21,35 @@
       <img src="../assets/images/login-image.jpg" alt="login-image" />
       <form action="#" class="form" id="login-form" method="POST">
         <h1 class="text-title">LOGIN</h1>
-
+        <!-- 
+          USERNAME INPUT
+         -->
         <div class="form-group">
           <label for="login-username" class="text-subtitle">Username</label>
           <i class="fa-solid fa-user"></i>
-          <input type="text" id="login-username" />
+          <input type="text" id="login-username" placeholder="nquan1007"/>
           <i class="fa-solid fa-circle-exclamation failure-icon"></i>
           <i class="fa-sharp fa-solid fa-circle-check success-icon"></i>
           <div class="form-invalid-message"></div>
         </div>
-
+        <!-- 
+          PASSWORD INPUT
+         -->
         <div class="form-group">
           <label for="loginPassword" class="text-subtitle">Password</label>
           <i class="fa-solid fa-lock"></i>
-          <input type="password" id="loginPassword" />
+          <input type="password" id="loginPassword" placeholder="Enter your password here"/>
           <i class="fa-solid fa-circle-exclamation failure-icon"></i>
           <i class="fa-sharp fa-solid fa-circle-check success-icon"></i>
           <div class="form-invalid-message"></div>
         </div>
-
+        <!-- 
+          SUBMIT BUTTON
+         -->
         <button class="btn-primary">Log In</button>
+        <!-- 
+          DON'T HAVE ACCOUNT MESSAGE
+         -->
         <h3 class="text-secondary">
           Don't have an account yet? Please <a href="#">Sign Up</a>
         </h3>
@@ -49,5 +59,6 @@
     <footer class="footer">
       <p>© Copyright by Quan Nguyen. All Rights Reserved</p>
     </footer>
+
   </body>
 </html>

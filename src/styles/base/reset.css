@@ -30,7 +30,7 @@ footer, header, hgroup, menu, nav, section, img, label {
 body {
   line-height: 1;
   font-family: var(--font-family-primary);
-  background-color: var(--background-color-secondary);
+  font-size: 20px;
 }
 
 ol, ul {
@@ -56,6 +56,6 @@ button {
   cursor: pointer;
 }
 
-/* a {
+a {
   text-decoration: none;
-} */
+}

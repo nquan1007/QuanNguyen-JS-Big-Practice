@@ -4,7 +4,7 @@
   "description": "Big Practice is a project I do to practice coding with JavaScript to dig deeper in this programming language.",
   "main": "index.js",
   "scripts": {
-    "start": "concurrently \"npx parcel src/pages/login.html\" \"json-server --watch json-server/db.json\"",
+    "start": "concurrently \"npx parcel src/pages/home.html\" \"json-server --watch json-server/db.json\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
