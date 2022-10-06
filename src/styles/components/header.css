@@ -33,6 +33,10 @@
   color: var(--color-primary);
 }
 
+.header-info div p a {
+  color: var(--color-primary);
+}
+
 .header-logo a {
   font-family: var(--font-family-logo);
   color: var(--color-primary);
