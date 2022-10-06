@@ -17,6 +17,10 @@
   width: 300px;
 }
 
+.header-action div a:hover {
+  opacity: .8;
+}
+
 .header-info div,
 .header-action div {
   display: flex;

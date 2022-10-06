@@ -54,6 +54,12 @@ table {
 
 button {
   cursor: pointer;
+  font-family: var(--font-family-primary);
+  transition: all 0.1s ease;
+}
+
+button:hover {
+  opacity: .8;
 }
 
 a {
