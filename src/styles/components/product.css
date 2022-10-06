@@ -17,12 +17,28 @@
 
 .edit-icon,
 .delete-icon {
-  
+  visibility: hidden;
   position: absolute;
   top: 10px;
+  cursor: pointer;
 }
 
 .delete-icon {
   right: 20px;
   font-size: 23px;
+}
+
+.edit-icon:hover,
+.delete-icon:hover {
+  opacity: .8;
+}
+
+.product-item:hover {
+  opacity: .8;
+}
+
+.product-item:hover .edit-icon,
+.product-item:hover .delete-icon {
+  visibility: visible;
+  opacity: 1;
 }
