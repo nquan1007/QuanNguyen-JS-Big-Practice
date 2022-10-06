@@ -54,6 +54,7 @@ table {
 
 button {
   cursor: pointer;
+  display: block;
   font-family: var(--font-family-primary);
   transition: all 0.1s ease;
 }

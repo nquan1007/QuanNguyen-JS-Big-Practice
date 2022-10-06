@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sneakers Shop</title>
+    <link rel="stylesheet" href="../styles/main.css" />
+    <script
+      src="https://kit.fontawesome.com/60de9841a4.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <header class="header">
+      <div class="header-info">
+        <div>
+          <i class="fa-solid fa-location-dot"></i>
+          <p>Da Nang, VN</p>
+        </div>
+        <div>
+          <i class="fa-sharp fa-solid fa-phone"></i>
+          <p><a href="tel:+84865755357">+84 865 755 357</a></p>
+        </div>
+      </div>
+      <h1 class="header-logo text-title">
+        <a href="#">Sneakers Shop</a>
+      </h1>
+      <div class="header-nav">
+        <div class="user-name"></div>
+        <div>
+          <i class="fa-solid fa-circle-user user-circle"></i>
+        </div>
+      </div>
+    </header>
+
+    <main class="product-main">
+      <div class="product-actions">
+        <button class="btn-add btn-secondary">Add a new product</button>
+        <button class="btn-delete btn-secondary">
+          Delete selected products
+        </button>
+        <form action="#">
+          <label for="search-bar">
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </label>
+          <input type="text" id="search-bar" placeholder="Search by Name" />
+        </form>
+      </div>
+
+      <div class="product-list">
+        <article class="product-item">
+          <i class="fa-solid fa-pen-to-square edit-icon"></i>
+          <i class="fa-solid fa-xmark delete-icon"></i>
+          <img
+            src="../assets/images/homepage/homepage-2.jpg"
+            alt="item-iame"
+            class="item-image"
+            style="width: 100%";
+          />
+          <div class="item-info">
+            <p class="item-name text-subtitle">Jordan 1</p>
+            <p class="item-price">100000</p>
+            <p class="item-description">Today is the last day of my internship</p>
+          </div>
+        </article>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <p>© Copyright by Quan Nguyen. All Rights Reserved</p>
+    </footer>
+  </body>
+</html>

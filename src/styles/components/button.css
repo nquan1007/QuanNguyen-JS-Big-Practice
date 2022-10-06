@@ -12,7 +12,18 @@
 }
 
 .btn-secondary {
-  display: block;
+  width: 280px;
+  height: 40px;
+  font-weight: var(--font-weight-subtitle);
+  font-size: var(--font-size-primary);
+  border-radius: 15px;
+  margin-right: 30px;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  text-transform: uppercase;
+  background-color: var(--background-color-btn);
+}
+
+.btn-tertiary {
   width: 300px;
   height: 70px;
   font-weight: var(--font-weight-title);

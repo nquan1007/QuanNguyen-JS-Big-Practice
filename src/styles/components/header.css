@@ -14,6 +14,9 @@
 
 .header-nav {
   display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 0 30px;
   width: 300px;
 }
 
@@ -51,4 +54,16 @@
   position: absolute;
   left: calc((100% - 740px)/2);
   top: calc((100% - 56px)/2);
+}
+
+/**
+  PRODUCT HEADER
+**/
+.header-nav .user-circle {
+  font-size: var(--font-size-subtitle);
+  cursor: pointer;
+}
+
+.header-nav .user-circle:hover {
+  opacity: .8;
 }
