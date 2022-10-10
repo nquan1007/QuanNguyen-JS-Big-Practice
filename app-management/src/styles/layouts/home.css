@@ -1,0 +1,15 @@
+.home-main {
+  padding: 40px 130px;
+}
+
+.home-main-images {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.home-main-images img {
+  height: 850px;
+  border-radius: 30px;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+}

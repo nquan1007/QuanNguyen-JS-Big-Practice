@@ -1,0 +1,27 @@
+.product-main {
+  width: 100%;
+  padding: 30px 80px;
+}
+
+.product-actions {
+  display: flex;
+}
+
+.product-actions form {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  position: absolute;
+  right: 40px;
+}
+
+.product-actions form input {
+  width: 500px;
+  border: 1px solid var(--color-primary);
+  padding: 5px 7px;
+  border-radius: 3px;
+}
+
+.product-list {
+  padding: 30px 0;
+}
