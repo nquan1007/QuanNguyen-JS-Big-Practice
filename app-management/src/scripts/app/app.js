@@ -1,4 +1,5 @@
-import { getDomById } from "../helpers/getDom";
+import { getElement } from "../helpers/getElement";
+import { createElement } from "../helpers/createElement";
 
 class Model {
   constructor() {}
