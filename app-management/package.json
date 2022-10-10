@@ -4,7 +4,7 @@
   "description": "Big Practice is a project I do to practice coding with JavaScript to dig deeper in this programming language.",
   "main": "index.js",
   "scripts": {
-    "start": "concurrently \"npx parcel src/pages/products.html\" \"json-server --watch ../json-server/db.json\"",
+    "start": "npx parcel src/pages/home.html",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -17,10 +17,6 @@
     "url": "https://github.com/nquan1007/QuanNguyen-JS-Big-Practice/issues"
   },
   "homepage": "https://github.com/nquan1007/QuanNguyen-JS-Big-Practice#readme",
-  "dependencies": {
-    "concurrently": "^7.4.0",
-    "json-server": "^0.17.0"
-  },
   "devDependencies": {
     "eslint": "^8.24.0",
     "eslint-config-standard": "^17.0.0",

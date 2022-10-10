@@ -1,19 +1,16 @@
-import { getElement } from "../helpers/getElement";
+import { getElementById, querySelector } from "../helpers/getElement";
 import { createElement } from "../helpers/createElement";
 
-class Model {
-  constructor() {}
-}
+const btnLogin = getElementById('btn-login');
+const btnSignup = getElementById('btn-signup');
+const btnCloseForm = querySelector('.form-close-icon');
 
-class View {
-  constructor() {}
-}
+btnLogin.addEventListener('click', () => {
+  querySelector('.login-popup').style.display = 'flex';
+})
 
-class Controller {
-  constructor(model, view) {
-    this.model = model
-    this.view = view
-  }
-}
+btnCloseForm.addEventListener('click', () => {
+  querySelector('.login-popup').style.display = 'none';
+})
 
-const app = new Controller(new Model(), new View())
+
