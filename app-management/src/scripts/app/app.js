@@ -3,14 +3,33 @@ import { createElement } from "../helpers/createElement";
 
 const btnLogin = getElementById('btn-login');
 const btnSignup = getElementById('btn-signup');
-const btnCloseForm = querySelector('.form-close-icon');
+const btnLoginCloseIcon = getElementById('login-form-close');
+const btnSignupCloseIcon = getElementById('signup-form-close');
+const loginPopup = querySelector('.login-popup');
+const signupPopup = querySelector('.signup-popup');
+const btnViewProducts = querySelector('.home-main button');
+const btnRegister = loginPopup.querySelector('form h3 a');
 
 btnLogin.addEventListener('click', () => {
-  querySelector('.login-popup').style.display = 'flex';
+  loginPopup.style.display = 'flex';
 })
 
-btnCloseForm.addEventListener('click', () => {
-  querySelector('.login-popup').style.display = 'none';
+btnLoginCloseIcon.addEventListener('click', () => {
+  loginPopup.style.display = 'none';
 })
 
+btnSignup.addEventListener('click', () => {
+  signupPopup.style.display = 'flex';
+})
 
+btnSignupCloseIcon.addEventListener('click', () => {
+  signupPopup.style.display = 'none';
+})
+
+btnViewProducts.addEventListener('click', () => {
+  loginPopup.style.display = 'flex';
+})
+
+btnRegister.addEventListener('click', () => {
+  signupPopup.style.display = 'flex';
+})
