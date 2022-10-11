@@ -1,24 +1,19 @@
-import { getElementById, querySelector } from "../helpers/getElement";
-import { createElement } from "../helpers/createElement";
+import { getElementById, querySelector, createElement } from "../helpers/dom";
 import axios from 'axios';
 
-axios.defaults.baseURL = 'https://sneakers-shop-db.herokuapp.com';
-
-async function getUsers() {
-  try {
-    const response = await axios.get('/users');
-    console.log(response.data);
-  } catch (error) {
-    console.error(error);
-  }
-}
-
-getUsers();
 export default class UserController {
-  constructor(model, view) {
-    this.model = model;
+  constructor(view, model) {
     this.view = view;
+    this.model = model;
+
+    this.bindViewEventListener();
   }
 
-  
+  handleLogin = () => {
+    this.model.authenticate();
+  }
+
+  bindViewEventListener = () => {
+    this.view.handleBtnLoginClick = this.handleLogin;
+  }
 }
