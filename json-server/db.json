@@ -3,27 +3,18 @@
     { 
       "id": 1, 
       "name": "Quan Nguyen", 
-      "username": "nquan1007",
+      "email": "nquan1007@gmail.com",
       "password": "quannguyen123" 
-    },
-    { 
-      "id": 2, 
-      "name": "An Nguyen", 
-      "username": "nhtan78",
-      "password": "thuyan123" 
-    },
-    { 
-      "id": 3, 
-      "name": "Viet Trung", 
-      "username": "trungvl1908",
-      "password": "viettrung123" 
     }
   ],
   "products": [
     { 
-      "id": 1, 
-      "body": "some comment", 
-      "postId": 1 
+      "id": 1,
+      "userId": 1,
+      "name": "Jordan 1", 
+      "price": 1000,
+      "image": "hihihi",
+      "description": "This is Nike Jordan 1" 
     }
   ]
 }
