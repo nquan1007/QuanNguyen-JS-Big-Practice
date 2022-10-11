@@ -1,6 +1,5 @@
 import { getElementById, querySelector } from "../helpers/getElement";
 import { createElement } from "../helpers/createElement";
-import axios from 'axios';
 
 const btnLogin = getElementById('btn-login');
 const btnSignup = getElementById('btn-signup');
@@ -35,15 +34,8 @@ btnRegister.addEventListener('click', () => {
   signupPopup.style.display = 'flex';
 })
 
-axios.defaults.baseURL = 'https://sneakers-shop-db.herokuapp.com';
+import UserController from "../controllers/user-controller";
+import UserModel from "../models/user-model";
+import UserView from "../views/user-view";
 
-async function getUsers() {
-  try {
-    const response = await axios.get('/users');
-    console.log(response.data);
-  } catch (error) {
-    console.error(error);
-  }
-}
-
-getUsers();
+const app = new UserController(new UserModel(), new UserView())
