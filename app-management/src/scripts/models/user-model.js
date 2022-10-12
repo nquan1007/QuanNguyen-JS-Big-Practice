@@ -5,11 +5,18 @@ export default class UserModel {
     axios.defaults.baseURL = 'https://sneakers-shop-db.herokuapp.com';
   }
 
-  getUser() {
-    const users = axios.get('/users');
-    console.log(users);
-    return users;
-  }
+  /**
+   * Get the list of users from the database 
+   * @returns {Array} the users data
+   */
+  async getUser() {
+    try {
+      const users = axios.get('/users');
+      return users;
+    } catch {
+      Toast.error('Something went wrong when accessing the data');
+    }
+  };
 
   authenticate = () => {
     this.getUser();

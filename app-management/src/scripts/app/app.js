@@ -7,5 +7,4 @@ window.addEventListener('DOMContentLoaded', () => {
   const model = new UserModel()
   const controller = new UserController(view, model)
   view.initialize();
-  model.authenticate();
 })

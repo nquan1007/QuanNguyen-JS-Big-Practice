@@ -5,15 +5,11 @@ export default class UserController {
   constructor(view, model) {
     this.view = view;
     this.model = model;
-
-    this.bindViewEventListener();
   }
 
-  handleLogin = () => {
-    this.model.authenticate();
+  initialize = () => {
+    
   }
 
-  bindViewEventListener = () => {
-    this.view.handleBtnLoginClick = this.handleLogin;
-  }
+  
 }
