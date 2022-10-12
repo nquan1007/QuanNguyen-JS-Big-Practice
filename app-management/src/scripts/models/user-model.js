@@ -12,12 +12,35 @@ export default class UserModel {
   async getUser() {
     try {
       const users = await axios.get("/users");
-      return users;
+      return users.data;
     } catch (error) {
       Toast.error(error);
     }
   }
 
+  /**
+   * Add a new user and save to the database
+   * @param {object} userInfo 
+   * @returns 
+   */
+  async addNewUser(userInfo) {
+    try {
+      const userData = await axios({
+        method: "post",
+        url: "/user",
+        data: userInfo
+      });
+      return userData;
+    } catch (error) {
+      Toast.error(error);
+    }
+  }
+
+  /**
+   * Used to verify that the email has already existed or not
+   * @param {string} email
+   * @returns {boolean}
+   */
   async findUserByEmail(email) {
     try {
       const users = this.getUser();
