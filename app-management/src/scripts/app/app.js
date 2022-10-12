@@ -6,5 +6,5 @@ window.addEventListener('DOMContentLoaded', () => {
   const view = new UserView()
   const model = new UserModel()
   const controller = new UserController(view, model)
-  view.initialize();
+  controller.initialize();
 })
