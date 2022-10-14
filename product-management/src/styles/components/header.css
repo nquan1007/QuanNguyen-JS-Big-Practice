@@ -22,7 +22,8 @@
   color: var(--color-primary);
 }
 
-.header-info div p a:hover {
+.header-info div p a:hover,
+.header-nav button:hover {
   color: var(--color-hover);
 }
 
@@ -47,8 +48,4 @@
   border: none;
   background-color: none;
   font-size: var(--color-primary);
-}
-
-.header-nav button:hover {
-  color: var(--color-hover);
 }
