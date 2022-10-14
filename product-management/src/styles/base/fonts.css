@@ -1,0 +1,9 @@
+@font-face {
+  font-family: Barlow;
+  src: url(/src/assets/font/BarlowSemiCondensed-Black.ttf);
+}
+
+@font-face {
+  font-family: Spritendo;
+  src: url(/src/assets/font/RoSpritendoSemiboldBeta-vmVwZ.otf);
+}
