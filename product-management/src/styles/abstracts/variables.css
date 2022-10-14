@@ -3,10 +3,11 @@
   --font-family-primary: Epilogue;
 
   /** font size **/
-  --font-size-title: 45px;
+  --font-size-title: 65px;
   --font-size-subtitle: 30px;
-  --font-size-primary: 20px;
-  --font-size-secondary: 25px;
+  --font-size-primary: 18px;
+  --font-size-secondary: 22px;
+  --font-size-hover: 20px;
 
   /* font weight */
   --font-weight-title: 700;
@@ -21,8 +22,10 @@
   /* color */
   --color-primary: #E2B355;
   --color-secondary: #FAF4E7;
+  --color-hover: rgba(255, 145, 0, 0.829);
 
   /* background-color */
   --bg-color-site: #011B18;
-  --bg-color-header: #02554B;
+  --bg-color-header: #0B796C;
+  --bg-color-footer: #024941;
 }
