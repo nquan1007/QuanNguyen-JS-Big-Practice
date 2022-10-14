@@ -29,6 +29,8 @@ footer, header, hgroup, menu, nav, section, img, label {
 
 body {
   line-height: 1;
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-primary);
 }
 
 ol, ul {
@@ -51,8 +53,8 @@ table {
 }
 
 button {
-  cursor: pointer;
   display: block;
+  cursor: pointer;
   font-family: var(--font-family-primary);
   transition: all 0.1s ease;
 }
@@ -63,5 +65,4 @@ button:hover {
 
 a {
   text-decoration: none;
-  color: var(--color-primary);
 }

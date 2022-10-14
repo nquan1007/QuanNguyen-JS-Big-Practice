@@ -1,13 +1,28 @@
 :root {
   /* font family */
+  --font-family-primary: Epilogue;
 
   /** font size **/
+  --font-size-title: 45px;
+  --font-size-subtitle: 30px;
+  --font-size-primary: 20px;
+  --font-size-secondary: 25px;
 
   /* font weight */
+  --font-weight-title: 700;
+  --font-weight-subtitle: 500;
+  --font-weight-primary: 300;
 
   /* line height */
+  --line-height-title: 60px;
+  --line-height-subtitle: 50px;
+  --line-height-primary: 40px;
 
   /* color */
+  --color-primary: #E2B355;
+  --color-secondary: #FAF4E7;
 
   /* background-color */
+  --bg-color-site: #011B18;
+  --bg-color-header: #02554B;
 }
