@@ -1,31 +1,13 @@
 :root {
   /* font family */
-  --font-family-primary: Barlow;
-  --font-family-logo: Spritendo;
 
   /** font size **/
-  --font-size-title: 45px;
-  --font-size-subtitle: 35px;
-  --font-size-primary: 20px;
-  --font-size-secondary: 25px;
 
   /* font weight */
-  --font-weight-title: 600;
-  --font-weight-subtitle: 400;
-  --font-weight-primary: 300;
 
   /* line height */
-  --line-height-title: 56px;
-  --line-height-subtitle: 40px;
-  --line-height-primary: 32px;
 
   /* color */
-  --color-primary: #141414;
-  --color-secondary: #c4c4c4;
-  --color-hover: rgb(218, 47, 17);
 
   /* background-color */
-  --background-color-primary: #ffffff;
-  --background-color-secondary: #f5f2ea;
-  --background-color-btn: #fdc78669;
 }
