@@ -87,4 +87,21 @@
   color: var(--color-hover);
 }
 
+#login-form {
+  position: absolute;
+  right: 40px;
+  top: 120px;
+}
 
+/* CLOSE BUTTON ON LOGIN FORM */
+.form-close-icon {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  font-size: var(--font-size-subtitle);
+  cursor: pointer;
+}
+
+.form-close-icon:hover {
+  opacity: .8;
+}
