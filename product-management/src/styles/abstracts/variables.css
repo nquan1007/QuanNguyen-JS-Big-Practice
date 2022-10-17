@@ -3,27 +3,34 @@
   --font-family-primary: Epilogue;
 
   /** font size **/
-  --font-size-title: 45px;
-  --font-size-subtitle: 30px;
+  --font-size-logo: 45px;
+  --font-size-title: 60px;
+  --font-size-subtitle: 25px;
   --font-size-primary: 20px;
   --font-size-secondary: 25px;
+  --font-size-tertiary: 35px;
   --font-size-hover: 22px;
 
   /* font weight */
+  --font-weight-logo: 100;
   --font-weight-title: 700;
   --font-weight-subtitle: 500;
   --font-weight-primary: 300;
 
   /* line height */
-  --line-height-title: 60px;
+  --line-height-logo: 60px;
+  --line-height-title: 65px;
   --line-height-subtitle: 50px;
   --line-height-primary: 40px;
 
   /* color */
   --color-primary: #ffffff;
-  --color-footer: #6b6b6b;
+  --color-secondary: #000000;
+  --color-footer: #a1a0a0;
   --color-box-shadow: #c9c9c9;
   --color-hover: rgba(218, 103, 27, 0.829);
+  --color-success: green;
+  --color-error: red;
 
   /* background-color */
   --bg-color-site: #070707;
