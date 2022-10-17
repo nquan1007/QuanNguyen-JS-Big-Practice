@@ -5,9 +5,10 @@
   width: 100%;
   padding: 15px 0;
   background-color: var(--bg-color-footer);
+  box-shadow: 2px -2px 15px var(--color-box-shadow);
 }
 
 .footer p {
   text-align: center;
-  color: var(--color-secondary);
+  color: var(--color-footer);
 }

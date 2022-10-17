@@ -21,7 +21,8 @@
 
   /* color */
   --color-primary: #ffffff;
-  --color-secondary: #ffffff;
+  --color-footer: #6b6b6b;
+  --color-box-shadow: #c9c9c9;
   --color-hover: rgba(218, 103, 27, 0.829);
 
   /* background-color */
