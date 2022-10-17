@@ -103,6 +103,6 @@
 }
 
 /* Default: Login Form is hidden */
-#signup-form {
+#login-form {
   display: none;
 }
