@@ -1,9 +1,24 @@
-.text-title {
-  font-size: var(--font-size-title);
-  line-height: var(--line-height-title);
-  font-weight: 100;
+.text-logo {
+  font-size: var(--font-size-logo);
+  line-height: var(--line-height-logo);
+  font-weight: var(--font-weight-logo);
   color: var(--color-primary);
   text-transform: uppercase;
   letter-spacing: 1.5px;
-  margin: 0;
+}
+
+.text-title {
+  font-size: var(--font-size-title);
+  line-height: var(--line-height-title);
+  font-weight: var(--font-weight-title);
+  color: var(--color-secondary);
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.text-subtitle {
+  font-size: var(--font-size-subtitle);
+  line-height: var(--line-height-subtitle);
+  font-weight: var(--font-weight-subtitle);
+  color: var(--color-secondary);
 }

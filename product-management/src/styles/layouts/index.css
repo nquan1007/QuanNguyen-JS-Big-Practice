@@ -1,3 +1,20 @@
 .homepage {
-  
+  position: relative;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.background {
+  height: 100%;
+  width: 100vw;
+  position: absolute;
+  top: 0;
+  background-image: url(../../assets/images/homepage-wallpaper.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  filter: blur(10px);
+  z-index: -1;
 }

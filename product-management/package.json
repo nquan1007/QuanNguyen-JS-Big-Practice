@@ -2,7 +2,6 @@
   "name": "quannguyen-js-big-practice",
   "version": "1.0.0",
   "description": "Big Practice is a project I do to practice coding with JavaScript to dig deeper in this programming language.",
-  "main": "index.js",
   "scripts": {
     "start": "npx parcel src/pages/index.html",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -25,7 +24,7 @@
     "eslint-plugin-n": "^15.3.0",
     "eslint-plugin-promise": "^6.0.1",
     "parcel": "^2.7.0",
-    "process": "^0.11.10"
+    "posthtml-include": "^1.7.4"
   },
   "dependencies": {
     "axios": "^1.1.2"
