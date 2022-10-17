@@ -4,7 +4,7 @@
   "description": "Big Practice is a project I do to practice coding with JavaScript to dig deeper in this programming language.",
   "main": "index.js",
   "scripts": {
-    "start": "npx parcel src/pages/home.html",
+    "start": "npx parcel src/pages/index.html",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

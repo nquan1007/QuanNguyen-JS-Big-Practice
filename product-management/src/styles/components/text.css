@@ -1,0 +1,9 @@
+.text-title {
+  font-size: var(--font-size-title);
+  line-height: var(--line-height-title);
+  font-weight: 100;
+  color: var(--color-primary);
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin: 0;
+}

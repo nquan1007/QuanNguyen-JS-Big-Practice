@@ -1,0 +1,12 @@
+.footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  padding: 15px 0;
+  background-color: var(--bg-color-footer);
+}
+
+.footer p {
+  text-align: center;
+  color: var(--color-secondary);
+}

@@ -1,0 +1,32 @@
+.header {
+  background-color: var(--bg-color-header);
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 80px;
+}
+
+.header-nav {
+  display: flex;
+  align-items: center;
+}
+
+.header-nav div {
+  padding-left: 30px;
+}
+
+.header-nav div a,
+.header-nav div i {
+  color: var(--color-secondary);
+  transition: 0.1s ease;
+}
+
+.header-nav div a {
+  padding-left: 5px;
+}
+
+.header-nav div a:hover {
+  color: var(--color-hover);
+  font-size: var(--font-size-hover);
+}
