@@ -78,6 +78,7 @@
 
 .index-form p a {
   text-decoration: underline;
+  text-transform: uppercase;
   color: var(--color-secondary);
   transition: 0.1s ease;
 }
