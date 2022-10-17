@@ -31,7 +31,6 @@ body {
   line-height: 1;
   font-family: var(--font-family-primary);
   font-size: var(--font-size-primary);
-  background-color: var(--bg-color-site);
 }
 
 ol, ul {
