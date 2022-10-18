@@ -14,9 +14,9 @@ export default class UserView {
     this.btnLogin = document.getElementById('btn-register-redirect');
     this.loginForm = document.getElementById('login-form');
     this.registerForm = document.getElementById('register-form');
-
-    this.registerName = document.getElementById('register-name');
-    this.registerNameMessage = document.getElementById('register-name-message');
+    
+    // Get elements in the Register form
+    this.registerFormGroups = document.querySelectorAll('#register-form .index-form-group');
   };
 
   bindEventListeners = () => {
@@ -52,4 +52,33 @@ export default class UserView {
    * @param {DOM} element
    */
   hideElement = (element) => element.style.display = 'none';
+
+  /**
+   * Pass the element and the HTML content to add the innerHTML
+   * @param {DOM} element 
+   * @param {String} content 
+   */
+  addInnerHTML = (element, content) => element.innerHTML = content;
+
+  handleRegisterValidate = () => {
+    this.registerFormIsBlank();
+  };
+
+  registerFormIsBlank = () => {
+    this.registerFormGroups.forEach(group => {
+      this.inputBox = group.querySelector('input');
+      this.failureIcon = group.querySelector('.failure-icon');
+      this.successIcon = group.querySelector('.success-icon');
+      this.invalidMessage = group.querySelector('.index-form-message');
+
+      this.inputBox.addEventListener('focusout', () => {
+        if(isBlank(this.inputBox.value)) {
+          this.addInnerHTML(this.invalidMessage, 'This field cannot be blank');
+          this.showElement(this.failureIcon);
+          this.hideElement(this.successIcon);
+          this.inputBox.style.border = '2px solid var(--color-error)';
+        }
+      });
+    })
+  }
 }
