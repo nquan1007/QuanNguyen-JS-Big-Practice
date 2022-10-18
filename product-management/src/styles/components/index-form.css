@@ -1,19 +1,15 @@
 .index-form {
   background-color: var(--color-primary);
-  padding: 30px;
+  padding: 20px;
   border-radius: 5px;
   position: relative;
   color: var(--color-secondary);
-  width: 600px;
-}
-
-.index-form h3 {
-  margin-bottom: 30px;
+  width: 500px;
 }
 
 .index-form-group {
   position: relative;
-  padding-bottom: 30px;
+  padding-bottom: 10px;
 }
 
 .index-form-group label {
@@ -22,24 +18,24 @@
 
 .index-form-group input {
   width: 100%;
-  height: 50px;
+  height: 40px;
   font-family: var(--font-family-primary);
   font-size: var(--font-size-primary);
-  padding: 3px 0 3px 45px;
+  padding: 3px 0 3px 40px;
   border: 2px solid var(--color-secondary);
   border-radius: 10px;
 }
 
 .index-form-group i {
   position: absolute;
-  padding: 12px 15px;
+  padding: 10px 15px;
   font-size: var(--font-size-secondary);
 }
 
 .failure-icon,
 .success-icon {
   right: 0;
-  /* opacity: 0; */
+  opacity: 0;
 }
 
 .success-icon {
@@ -60,26 +56,26 @@
   margin: 0 auto;
   background-color: var(--bg-color-header);
   color: var(--color-primary);
-  width: 400px;
-  height: 60px;
+  width: 250px;
+  height: 45px;
   font-weight: var(--font-weight-subtitle);
   font-size: var(--font-size-tertiary);
   border: none;
   border-radius: 5px;
-  margin-top: 30px;
+  margin-top: 10px;
   letter-spacing: 1px;
   box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .btn-redirect {
-  width: 200px;
+  width: 150px;
   height: 40px;
   margin: 0 auto;
   background-color: var(--bg-color-footer);
   color: var(--color-primary);
   border: none;
   border-radius: 5px;
-  margin-top: 20px;
+  margin-top: 10px;
   box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
   letter-spacing: 1px;
   font-size: var(--font-size-secondary);
@@ -87,7 +83,7 @@
 }
 
 .index-form p {
-  margin-top: 25px;
+  margin-top: 15px;
   text-align: center;
 }
 
@@ -103,6 +99,6 @@
 }
 
 /* Default: Login Form is hidden */
-#signup-form {
+#login-form {
   display: none;
 }
