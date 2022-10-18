@@ -3,13 +3,13 @@
   --font-family-primary: Epilogue;
 
   /** font size **/
-  --font-size-logo: 45px;
-  --font-size-title: 60px;
-  --font-size-subtitle: 25px;
-  --font-size-primary: 20px;
-  --font-size-secondary: 25px;
-  --font-size-tertiary: 35px;
-  --font-size-hover: 22px;
+  --font-size-logo: 35px;
+  --font-size-title: 40px;
+  --font-size-subtitle: 20px;
+  --font-size-primary: 16px;
+  --font-size-secondary: 22px;
+  --font-size-tertiary: 25px;
+  --font-size-hover: 18px;
 
   /* font weight */
   --font-weight-logo: 100;
