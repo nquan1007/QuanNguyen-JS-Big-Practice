@@ -1,4 +1,4 @@
-export default class IndexController {
+export default class UserController {
   constructor(view, model) {
     this.view = view;
     this.model = model;

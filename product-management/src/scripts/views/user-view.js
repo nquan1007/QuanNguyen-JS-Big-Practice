@@ -1,4 +1,4 @@
-export default class IndexView {
+export default class UserView {
   constructor() {}
 
   initialize = () => {
