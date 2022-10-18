@@ -1,9 +1,12 @@
+import { isBlank } from "../helpers/validation";
+
 export default class UserView {
   constructor() {}
 
   initialize = () => {
     this.queryElements();
     this.bindEventListeners();
+    this.handleRegisterValidate();
   };
 
   queryElements = () => {
@@ -11,6 +14,9 @@ export default class UserView {
     this.btnLogin = document.getElementById('btn-register-redirect');
     this.loginForm = document.getElementById('login-form');
     this.registerForm = document.getElementById('register-form');
+
+    this.registerName = document.getElementById('register-name');
+    this.registerNameMessage = document.getElementById('register-name-message');
   };
 
   bindEventListeners = () => {
