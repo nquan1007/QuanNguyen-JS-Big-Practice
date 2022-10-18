@@ -7,18 +7,18 @@ export default class UserView {
   };
 
   queryElements = () => {
-    this.btnRegister = document.getElementById("btn-login-redirect");
-    this.btnLogin = document.getElementById("btn-register-redirect");
-    this.loginForm = document.getElementById("login-form");
-    this.registerForm = document.getElementById("register-form");
+    this.btnRegister = document.getElementById('btn-login-redirect');
+    this.btnLogin = document.getElementById('btn-register-redirect');
+    this.loginForm = document.getElementById('login-form');
+    this.registerForm = document.getElementById('register-form');
   };
 
   bindEventListeners = () => {
     // Click the Login button to show the Login form and hide the Register form
-    this.btnLogin.addEventListener("click", (e) => this.showLoginForm(e));
+    this.btnLogin.addEventListener('click', this.showLoginForm);
 
     // Click the Register button to show the Register form and hide the Login form
-    this.btnRegister.addEventListener("click", (e) => this.showRegisterForm(e));
+    this.btnRegister.addEventListener('click', this.showRegisterForm);
   };
 
   // Handle to show Register Form
@@ -37,13 +37,13 @@ export default class UserView {
 
   /**
    * Pass the element to show it
-   * @param {*} element
+   * @param {DOM} element
    */
-  showElement = (element) => (element.style.display = "block");
+  showElement = (element) => element.style.display = 'block';
 
   /**
    * Pass the element to hide it
-   * @param {*} element
+   * @param {DOM} element
    */
-  hideElement = (element) => (element.style.display = "none");
+  hideElement = (element) => element.style.display = 'none';
 }

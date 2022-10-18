@@ -1,6 +1,6 @@
-import UserModel from "../models/user-model";
-import UserView from "../views/user-view";
-import UserController from "../controllers/user-controller";
+import UserModel from '../models/user-model';
+import UserView from '../views/user-view';
+import UserController from '../controllers/user-controller';
 
 window.addEventListener('DOMContentLoaded', () => {
   const model = new UserModel()
