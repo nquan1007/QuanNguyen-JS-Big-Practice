@@ -59,7 +59,7 @@ const formBlankValidate = (formInputBoxes) => {
 }
 
 /**
- * Pass the element with the regex value to validate if they match or not 
+ * Pass the element with the regex value to validate whether it is valid or not
  * If they don't match, the invalid message appears
  * @param {DOM} element 
  * @param {String} regexValue 
@@ -75,6 +75,11 @@ const validFormatValidate = (element, regexValue, message) => {
   });
 }
 
+/**
+ * Pass the password and confirm password elements to validate whether they match or not
+ * @param {DOM} password 
+ * @param {DOM} confirmpassword 
+ */
 const isPasswordMatch = (password, confirmpassword) => {
   const invalidMessage = getInvalidMessageElement(confirmpassword);
   confirmpassword.addEventListener('focusout', () => {
