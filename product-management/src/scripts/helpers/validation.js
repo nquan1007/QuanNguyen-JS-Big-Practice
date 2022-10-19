@@ -49,4 +49,22 @@ const formBlankValidate = (formInputBoxes) => {
   });
 }
 
-export { formBlankValidate }
+/**
+ * Pass the element with the regex value to validate if they match or not 
+ * If they don't match, the invalid message appears
+ * @param {DOM} element 
+ * @param {String} regexValue 
+ * @param {String} message 
+ */
+const validFormatValidate = (element, regexValue, message) => {
+  const formGroup = element.parentElement;
+  const invalidMessage = formGroup.querySelector('.index-form-message');
+  element.addEventListener('focusout', () => {
+    if(!isBlank(element) && !element.value.match(regexValue)) {
+      invalidMessage.innerHTML = message;
+      showInputError(element);
+    };
+  });
+}
+
+export { validFormatValidate, formBlankValidate }
