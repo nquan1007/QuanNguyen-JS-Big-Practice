@@ -12,6 +12,10 @@
   padding-bottom: 25px;
 }
 
+.index-form-group label span {
+  color: var(--color-error);
+}
+
 .index-form-group input {
   width: 100%;
   height: 40px;
