@@ -1,3 +1,5 @@
+import { MESSAGES } from "../constants/messages";
+
 /**
  * Check if the value of that element is blank or not
  * @param {DOM} element 
@@ -5,7 +7,25 @@
  */
 const isBlank = (element) => {
   return element.value === '' ? true : false;
-}
+};
+
+/**
+ * Pass the element to show the input error by adding the red border
+ * @param {DOM} element 
+ */
+const showInputError = (element) => {
+  element.classList.add('error');
+  element.classList.remove('success');
+};
+
+/**
+ * Pass the element to show the input success by adding the green border
+ * @param {DOM} element 
+ */
+const showInputSuccess = (element) => {
+  element.classList.add('success');
+  element.classList.remove('error');
+};
 
 /**
  * Pass the Nodelist of form's input boxes to validate whether the input box is blank or not
@@ -19,13 +39,11 @@ const formBlankValidate = (formInputBoxes) => {
     const invalidMessage = formGroup.querySelector('.index-form-message');
     inputBox.addEventListener('focusout', () => {
       if (isBlank(inputBox)) {
-        invalidMessage.innerHTML = ('This field cannot be blank');
-        inputBox.classList.add('error');
-        inputBox.classList.remove('success');
+        invalidMessage.innerHTML = MESSAGES.FIELD_REQUIRED;
+        showInputError(inputBox);
       } else {
         invalidMessage.innerHTML = '';
-        inputBox.classList.add('success');
-        inputBox.classList.remove('error');
+        showInputSuccess(inputBox);
       };
     });
   });
