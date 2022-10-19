@@ -28,6 +28,16 @@ const showInputSuccess = (element) => {
 };
 
 /**
+ * Pass the element to get the invalid message element of the corresponding form group
+ * @param {DOM} element 
+ * @returns {DOM} 
+ */
+const getInvalidMessageElement = (element) => {
+  const formGroup = element.parentElement;
+  return formGroup.querySelector('.index-form-message');
+}
+
+/**
  * Pass the Nodelist of form's input boxes to validate whether the input box is blank or not
  * If the input box is blank, its border is red and the invalid message appears
  * Otherwise, its border is green and there is no invalid message
@@ -35,8 +45,7 @@ const showInputSuccess = (element) => {
  */
 const formBlankValidate = (formInputBoxes) => {
   formInputBoxes.forEach(inputBox => {
-    const formGroup = inputBox.parentElement;
-    const invalidMessage = formGroup.querySelector('.index-form-message');
+    const invalidMessage = getInvalidMessageElement(inputBox);
     inputBox.addEventListener('focusout', () => {
       if (isBlank(inputBox)) {
         invalidMessage.innerHTML = MESSAGES.FIELD_REQUIRED;
@@ -57,8 +66,7 @@ const formBlankValidate = (formInputBoxes) => {
  * @param {String} message 
  */
 const validFormatValidate = (element, regexValue, message) => {
-  const formGroup = element.parentElement;
-  const invalidMessage = formGroup.querySelector('.index-form-message');
+  const invalidMessage = getInvalidMessageElement(element);
   element.addEventListener('focusout', () => {
     if(!isBlank(element) && !element.value.match(regexValue)) {
       invalidMessage.innerHTML = message;
@@ -67,4 +75,14 @@ const validFormatValidate = (element, regexValue, message) => {
   });
 }
 
-export { validFormatValidate, formBlankValidate }
+const isPasswordMatch = (password, confirmpassword) => {
+  const invalidMessage = getInvalidMessageElement(confirmpassword);
+  confirmpassword.addEventListener('focusout', () => {
+    if(!isBlank(confirmpassword) && password.value !== confirmpassword.value) {
+      invalidMessage.innerHTML = MESSAGES.PASSWORD_CONFIRM;
+      showInputError(confirmpassword);
+    }
+  })
+}
+
+export { isPasswordMatch, validFormatValidate, formBlankValidate }

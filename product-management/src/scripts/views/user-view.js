@@ -1,4 +1,4 @@
-import { validFormatValidate, formBlankValidate } from "../helpers/validation";
+import { isPasswordMatch, validFormatValidate, formBlankValidate } from "../helpers/validation";
 import { REGEX_VALUE } from "../constants/regex-value";
 import { MESSAGES } from "../constants/messages";
 
@@ -19,6 +19,7 @@ export default class UserView {
     this.registerInputBoxes = document.querySelectorAll('#register-form .index-form-group input');
     this.registerEmail = document.getElementById('register-email');
     this.registerPassword = document.getElementById('register-password');
+    this.registerConfirm = document.getElementById('register-confirm');
   };
 
   bindEventListeners = () => {
@@ -66,5 +67,6 @@ export default class UserView {
     formBlankValidate(this.registerInputBoxes);
     validFormatValidate(this.registerEmail, REGEX_VALUE.REGEX_EMAIL, MESSAGES.EMAIL_INVALID);
     validFormatValidate(this.registerPassword, REGEX_VALUE.REGEX_PASSWORD, MESSAGES.PASSWORD_INVALID);
+    isPasswordMatch(this.registerPassword, this.registerConfirm);
   };
 }
