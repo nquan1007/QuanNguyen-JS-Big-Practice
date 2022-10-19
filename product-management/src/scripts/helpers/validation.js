@@ -80,7 +80,7 @@ const validFormatValidate = (element, regexValue, message) => {
  * @param {DOM} password 
  * @param {DOM} confirmpassword 
  */
-const isPasswordMatch = (password, confirmpassword) => {
+const passwordMatchValidate = (password, confirmpassword) => {
   const invalidMessage = getInvalidMessageElement(confirmpassword);
   confirmpassword.addEventListener('focusout', () => {
     if(!isBlank(confirmpassword) && password.value !== confirmpassword.value) {
@@ -90,4 +90,4 @@ const isPasswordMatch = (password, confirmpassword) => {
   })
 }
 
-export { isPasswordMatch, validFormatValidate, formBlankValidate }
+export { passwordMatchValidate, validFormatValidate, formBlankValidate }

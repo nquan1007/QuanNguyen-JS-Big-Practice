@@ -1,4 +1,4 @@
-import { isPasswordMatch, validFormatValidate, formBlankValidate } from "../helpers/validation";
+import { passwordMatchValidate, validFormatValidate, formBlankValidate } from "../helpers/validation";
 import { REGEX_VALUE } from "../constants/regex-value";
 import { MESSAGES } from "../constants/messages";
 
@@ -63,10 +63,16 @@ export default class UserView {
    */
   addInnerHTML = (element, content) => element.innerHTML = content;
 
+  /**
+   * Handle to validate the Register form:
+   * Blank validate
+   * Format validate the email and password
+   * Password and confirm password match
+   */
   handleRegisterValidate = () => {
     formBlankValidate(this.registerInputBoxes);
     validFormatValidate(this.registerEmail, REGEX_VALUE.REGEX_EMAIL, MESSAGES.EMAIL_INVALID);
     validFormatValidate(this.registerPassword, REGEX_VALUE.REGEX_PASSWORD, MESSAGES.PASSWORD_INVALID);
-    isPasswordMatch(this.registerPassword, this.registerConfirm);
+    passwordMatchValidate(this.registerPassword, this.registerConfirm);
   };
 }
