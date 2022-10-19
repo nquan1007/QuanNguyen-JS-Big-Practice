@@ -18,8 +18,15 @@
   font-family: var(--font-family-primary);
   font-size: var(--font-size-primary);
   padding: 3px 0 3px 40px;
-  border: 2px solid var(--color-secondary);
   border-radius: 10px;
+}
+
+.error {
+  border: 3px solid var(--color-error);
+}
+
+.success {
+  border: 3px solid var(--color-success);
 }
 
 .index-form-group i {
@@ -28,22 +35,8 @@
   font-size: var(--font-size-secondary);
 }
 
-.failure-icon,
-.success-icon {
-  right: 0;
-  opacity: 0;
-}
-
-.success-icon {
-  color: var(--color-success);
-}
-
-.failure-icon,
 .index-form-message {
   color: var(--color-error);
-}
-
-.index-form-message {
   position: absolute;
   bottom: 0;
 }
@@ -81,17 +74,6 @@
 .index-form p {
   margin-top: 15px;
   text-align: center;
-}
-
-.index-form p a {
-  text-decoration: underline;
-  text-transform: uppercase;
-  color: var(--color-secondary);
-  transition: 0.1s ease;
-}
-
-.index-form p a:hover {
-  color: var(--color-hover);
 }
 
 /* Default: Login Form is hidden */

@@ -1,4 +1,4 @@
-import { isBlank } from "../helpers/validation";
+import { formBlankValidate } from "../helpers/validation";
 
 export default class UserView {
   constructor() {}
@@ -16,7 +16,7 @@ export default class UserView {
     this.registerForm = document.getElementById('register-form');
     
     // Get elements in the Register form
-    this.registerFormGroups = document.querySelectorAll('#register-form .index-form-group');
+    this.registerInputBoxes = document.querySelectorAll('#register-form .index-form-group input');
   };
 
   bindEventListeners = () => {
@@ -61,24 +61,6 @@ export default class UserView {
   addInnerHTML = (element, content) => element.innerHTML = content;
 
   handleRegisterValidate = () => {
-    this.registerFormIsBlank();
+    formBlankValidate(this.registerInputBoxes);
   };
-
-  registerFormIsBlank = () => {
-    this.registerFormGroups.forEach(group => {
-      this.inputBox = group.querySelector('input');
-      this.failureIcon = group.querySelector('.failure-icon');
-      this.successIcon = group.querySelector('.success-icon');
-      this.invalidMessage = group.querySelector('.index-form-message');
-
-      this.inputBox.addEventListener('focusout', () => {
-        if(isBlank(this.inputBox.value)) {
-          this.addInnerHTML(this.invalidMessage, 'This field cannot be blank');
-          this.showElement(this.failureIcon);
-          this.hideElement(this.successIcon);
-          this.inputBox.style.border = '2px solid var(--color-error)';
-        }
-      });
-    })
-  }
 }
