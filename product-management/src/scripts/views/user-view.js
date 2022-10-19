@@ -1,4 +1,4 @@
-import { passwordMatchValidate, validFormatValidate, formBlankValidate } from "../helpers/validation";
+import { passwordMatchValidate, validFormatValidate, inputBlankValidate } from "../helpers/validation";
 import { REGEX_VALUE } from "../constants/regex-value";
 import { MESSAGES } from "../constants/messages";
 
@@ -16,7 +16,10 @@ export default class UserView {
     this.btnLogin = document.getElementById('btn-register-redirect');
     this.loginForm = document.getElementById('login-form');
     this.registerForm = document.getElementById('register-form');
+
+    // Get the elements in the Register Form
     this.registerInputBoxes = document.querySelectorAll('#register-form .index-form-group input');
+    this.registerName = document.getElementById('register-name');
     this.registerEmail = document.getElementById('register-email');
     this.registerPassword = document.getElementById('register-password');
     this.registerConfirm = document.getElementById('register-confirm');
@@ -70,7 +73,8 @@ export default class UserView {
    * Password and confirm password match
    */
   handleRegisterValidate = () => {
-    formBlankValidate(this.registerInputBoxes);
+    inputBlankValidate(this.registerInputBoxes);
+    validFormatValidate(this.registerName, REGEX_VALUE.REGEX_INPUT_CHARACTER, MESSAGES.NAME_INVALID);
     validFormatValidate(this.registerEmail, REGEX_VALUE.REGEX_EMAIL, MESSAGES.EMAIL_INVALID);
     validFormatValidate(this.registerPassword, REGEX_VALUE.REGEX_PASSWORD, MESSAGES.PASSWORD_INVALID);
     passwordMatchValidate(this.registerPassword, this.registerConfirm);

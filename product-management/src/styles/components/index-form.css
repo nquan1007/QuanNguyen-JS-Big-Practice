@@ -26,11 +26,11 @@
 }
 
 .error {
-  border: 3px solid var(--color-error);
+  border: 2px solid var(--color-error);
 }
 
 .success {
-  border: 3px solid var(--color-success);
+  border: 2px solid var(--color-success);
 }
 
 .index-form-group i {

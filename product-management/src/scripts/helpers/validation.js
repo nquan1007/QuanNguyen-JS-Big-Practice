@@ -43,7 +43,7 @@ const getInvalidMessageElement = (element) => {
  * Otherwise, its border is green and there is no invalid message
  * @param {NodeList} formInputBoxes 
  */
-const formBlankValidate = (formInputBoxes) => {
+const inputBlankValidate = (formInputBoxes) => {
   formInputBoxes.forEach(inputBox => {
     const invalidMessage = getInvalidMessageElement(inputBox);
     inputBox.addEventListener('focusout', () => {
@@ -90,4 +90,4 @@ const passwordMatchValidate = (password, confirmpassword) => {
   })
 }
 
-export { passwordMatchValidate, validFormatValidate, formBlankValidate }
+export { passwordMatchValidate, validFormatValidate, inputBlankValidate }
