@@ -6,7 +6,7 @@ import { MESSAGES } from "../constants/messages";
  * @returns {Boolean}
  */
 const isBlank = (element) => {
-  return (element.value === '' || element.value === null) ? true : false;
+  return !element.value;
 };
 
 /**

@@ -71,10 +71,10 @@ export default class UserView {
    * Password and confirm password match
    */
   handleRegisterValidate = () => {
-    validateValidFormat(this.registerName, VALIDATION_REGEX.REGEX_INPUT_CHARACTER, MESSAGES.NAME_INVALID);
-    validateValidFormat(this.registerEmail, VALIDATION_REGEX.REGEX_EMAIL, MESSAGES.EMAIL_INVALID);
-    validateValidFormat(this.registerPassword, VALIDATION_REGEX.REGEX_PASSWORD, MESSAGES.PASSWORD_INVALID);
-    validateValidFormat(this.registerConfirm, VALIDATION_REGEX.REGEX_PASSWORD, MESSAGES.PASSWORD_INVALID);
+    validateValidFormat(this.registerName, VALIDATION_REGEX.INPUT_CHARACTER, MESSAGES.NAME_INVALID);
+    validateValidFormat(this.registerEmail, VALIDATION_REGEX.EMAIL, MESSAGES.EMAIL_INVALID);
+    validateValidFormat(this.registerPassword, VALIDATION_REGEX.PASSWORD, MESSAGES.PASSWORD_INVALID);
+    validateValidFormat(this.registerConfirm, VALIDATION_REGEX.PASSWORD, MESSAGES.PASSWORD_INVALID);
     validatePasswordMatch(this.registerPassword, this.registerConfirm);
   };
 }
