@@ -1,9 +1,14 @@
+import { validateValidFormat, validatePasswordMatch } from "../helpers/validation";
+import { VALIDATION_REGEX } from "../constants/regex-value";
+import { MESSAGES } from "../constants/messages";
+
 export default class UserView {
   constructor() {}
 
   initialize = () => {
     this.queryElements();
     this.bindEventListeners();
+    this.handleRegisterValidate();
   };
 
   queryElements = () => {
@@ -11,6 +16,12 @@ export default class UserView {
     this.btnLogin = document.getElementById('btn-register-redirect');
     this.loginForm = document.getElementById('login-form');
     this.registerForm = document.getElementById('register-form');
+
+    // Get the elements in the Register Form
+    this.registerName = document.getElementById('register-name');
+    this.registerEmail = document.getElementById('register-email');
+    this.registerPassword = document.getElementById('register-password');
+    this.registerConfirm = document.getElementById('register-confirm');
   };
 
   bindEventListeners = () => {
@@ -46,4 +57,24 @@ export default class UserView {
    * @param {DOM} element
    */
   hideElement = (element) => element.style.display = 'none';
+
+  /**
+   * Pass the element and the HTML content to add the innerHTML
+   * @param {DOM} element 
+   * @param {String} content 
+   */
+  addInnerHTML = (element, content) => element.innerHTML = content;
+
+  /**
+   * Handle to validate the Register form:
+   * Valid format validation for all fields
+   * Password and confirm password match
+   */
+  handleRegisterValidate = () => {
+    validateValidFormat(this.registerName, VALIDATION_REGEX.INPUT_CHARACTER, MESSAGES.NAME_INVALID);
+    validateValidFormat(this.registerEmail, VALIDATION_REGEX.EMAIL, MESSAGES.EMAIL_INVALID);
+    validateValidFormat(this.registerPassword, VALIDATION_REGEX.PASSWORD, MESSAGES.PASSWORD_INVALID);
+    validateValidFormat(this.registerConfirm, VALIDATION_REGEX.PASSWORD, MESSAGES.PASSWORD_INVALID);
+    validatePasswordMatch(this.registerPassword, this.registerConfirm);
+  };
 }

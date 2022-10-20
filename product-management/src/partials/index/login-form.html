@@ -1,23 +1,19 @@
 <form action="#" class="index-form" id="login-form" method="POST">
   <h3 class="text-title">Log In</h3>
   <div class="index-form-group">
-    <label for="login-email" class="text-subtitle">Your Email</label>
-    <i class="fa-solid fa-user"></i>
+    <label for="login-email" class="text-subtitle">Your Email <span>*</span></label>
+    <i class="fa-solid fa-envelope"></i>
     <input type="text" id="login-email" placeholder="nquan1007@gmail.com" />
-    <i class="fa-solid fa-circle-exclamation failure-icon"></i>
-    <i class="fa-sharp fa-solid fa-circle-check success-icon"></i>
     <p class="index-form-message"></p>
   </div>
   <div class="index-form-group">
-    <label for="login-password" class="text-subtitle">Password</label>
+    <label for="login-password" class="text-subtitle">Password <span>*</span></label>
     <i class="fa-solid fa-lock"></i>
     <input
       type="password"
       id="login-password"
       placeholder="Enter your password here"
     />
-    <i class="fa-solid fa-circle-exclamation failure-icon"></i>
-    <i class="fa-sharp fa-solid fa-circle-check success-icon"></i>
     <p class="index-form-message"></p>
   </div>
   <button class="btn-submit" id="btn-login-submit">Log In</button>
