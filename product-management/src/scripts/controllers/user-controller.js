@@ -6,5 +6,6 @@ export default class UserController {
 
   initialize = () => {
     this.view.initialize();
+    // this.model.getUsers();
   };
 }

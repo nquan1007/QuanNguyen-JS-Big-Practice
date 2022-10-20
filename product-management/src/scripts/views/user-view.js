@@ -9,6 +9,7 @@ export default class UserView {
     this.queryElements();
     this.bindEventListeners();
     this.handleRegisterValidate();
+    this.submitRegisterFormHandler();
   };
 
   queryElements = () => {
@@ -77,4 +78,19 @@ export default class UserView {
     validateValidFormat(this.registerConfirm, VALIDATION_REGEX.PASSWORD, MESSAGES.PASSWORD_INVALID);
     validatePasswordMatch(this.registerPassword, this.registerConfirm);
   };
+
+  submitRegisterFormHandler = () => {
+    this.registerForm.addEventListener('submit', this.handleRegister);
+  }
+
+  handleRegister = (e) => {
+    e.preventDefault();
+
+    const name = this.registerName.value;
+    const email = this.registerEmail.value;
+    const password = this.registerPassword.value;
+
+    const user = { name, email, password };
+    console.log(user);
+  }
 }
