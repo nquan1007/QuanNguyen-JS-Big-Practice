@@ -1,5 +1,5 @@
-import { passwordMatchValidate, validFormatValidate, inputBlankValidate } from "../helpers/validation";
-import { REGEX_VALUE } from "../constants/regex-value";
+import { validateValidFormat, validatePasswordMatch } from "../helpers/validation";
+import { VALIDATION_REGEX } from "../constants/regex-value";
 import { MESSAGES } from "../constants/messages";
 
 export default class UserView {
@@ -18,7 +18,6 @@ export default class UserView {
     this.registerForm = document.getElementById('register-form');
 
     // Get the elements in the Register Form
-    this.registerInputBoxes = document.querySelectorAll('#register-form .index-form-group input');
     this.registerName = document.getElementById('register-name');
     this.registerEmail = document.getElementById('register-email');
     this.registerPassword = document.getElementById('register-password');
@@ -68,15 +67,14 @@ export default class UserView {
 
   /**
    * Handle to validate the Register form:
-   * Blank validate
-   * Format validate the email and password
+   * Format validate for all fields
    * Password and confirm password match
    */
   handleRegisterValidate = () => {
-    inputBlankValidate(this.registerInputBoxes);
-    validFormatValidate(this.registerName, REGEX_VALUE.REGEX_INPUT_CHARACTER, MESSAGES.NAME_INVALID);
-    validFormatValidate(this.registerEmail, REGEX_VALUE.REGEX_EMAIL, MESSAGES.EMAIL_INVALID);
-    validFormatValidate(this.registerPassword, REGEX_VALUE.REGEX_PASSWORD, MESSAGES.PASSWORD_INVALID);
-    passwordMatchValidate(this.registerPassword, this.registerConfirm);
+    validateValidFormat(this.registerName, VALIDATION_REGEX.REGEX_INPUT_CHARACTER, MESSAGES.NAME_INVALID);
+    validateValidFormat(this.registerEmail, VALIDATION_REGEX.REGEX_EMAIL, MESSAGES.EMAIL_INVALID);
+    validateValidFormat(this.registerPassword, VALIDATION_REGEX.REGEX_PASSWORD, MESSAGES.PASSWORD_INVALID);
+    validateValidFormat(this.registerConfirm, VALIDATION_REGEX.REGEX_PASSWORD, MESSAGES.PASSWORD_INVALID);
+    validatePasswordMatch(this.registerPassword, this.registerConfirm);
   };
 }

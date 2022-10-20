@@ -6,7 +6,7 @@ import { MESSAGES } from "../constants/messages";
  * @returns {Boolean}
  */
 const isBlank = (element) => {
-  return element.value === '' ? true : false;
+  return (element.value === '' || element.value === null) ? true : false;
 };
 
 /**
@@ -38,36 +38,24 @@ const getInvalidMessageElement = (element) => {
 }
 
 /**
- * Pass the Nodelist of form's input boxes to validate whether the input box is blank or not
- * If the input box is blank, its border is red and the invalid message appears
- * Otherwise, its border is green and there is no invalid message
- * @param {NodeList} formInputBoxes 
- */
-const inputBlankValidate = (formInputBoxes) => {
-  formInputBoxes.forEach(inputBox => {
-    const invalidMessage = getInvalidMessageElement(inputBox);
-    inputBox.addEventListener('focusout', () => {
-      if (isBlank(inputBox)) {
-        invalidMessage.innerHTML = MESSAGES.FIELD_REQUIRED;
-        showInputError(inputBox);
-      } else {
-        invalidMessage.innerHTML = '';
-        showInputSuccess(inputBox);
-      };
-    });
-  });
-}
-
-/**
  * Pass the element with the regex value to validate whether it is valid or not
  * If they don't match, the invalid message appears
  * @param {DOM} element 
  * @param {String} regexValue 
  * @param {String} message 
  */
-const validFormatValidate = (element, regexValue, message) => {
+const validateValidFormat = (element, regexValue, message) => {
   const invalidMessage = getInvalidMessageElement(element);
   element.addEventListener('focusout', () => {
+    // Check if the element value is blank or not
+    if (isBlank(element)) {
+      invalidMessage.innerHTML = MESSAGES.FIELD_REQUIRED;
+      showInputError(element);
+    } else {
+      invalidMessage.innerHTML = '';
+      showInputSuccess(element);
+    };
+    // Check if the element is valid format or not
     if(!isBlank(element) && !element.value.match(regexValue)) {
       invalidMessage.innerHTML = message;
       showInputError(element);
@@ -80,7 +68,7 @@ const validFormatValidate = (element, regexValue, message) => {
  * @param {DOM} password 
  * @param {DOM} confirmpassword 
  */
-const passwordMatchValidate = (password, confirmpassword) => {
+const validatePasswordMatch = (password, confirmpassword) => {
   const invalidMessage = getInvalidMessageElement(confirmpassword);
   confirmpassword.addEventListener('focusout', () => {
     if(!isBlank(confirmpassword) && password.value !== confirmpassword.value) {
@@ -90,4 +78,4 @@ const passwordMatchValidate = (password, confirmpassword) => {
   })
 }
 
-export { passwordMatchValidate, validFormatValidate, inputBlankValidate }
+export { validateValidFormat, validatePasswordMatch }

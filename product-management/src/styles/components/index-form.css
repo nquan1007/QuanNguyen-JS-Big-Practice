@@ -12,7 +12,7 @@
   padding-bottom: 25px;
 }
 
-.index-form-group label span {
+.label-star {
   color: var(--color-error);
 }
 
@@ -33,7 +33,7 @@
   border: 2px solid var(--color-success);
 }
 
-.index-form-group i {
+.form-symbol {
   position: absolute;
   padding: 10px 15px;
   font-size: var(--font-size-secondary);
