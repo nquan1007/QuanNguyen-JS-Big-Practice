@@ -67,7 +67,7 @@ export default class UserView {
 
   /**
    * Handle to validate the Register form:
-   * Format validate for all fields
+   * Valid format validation for all fields
    * Password and confirm password match
    */
   handleRegisterValidate = () => {

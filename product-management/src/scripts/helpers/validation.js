@@ -38,8 +38,10 @@ const getInvalidMessageElement = (element) => {
 }
 
 /**
+ * Check if the element value is blank or not
  * Pass the element with the regex value to validate whether it is valid or not
- * If they don't match, the invalid message appears
+ * If the element value is invalid, the invalid message appears with the red border
+ * If it is valid, its border is green and there is no invalid message anymore
  * @param {DOM} element 
  * @param {String} regexValue 
  * @param {String} message 
@@ -52,15 +54,16 @@ const validateValidFormat = (element, regexValue, message) => {
       invalidMessage.innerHTML = MESSAGES.FIELD_REQUIRED;
       showInputError(element);
       return;
-    } else {
-      invalidMessage.innerHTML = '';
-      showInputSuccess(element);
-    };
-    // Check if the element is valid format or not
+    }
+    // Check if the element value is valid format or not
     if(!element.value.match(regexValue)) {
       invalidMessage.innerHTML = message;
       showInputError(element);
+      return;
     };
+    // Show the success information
+    invalidMessage.innerHTML = '';
+    showInputSuccess(element);
   });
 }
 
