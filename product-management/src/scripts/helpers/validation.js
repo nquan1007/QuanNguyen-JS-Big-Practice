@@ -51,12 +51,13 @@ const validateValidFormat = (element, regexValue, message) => {
     if (isBlank(element)) {
       invalidMessage.innerHTML = MESSAGES.FIELD_REQUIRED;
       showInputError(element);
+      return;
     } else {
       invalidMessage.innerHTML = '';
       showInputSuccess(element);
     };
     // Check if the element is valid format or not
-    if(!isBlank(element) && !element.value.match(regexValue)) {
+    if(!element.value.match(regexValue)) {
       invalidMessage.innerHTML = message;
       showInputError(element);
     };
