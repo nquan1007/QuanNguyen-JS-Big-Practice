@@ -1,3 +1,6 @@
+import { MESSAGES } from "../constants/messages";
+import { getInvalidMessageElement, showInputError } from "../helpers/validation";
+
 export default class UserController {
   constructor(view, model) {
     this.view = view;
@@ -11,7 +14,14 @@ export default class UserController {
   };
 
   handleRegister = async (user) => {
+    if (await this.model.hasUser(user.email)) {
+      const invalidMessage = getInvalidMessageElement(this.view.registerEmail);
+      invalidMessage.innerHTML = MESSAGES.EMAIL_EXISTED;
+      showInputError(this.view.registerEmail);
+      return;
+    }
     await this.model.createNewUser(user);
+    // Maybe leave a message right here before redirect to products page
     window.location.assign('./products.html');
   }
 }

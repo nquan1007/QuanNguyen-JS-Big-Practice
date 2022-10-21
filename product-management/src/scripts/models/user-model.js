@@ -6,11 +6,23 @@ export default class UserModel {
   }
   
   /**
-   * Get all the users from the database 
-   * @returns 
+   * Get an array of all users from the database 
+   * @returns {Array}
    */
   getUsers = async () => {
-    return await axios.get(USERS_URL);
+    const response = await axios.get(USERS_URL);
+    return response.data;
+  }
+
+  /**
+   * Check if the email is existed in the database or not
+   * @param {String} email 
+   * @returns {Boolean}
+   */
+  hasUser = async (email) => {
+    const users = await this.getUsers();
+    const result = users.filter(user => user.email === email);
+    return !(result.length === 0);
   }
   
   /**
