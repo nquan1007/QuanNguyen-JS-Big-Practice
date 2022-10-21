@@ -20,4 +20,12 @@ export default class UserModel {
   createNewUser = async (data) => {
     await axios.post(USERS_URL, data);
   }
+
+  /**
+   * Pass the id of the user to delete it in the database
+   * @param {Number} id 
+   */
+  deleteUserById = async (id) => {
+    await axios.delete(`${USERS_URL}/${id}`);
+  }
 }
