@@ -78,6 +78,13 @@ export default class UserView {
     validatePasswordMatch(this.registerPassword, this.registerConfirm);
   };
 
+  /**
+   * Handle the event Submit the Register Form 
+   * Get the value from the input fields of the Form - name, email, password 
+   * Create an object called userData to store the user's data
+   * Pass that object to user-controller to glue data with user-model
+   * @param {Callback} handler 
+   */
   bindRegister = (handler) => {
     this.registerForm.addEventListener('submit', (e) => {
       e.preventDefault();
