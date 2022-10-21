@@ -7,11 +7,11 @@ export default class UserController {
   initialize = () => {
     this.view.initialize();
     this.view.bindRegister(this.handleRegister);
-    // this.model.deleteUserById(1);
+    // this.model.deleteUserById(4);
   };
 
-  handleRegister = (user) => {
-    this.model.createNewUser(user);
+  handleRegister = async (user) => {
+    await this.model.createNewUser(user);
     window.location.assign('./products.html');
   }
 }
