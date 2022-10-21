@@ -4,12 +4,20 @@ import { USERS_URL } from '../constants/api';
 export default class UserModel {
   constructor() {
   }
-  // getUsers = async () => {
-  //   try {
-  //     const response = await axios.get(USERS_URL);
-  //     console.log(response.data);
-  //   } catch(error) {
-  //     console.log(error)
-  //   }
-  // }
+  
+  /**
+   * Get all the users from the database 
+   * @returns 
+   */
+  getUsers = async () => {
+    return await axios.get(USERS_URL);
+  }
+  
+  /**
+   * Create new user with data from view and add it to the database
+   * @param {Object} data 
+   */
+  createNewUser = async (data) => {
+    await axios.post(USERS_URL, data);
+  }
 }

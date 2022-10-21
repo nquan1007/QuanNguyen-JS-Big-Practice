@@ -6,6 +6,10 @@ export default class UserController {
 
   initialize = () => {
     this.view.initialize();
-    // this.model.getUsers();
+    this.view.bindRegister(this.handleRegister);
   };
+
+  handleRegister = (user) => {
+    this.model.createNewUser(user);
+  }
 }
