@@ -82,4 +82,4 @@ const validatePasswordMatch = (password, confirmpassword) => {
   })
 }
 
-export { validateValidFormat, validatePasswordMatch }
+export { validateValidFormat, validatePasswordMatch, showInputError, getInvalidMessageElement }

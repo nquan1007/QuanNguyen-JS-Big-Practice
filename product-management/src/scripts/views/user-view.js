@@ -16,6 +16,7 @@ export default class UserView {
     this.btnLogin = document.getElementById('btn-register-redirect');
     this.loginForm = document.getElementById('login-form');
     this.registerForm = document.getElementById('register-form');
+    this.indexSpinner = document.getElementById('index-spinner');
 
     // Get the elements in the Register Form
     this.registerName = document.getElementById('register-name');
@@ -53,6 +54,12 @@ export default class UserView {
   showElement = (element) => element.style.display = 'block';
 
   /**
+   * Pass the element to show it with 'flex' display
+   * @param {DOM} element 
+   */
+  showFlexElement = (element) => element.style.display = 'flex';
+
+  /**
    * Pass the element to hide it
    * @param {DOM} element
    */
@@ -77,4 +84,22 @@ export default class UserView {
     validateValidFormat(this.registerConfirm, VALIDATION_REGEX.PASSWORD, MESSAGES.PASSWORD_INVALID);
     validatePasswordMatch(this.registerPassword, this.registerConfirm);
   };
+
+  /**
+   * Handle the event Submit the Register Form 
+   * Get the value from the input fields of the Form - name, email, password 
+   * Create an object called userData to store the user's data
+   * Pass that object to user-controller to glue data with user-model
+   * @param {Callback} handler 
+   */
+  bindRegister = (handler) => {
+    this.registerForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const name = this.registerName.value;
+      const email = this.registerEmail.value;
+      const password = this.registerPassword.value;
+      const user = { name, email, password };
+      handler(user);
+    });
+  }
 }
