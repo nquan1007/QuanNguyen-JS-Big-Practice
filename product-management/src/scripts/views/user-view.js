@@ -16,6 +16,7 @@ export default class UserView {
     this.btnLogin = document.getElementById('btn-register-redirect');
     this.loginForm = document.getElementById('login-form');
     this.registerForm = document.getElementById('register-form');
+    this.indexSpinner = document.getElementById('index-spinner');
 
     // Get the elements in the Register Form
     this.registerName = document.getElementById('register-name');
@@ -51,6 +52,12 @@ export default class UserView {
    * @param {DOM} element
    */
   showElement = (element) => element.style.display = 'block';
+
+  /**
+   * Pass the element to show it with 'flex' display
+   * @param {DOM} element 
+   */
+  showFlexElement = (element) => element.style.display = 'flex';
 
   /**
    * Pass the element to hide it

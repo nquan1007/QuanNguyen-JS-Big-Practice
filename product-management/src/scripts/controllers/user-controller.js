@@ -22,14 +22,16 @@ export default class UserController {
    * @param {Object} user 
    */
   handleRegister = async (user) => {
+    this.view.showFlexElement(this.view.indexSpinner);
     if (await this.model.hasUser(user.email)) {
+      this.view.hideElement(this.view.indexSpinner);
       const invalidMessage = getInvalidMessageElement(this.view.registerEmail);
       invalidMessage.innerHTML = MESSAGES.EMAIL_EXISTED;
       showInputError(this.view.registerEmail);
       return;
     }
     await this.model.createNewUser(user);
-    // Maybe leave a message right here before redirect to products page
+    this.view.hideElement(this.view.indexSpinner);
     window.location.assign('./products.html');
   }
 }
