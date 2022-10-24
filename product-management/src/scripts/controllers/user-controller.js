@@ -14,6 +14,21 @@ export default class UserController {
   };
 
   /**
+   * Pass the element and errorMessage to show the error signals including: 
+   * Hide the spinner 
+   * Show the invalid message 
+   * Show the red border
+   * @param {DOM} element 
+   * @param {String} errorMessage 
+   */
+  showError = (element, errorMessage) => {
+    this.view.hideElement(this.view.indexSpinner);
+    const invalidMessage = getInvalidMessageElement(element);
+    invalidMessage.innerHTML = errorMessage;
+    showInputError(element);
+  }
+
+  /**
    * Handle registration 
    * Click submit to show spinner
    * Check if email got from input field exists in the database or not
@@ -25,10 +40,7 @@ export default class UserController {
   handleRegister = async (user) => {
     this.view.showFlexElement(this.view.indexSpinner);
     if (await this.model.hasUser(user.email)) {
-      this.view.hideElement(this.view.indexSpinner);
-      const invalidMessage = getInvalidMessageElement(this.view.registerEmail);
-      invalidMessage.innerHTML = MESSAGES.EMAIL_EXISTED;
-      showInputError(this.view.registerEmail);
+      this.showError(this.view.registerEmail, MESSAGES.EMAIL_EXISTED);
       return;
     }
 
@@ -50,20 +62,14 @@ export default class UserController {
   handleLogin = async (user) => {
     this.view.showFlexElement(this.view.indexSpinner);
     if(!(await this.model.hasUser(user.email))) {
-      this.view.hideElement(this.view.indexSpinner);
-      const invalidMessage = getInvalidMessageElement(this.view.loginEmail);
-      invalidMessage.innerHTML = MESSAGES.EMAIL_NON_EXISTED;
-      showInputError(this.view.loginEmail);
+      this.showError(this.view.loginEmail, MESSAGES.EMAIL_NON_EXISTED);
       this.view.loginPassword.value = '';
       removeInputSuccess(this.view.loginPassword);
       return;
     } else {
       const password = await this.model.getPasswordByEmail(user.email);
       if (password !== user.password) {
-        this.view.hideElement(this.view.indexSpinner);
-        const invalidMessage = getInvalidMessageElement(this.view.loginPassword);
-        invalidMessage.innerHTML = MESSAGES.PASSWORD_INCORRECT;
-        showInputError(this.view.loginPassword);
+        this.showError(this.view.loginPassword, MESSAGES.PASSWORD_INCORRECT);
         this.view.loginPassword.value = '';
         removeInputSuccess(this.view.loginEmail);
         return;
