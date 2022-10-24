@@ -39,8 +39,8 @@ export default class UserController {
    */
   handleRegister = async (user) => {
     this.view.showFlexElement(this.view.indexSpinner);
-    const hasUser = this.model.hasUser(user.email);
-    if (await hasUser) {
+    const hasUser = await this.model.hasUser(user.email);
+    if (hasUser) {
       this.showError(this.view.registerEmail, MESSAGES.EMAIL_EXISTED);
       return;
     }
@@ -62,8 +62,8 @@ export default class UserController {
    */
   handleLogin = async (user) => {
     this.view.showFlexElement(this.view.indexSpinner);
-    const hasUser = this.model.hasUser(user.email);
-    if(!(await hasUser)) {
+    const hasUser = await this.model.hasUser(user.email);
+    if (!hasUser) {
       this.showError(this.view.loginEmail, MESSAGES.EMAIL_NON_EXISTED);
       this.view.loginPassword.value = '';
       removeInputSuccess(this.view.loginPassword);
