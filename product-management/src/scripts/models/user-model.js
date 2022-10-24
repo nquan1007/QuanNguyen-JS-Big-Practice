@@ -41,8 +41,7 @@ export default class UserModel {
   getPasswordByEmail = async (email) => {
     const users = await this.getUsers();
     const user = users.filter(user => user.email === email);
-    const result = user.map(user => user.password);
-    return result.toString();
+    return user.map(user => user.password).toString();
   }
 
   /**
