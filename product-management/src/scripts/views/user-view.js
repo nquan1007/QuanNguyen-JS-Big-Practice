@@ -9,6 +9,7 @@ export default class UserView {
     this.queryElements();
     this.bindEventListeners();
     this.handleRegisterValidate();
+    this.handleLoginValidate();
   };
 
   queryElements = () => {
@@ -23,6 +24,10 @@ export default class UserView {
     this.registerEmail = document.getElementById('register-email');
     this.registerPassword = document.getElementById('register-password');
     this.registerConfirm = document.getElementById('register-confirm');
+
+    // Get the elements in the Login Form
+    this.loginEmail = document.getElementById('login-email');
+    this.loginPassword = document.getElementById('login-password');
   };
 
   bindEventListeners = () => {
@@ -66,13 +71,6 @@ export default class UserView {
   hideElement = (element) => element.style.display = 'none';
 
   /**
-   * Pass the element and the HTML content to add the innerHTML
-   * @param {DOM} element 
-   * @param {String} content 
-   */
-  addInnerHTML = (element, content) => element.innerHTML = content;
-
-  /**
    * Handle to validate the Register form:
    * Valid format validation for all fields
    * Password and confirm password match
@@ -101,5 +99,14 @@ export default class UserView {
       const user = { name, email, password };
       handler(user);
     });
+  }
+
+  /**
+   * Handle to validate the Login form:
+   * Valid format validation for email and password fields
+   */
+  handleLoginValidate = () => {
+    validateValidFormat(this.loginEmail, VALIDATION_REGEX.EMAIL, MESSAGES.EMAIL_INVALID);
+    validateValidFormat(this.loginPassword, VALIDATION_REGEX.PASSWORD, MESSAGES.PASSWORD_INVALID);
   }
 }
