@@ -15,10 +15,11 @@ export default class UserController {
 
   /**
    * Handle registeration 
+   * Click submit to show spinner
    * Check if email got from input field is existed in the database or not
-   * If it is existed, show error signals and return 
-   * If it is a new one, create a new user object with name, email, password information in the database
-   * Then redirect to the Products Page
+   * If it is existed, hide the spinner and show error signals and return 
+   * If it is a new one, show the spinner create a new user object with name, email, password information in the database
+   * Then hide the spinner and redirect to the Products Page
    * @param {Object} user 
    */
   handleRegister = async (user) => {
