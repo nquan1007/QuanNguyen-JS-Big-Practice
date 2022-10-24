@@ -1,20 +1,8 @@
 {
   "users": [
-    { 
-      "id": 1, 
-      "name": "Quan Nguyen", 
-      "email": "nquan1007@gmail.com",
-      "password": "quannguyen123" 
-    }
+    
   ],
   "products": [
-    { 
-      "id": 1,
-      "userId": 1,
-      "name": "Jordan 1", 
-      "price": 1000,
-      "image": "hihihi",
-      "description": "This is Nike Jordan 1" 
-    }
+    
   ]
 }
