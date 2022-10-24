@@ -33,7 +33,7 @@ export default class UserController {
    * @param {String} email 
    * @returns {Boolean}
    */
-  bindHasUser = async (email) => {
+  hasUser = async (email) => {
     return await this.model.hasUser(email);
   }
 
@@ -48,7 +48,7 @@ export default class UserController {
    */
   handleRegister = async (user) => {
     this.view.showFlexElement(this.view.indexSpinner);
-    const hasUser = await this.bindHasUser(user.email);
+    const hasUser = await this.hasUser(user.email);
     if (hasUser) {
       this.showError(this.view.registerEmail, MESSAGES.EMAIL_EXISTED);
       return;
@@ -71,7 +71,7 @@ export default class UserController {
    */
   handleLogin = async (user) => {
     this.view.showFlexElement(this.view.indexSpinner);
-    const hasUser = await this.bindHasUser(user.email);
+    const hasUser = await this.hasUser(user.email);
     if (!hasUser) {
       this.showError(this.view.loginEmail, MESSAGES.EMAIL_NON_EXISTED);
       this.view.loginPassword.value = '';
