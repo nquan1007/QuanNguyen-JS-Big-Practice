@@ -31,6 +31,7 @@ export default class UserController {
       showInputError(this.view.registerEmail);
       return;
     }
+    
     await this.model.createNewUser(user);
     this.view.hideElement(this.view.indexSpinner);
     window.location.assign('./products.html');
