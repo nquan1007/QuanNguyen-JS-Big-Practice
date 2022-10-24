@@ -86,7 +86,7 @@ export default class UserView {
   /**
    * Handle the event Submit the Register Form 
    * Get the value from the input fields of the Form - name, email, password 
-   * Create an object called userData to store the user's data
+   * Create an object called user to store the user's data
    * Pass that object to user-controller to glue data with user-model
    * @param {Callback} handler 
    */
@@ -108,5 +108,22 @@ export default class UserView {
   handleLoginValidate = () => {
     validateValidFormat(this.loginEmail, VALIDATION_REGEX.EMAIL, MESSAGES.EMAIL_INVALID);
     validateValidFormat(this.loginPassword, VALIDATION_REGEX.PASSWORD, MESSAGES.PASSWORD_INVALID);
+  }
+
+  /**
+   * Handle the event Submit the Login Form 
+   * Get the value from the input fields of the Form - email, password 
+   * Create an object called user to store the user's data
+   * Pass that object to user-controller to glue data with user-model
+   * @param {Callback} handler 
+   */
+  bindLogin = (handler) => {
+    this.loginForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const email = this.loginEmail.value;
+      const password = this.loginPassword.value;
+      const user = { email, password };
+      handler(user);
+    })
   }
 }
