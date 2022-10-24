@@ -34,6 +34,17 @@ export default class UserModel {
   }
 
   /**
+   * Pass the email to get the corresponding password in the database
+   * @param {String} email 
+   * @returns {String} 
+   */
+  getPasswordByEmail = async (email) => {
+    const users = await this.getUsers();
+    const user = users.filter(user => user.email === email);
+    return user.map(user => user.password).toString();
+  }
+
+  /**
    * Pass the id of the user to delete it in the database
    * @param {Number} id 
    */

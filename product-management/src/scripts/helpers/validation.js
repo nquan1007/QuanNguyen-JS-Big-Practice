@@ -27,6 +27,10 @@ const showInputSuccess = (element) => {
   element.classList.remove('error');
 };
 
+const removeInputSuccess = (element) => {
+  element.classList.remove('success');
+}
+
 /**
  * Pass the element to get the invalid message element of the corresponding form group
  * @param {DOM} element 
@@ -82,4 +86,4 @@ const validatePasswordMatch = (password, confirmpassword) => {
   })
 }
 
-export { validateValidFormat, validatePasswordMatch, showInputError, getInvalidMessageElement }
+export { validateValidFormat, validatePasswordMatch, showInputError, removeInputSuccess, getInvalidMessageElement }
