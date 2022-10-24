@@ -28,6 +28,11 @@ export default class UserController {
     showInputError(element);
   }
 
+  /**
+   * Pass the email to call hasUser in user-model
+   * @param {String} email 
+   * @returns {Boolean}
+   */
   bindHasUser = async (email) => {
     return await this.model.hasUser(email);
   }
