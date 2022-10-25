@@ -1,16 +1,14 @@
-.products-button {
+.btn-primary {
   padding: 10px 15px;
   font-size: var(--font-size-subtitle);
   text-align: center;
-  cursor: pointer;
-  outline: none;
   color: var(--color-primary);
   border: none;
   border-radius: 15px;
   box-shadow: 0 3px var(--color-box-shadow);
 }
 
-.products-button:active {
+.btn-primary:active {
   box-shadow: 0 5px var(--color-active);
   transform: translateY(2px);
 }
@@ -21,4 +19,18 @@
 
 .btn-delete {
   background-color: var(--bg-btn-delete);
+}
+
+.btn-secondary {
+  border: none;
+  background-color: var(--bg-primary);
+  font-size: var(--font-size-subtitle);
+}
+
+.btn-secondary:hover {
+  font-size: var(--font-size-secondary);
+}
+
+.btn-secondary:active {
+  transform: translateY(2px);
 }

@@ -63,7 +63,7 @@
   right: 80px;
   padding: 20px;
   border-radius: 2px;
-  /* display: none; */
+  display: none;
 }
 
 .user-name {
