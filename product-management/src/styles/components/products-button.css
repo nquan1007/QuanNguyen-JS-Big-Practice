@@ -1,0 +1,24 @@
+.products-button {
+  padding: 10px 15px;
+  font-size: var(--font-size-subtitle);
+  text-align: center;
+  cursor: pointer;
+  outline: none;
+  color: var(--color-primary);
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 3px var(--color-box-shadow);
+}
+
+.products-button:active {
+  box-shadow: 0 5px var(--color-active);
+  transform: translateY(2px);
+}
+
+.btn-add {
+  background-color: var(--bg-btn-add);
+}
+
+.btn-delete {
+  background-color: var(--bg-btn-delete);
+}

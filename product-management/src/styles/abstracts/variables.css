@@ -3,13 +3,13 @@
   --font-family-primary: Epilogue;
 
   /** font size **/
-  --font-size-logo: 35px;
+  --font-size-logo: 50px;
   --font-size-title: 40px;
   --font-size-subtitle: 20px;
   --font-size-primary: 16px;
   --font-size-secondary: 22px;
   --font-size-tertiary: 25px;
-  --font-size-hover: 18px;
+  --font-size-hover: 19px;
 
   /* font weight */
   --font-weight-logo: 100;
@@ -27,13 +27,17 @@
   --color-primary: #ffffff;
   --color-secondary: #000000;
   --color-footer: #a1a0a0;
-  --color-box-shadow: #c9c9c9;
-  --color-hover: rgba(218, 103, 27, 0.829);
+  --color-box-shadow: #999;
+  --color-active: #666;
+  --color-hover: #a7d4a8;
   --color-success: green;
   --color-error: red;
 
   /* background-color */
-  --bg-color-site: #070707;
   --bg-color-header: #0E2432;
   --bg-color-footer: #1b1b1b;
+  --bg-btn-hover: #04AA6D;
+  --bg-user-box: #1d4a66;
+  --bg-btn-add: rgb(74, 175, 74);
+  --bg-btn-delete: rgb(209, 87, 87);
 }

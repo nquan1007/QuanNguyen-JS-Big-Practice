@@ -1,0 +1,10 @@
+.products-homepage {
+  position: relative;
+  padding: 100px 80px 60px;
+}
+
+.products-buttons {
+  display: flex;
+  gap: 40px;
+  padding-bottom: 30px;
+}

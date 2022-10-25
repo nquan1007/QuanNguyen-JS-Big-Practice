@@ -36,3 +36,60 @@
   color: var(--color-hover);
   font-size: var(--font-size-hover);
 }
+
+.user-icon {
+  font-size: var(--font-size-title);
+  cursor: pointer;
+}
+
+.user-icon:hover {
+  color: var(--color-hover);
+}
+
+.user-icon:active {
+  opacity: .8;
+  transform: translateY(2px);
+}
+
+.user-box {
+  background-color: var(--bg-user-box);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  position: absolute;
+  top: 70px;
+  right: 80px;
+  padding: 20px;
+  border-radius: 2px;
+  /* display: none; */
+}
+
+.user-name {
+  text-align: center;
+  font-size: var(--font-size-hover);
+  color: var(--color-primary);
+}
+
+.user-box button {
+  width: 100%;
+  border: 3px solid transparent;
+  background-color: transparent;
+  color: var(--color-primary);
+  font-size: var(--font-size-secondary);
+  padding: 10px;
+  transition: 0.1s ease;
+  border-radius: 5px;
+}
+
+.user-box button:hover {
+  border: 3px solid var(--color-primary);
+  background-color: var(--color-primary);
+  color: var(--bg-primary);
+}
+
+.user-box button:active {
+  opacity: .8;
+  transform: translateY(2px);
+}
