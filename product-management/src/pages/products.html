@@ -32,20 +32,12 @@
     </header>
 
     <main class="products-homepage">
-      <div class="products-button">
-        <include src="./partials/components/products-button.html">
-          {"text": "Add new product"}
-        </include>
-        <include src="./partials/components/products-button.html">
-          {"text": "Delete selected products"}
-        </include>
-        <include src="./partials/components/products-button.html">
-          {"text": "Delete all products"}
-        </include>
+      <div class="products-buttons">
+        <button class="products-button">Add new product</button>
+        <button class="products-button">Delete selected products</button>
+        <button class="products-button">Delete all products</button>
       </div>
-      <div class="spinner-wrapper" id="products-spinner">
-        <div class="spinner"></div>
-      </div>
+      <include src="./partials/components/spinner.html"></include>
     </main>
 
     <include src="./partials/components/footer.html"></include>

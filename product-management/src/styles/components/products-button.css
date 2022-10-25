@@ -1,3 +1,21 @@
 .products-button {
-  
+  padding: 10px 15px;
+  font-size: var(--font-size-subtitle);
+  text-align: center;
+  cursor: pointer;
+  outline: none;
+  color: var(--color-primary);
+  background-color: var(--bg-btn);
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px var(--color-box-shadow);
+}
+
+.products-button:hover {
+  background-color: var(--bg-btn-hover);
+}
+
+.products-button:active {
+  box-shadow: 0 5px var(--color-active);
+  transform: translateY(4px);
 }
