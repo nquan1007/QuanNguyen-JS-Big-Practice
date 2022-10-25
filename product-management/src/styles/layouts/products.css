@@ -8,3 +8,62 @@
   gap: 40px;
   padding-bottom: 30px;
 }
+
+.products-list {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 50px;
+} 
+
+.products-item {
+  position: relative;
+  width: 300px;
+  height: 400px;
+  padding: 10px;
+  border: 2px solid black;
+  border-radius: 5px;
+}
+
+.products-item:hover {
+  opacity: .8;
+  cursor: pointer;
+}
+
+.products-item:hover .btn-edit-item,
+.products-item:hover .btn-delete-item {
+  visibility: visible;
+  opacity: 1;
+}
+
+.btn-edit-item,
+.btn-delete-item {
+  position: absolute;
+  visibility: hidden;
+}
+
+.btn-delete-item {
+  right: 10px;
+}
+
+.item-name {
+  padding-top: 10px;
+}
+
+.item-image {
+  padding-top: 30px;
+}
+
+.item-price {
+  padding-top: 5px;
+}
+
+.item-description {
+  padding-top: 5px;
+  text-align: justify;
+}
+
+.item-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}

@@ -22,3 +22,21 @@
   font-weight: var(--font-weight-subtitle);
   color: var(--color-secondary);
 }
+
+.text-price {
+  font-size: var(--font-size-secondary);
+  line-height: var(--line-height-secondary);
+  font-weight: var(--font-weight-subtitle);
+}
+
+.text-primary {
+  font-size: var(--font-size-primary);
+  line-height: var(--line-height-primary);
+  font-weight: var(--font-weight-primary);
+}
+
+.text-secondary {
+  font-size: var(--font-size-tertiary);
+  line-height: var(--line-height-secondary);
+  font-weight: var(--font-weight-title);
+}

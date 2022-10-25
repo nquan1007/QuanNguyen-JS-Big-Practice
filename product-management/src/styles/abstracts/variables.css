@@ -21,7 +21,8 @@
   --line-height-logo: 60px;
   --line-height-title: 65px;
   --line-height-subtitle: 50px;
-  --line-height-primary: 40px;
+  --line-height-primary: 20px;
+  --line-height-secondary: 40px;
 
   /* color */
   --color-primary: #ffffff;
