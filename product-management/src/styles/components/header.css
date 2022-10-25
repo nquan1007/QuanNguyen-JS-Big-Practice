@@ -50,3 +50,40 @@
   opacity: .8;
   transform: translateY(3px);
 }
+
+.user-box {
+  background-color: #1d4a66;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  position: absolute;
+  top: 70px;
+  right: 80px;
+  padding: 20px;
+  border-radius: 2px;
+  /* display: none; */
+}
+
+.user-name {
+  text-align: center;
+  font-size: var(--font-size-hover);
+  color: var(--color-primary);
+}
+
+.user-box button {
+  width: 100%;
+  border: 3px solid transparent;
+  background-color: transparent;
+  color: var(--color-primary);
+  font-size: var(--font-size-secondary);
+  padding: 10px;
+  transition: 0.1s ease;
+  border-radius: 5px;
+}
+
+.user-box button:hover {
+  border: 3px solid var(--color-hover);
+  color: var(--color-hover);
+}
