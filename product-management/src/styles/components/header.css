@@ -36,3 +36,16 @@
   color: var(--color-hover);
   font-size: var(--font-size-hover);
 }
+
+.user-icon {
+  font-size: var(--font-size-title);
+  cursor: pointer;
+}
+
+.user-icon:hover {
+  color: var(--color-hover);
+}
+
+.user-icon:active {
+  opacity: .8;
+}
