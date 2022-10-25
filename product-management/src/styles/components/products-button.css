@@ -5,17 +5,20 @@
   cursor: pointer;
   outline: none;
   color: var(--color-primary);
-  background-color: var(--bg-color-header);
   border: none;
   border-radius: 15px;
-  box-shadow: 0 9px var(--color-box-shadow);
-}
-
-.products-button:hover {
-  background-color: var(--bg-btn-hover);
+  box-shadow: 0 3px var(--color-box-shadow);
 }
 
 .products-button:active {
   box-shadow: 0 5px var(--color-active);
-  transform: translateY(4px);
+  transform: translateY(2px);
+}
+
+.btn-add {
+  background-color: var(--bg-btn-add);
+}
+
+.btn-delete {
+  background-color: var(--bg-btn-delete);
 }

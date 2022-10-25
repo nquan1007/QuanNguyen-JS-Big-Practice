@@ -48,11 +48,11 @@
 
 .user-icon:active {
   opacity: .8;
-  transform: translateY(3px);
+  transform: translateY(2px);
 }
 
 .user-box {
-  background-color: #1d4a66;
+  background-color: var(--bg-user-box);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -84,6 +84,12 @@
 }
 
 .user-box button:hover {
-  border: 3px solid var(--color-hover);
-  color: var(--color-hover);
+  border: 3px solid var(--color-primary);
+  background-color: var(--color-primary);
+  color: var(--bg-primary);
+}
+
+.user-box button:active {
+  opacity: .8;
+  transform: translateY(2px);
 }

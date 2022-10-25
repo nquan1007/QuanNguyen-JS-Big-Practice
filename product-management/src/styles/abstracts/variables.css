@@ -37,4 +37,7 @@
   --bg-color-header: #0E2432;
   --bg-color-footer: #1b1b1b;
   --bg-btn-hover: #04AA6D;
+  --bg-user-box: #1d4a66;
+  --bg-btn-add: rgb(74, 175, 74);
+  --bg-btn-delete: rgb(209, 87, 87);
 }
