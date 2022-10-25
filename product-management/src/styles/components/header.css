@@ -48,4 +48,5 @@
 
 .user-icon:active {
   opacity: .8;
+  transform: translateY(3px);
 }
