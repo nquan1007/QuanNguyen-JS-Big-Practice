@@ -1,5 +1,6 @@
 import { MESSAGES } from "../constants/messages";
 import { getInvalidMessageElement, removeInputSuccess, showInputError } from "../helpers/validation";
+import { showFlexElement, hideElement } from "../helpers/view-utilities";
 
 export default class UserController {
   constructor(view, model) {
@@ -22,7 +23,7 @@ export default class UserController {
    * @param {String} errorMessage 
    */
   showError = (element, errorMessage) => {
-    this.view.hideElement(this.view.indexSpinner);
+    hideElement(this.view.indexSpinner);
     const invalidMessage = getInvalidMessageElement(element);
     invalidMessage.innerHTML = errorMessage;
     showInputError(element);
@@ -47,7 +48,7 @@ export default class UserController {
    * @param {Object} user 
    */
   handleRegister = async (user) => {
-    this.view.showFlexElement(this.view.indexSpinner);
+    showFlexElement(this.view.indexSpinner);
     const hasUser = await this.hasUser(user.email);
     if (hasUser) {
       this.showError(this.view.registerEmail, MESSAGES.EMAIL_EXISTED);
@@ -55,7 +56,7 @@ export default class UserController {
     }
 
     await this.model.createNewUser(user);
-    this.view.hideElement(this.view.indexSpinner);
+    hideElement(this.view.indexSpinner);
     window.location.assign('./products.html');
   }
 
@@ -70,7 +71,7 @@ export default class UserController {
    * @param {Object} user 
    */
   handleLogin = async (user) => {
-    this.view.showFlexElement(this.view.indexSpinner);
+    showFlexElement(this.view.indexSpinner);
     const hasUser = await this.hasUser(user.email);
     if (!hasUser) {
       this.showError(this.view.loginEmail, MESSAGES.EMAIL_NON_EXISTED);
@@ -87,7 +88,7 @@ export default class UserController {
       }
     }
 
-    this.view.hideElement(this.view.indexSpinner);
+    hideElement(this.view.indexSpinner);
     window.location.assign('./products.html');
   }
 }
