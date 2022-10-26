@@ -89,10 +89,3 @@
 #add-image {
   padding: 3px;
 }
-
-/* Close icon in the products-form */
-.close-icon {
-  position: absolute;
-  top: 15px;
-  right: 15px;
-}
