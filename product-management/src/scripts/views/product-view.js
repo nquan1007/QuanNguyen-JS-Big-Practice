@@ -20,6 +20,9 @@ export default class ProductView {
 
     // Click out of the User Box and Avatar Icon to hide User Box
     document.addEventListener('mouseup', this.hideUserBox);
+
+    // Click the Logout button to redirect to the Index Page
+    this.btnLogout.addEventListener('click', this.logout);
   }
 
   // Handle to show User Box
@@ -33,5 +36,11 @@ export default class ProductView {
     if(!(this.userBox.contains(e.target))) {
       hideElement(this.userBox);
     }
+  }
+
+  // Handle to logout to the Index Page
+  logout = (e) => {
+    e.preventDefault();
+    window.location.assign('./index.html');
   }
 }
