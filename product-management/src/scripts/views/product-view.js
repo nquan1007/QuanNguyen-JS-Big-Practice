@@ -81,7 +81,7 @@ export default class ProductView {
    */
   handleAddFormValidate = () => {
     validateValidFormat(this.addFormName, VALIDATION_REGEX.PRODUCT_NAME, MESSAGES.PRODUCT_NAME_INVALID);
-    validateValidFormat(this.addFormPrice, VALIDATION_REGEX.NUMBER_ONLY, MESSAGES.PRICE_INVALID);
+    validateValidFormat(this.addFormPrice);
     validateImageFormat(this.addFormImage);
   }
 }
