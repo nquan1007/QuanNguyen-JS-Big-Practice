@@ -15,8 +15,7 @@
   position: relative;
 }
 
-/* Close icon in the products-form */
-.close-icon {
+.popup-close {
   position: absolute;
   top: 15px;
   right: 15px;
