@@ -6,5 +6,7 @@ export const MESSAGES = {
   EMAIL_NON_EXISTED: 'This email does not exist. Please register',
   PASSWORD_INVALID: 'Password must have at least 8 characters',
   PASSWORD_CONFIRM: 'Your confirm password does not match',
-  PASSWORD_INCORRECT: 'Your password is incorrect. Please try again'
+  PASSWORD_INCORRECT: 'Your password is incorrect. Please try again',
+  PRODUCT_NAME_INVALID: 'Special characters are not allowed',
+  FORMAT_INVALID: 'Invalid format. JPG, JPEG, PNG files only'
 };
