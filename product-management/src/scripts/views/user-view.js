@@ -1,4 +1,5 @@
 import { validateValidFormat, validatePasswordMatch } from "../helpers/validation";
+import { showElement, hideElement } from "../helpers/view-utilities";
 import { VALIDATION_REGEX } from "../constants/regex-value";
 import { MESSAGES } from "../constants/messages";
 
@@ -41,34 +42,16 @@ export default class UserView {
   // Handle to show Register Form
   showRegisterForm = (e) => {
     e.preventDefault();
-    this.showElement(this.registerForm);
-    this.hideElement(this.loginForm);
+    showElement(this.registerForm);
+    hideElement(this.loginForm);
   };
 
   // Handle to show Login Form
   showLoginForm = (e) => {
     e.preventDefault();
-    this.showElement(this.loginForm);
-    this.hideElement(this.registerForm);
+    showElement(this.loginForm);
+    hideElement(this.registerForm);
   };
-
-  /**
-   * Pass the element to show it
-   * @param {DOM} element
-   */
-  showElement = (element) => element.style.display = 'block';
-
-  /**
-   * Pass the element to show it with 'flex' display
-   * @param {DOM} element 
-   */
-  showFlexElement = (element) => element.style.display = 'flex';
-
-  /**
-   * Pass the element to hide it
-   * @param {DOM} element
-   */
-  hideElement = (element) => element.style.display = 'none';
 
   /**
    * Handle to validate the Register form:
