@@ -38,7 +38,7 @@ const removeInputSuccess = (element) => {
  */
 const getInvalidMessageElement = (element) => {
   const formGroup = element.parentElement;
-  return formGroup.querySelector('.index-form-message');
+  return formGroup.querySelector('.form-message');
 }
 
 /**

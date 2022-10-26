@@ -1,4 +1,4 @@
-.index-form {
+.form {
   background-color: var(--color-primary);
   padding: 20px;
   border-radius: 5px;
@@ -7,7 +7,7 @@
   width: 500px;
 }
 
-.index-form-group {
+.form-group {
   position: relative;
   padding-bottom: 25px;
 }
@@ -16,12 +16,12 @@
   color: var(--color-error);
 }
 
-.index-form-group input {
+.form-group input {
   width: 100%;
   height: 40px;
   font-family: var(--font-family-primary);
   font-size: var(--font-size-primary);
-  padding: 3px 0 3px 40px;
+  padding: 3px 0 3px 45px;
   border-radius: 10px;
 }
 
@@ -39,7 +39,7 @@
   font-size: var(--font-size-secondary);
 }
 
-.index-form-message {
+.form-message {
   color: var(--color-error);
   position: absolute;
   bottom: 0;
@@ -75,7 +75,7 @@
 
 }
 
-.index-form p {
+.form p {
   margin-top: 15px;
   text-align: center;
 }
@@ -83,4 +83,16 @@
 /* Default: Login Form is hidden */
 #login-form {
   display: none;
+}
+
+/* Clear the padding left of the input image */
+#add-image {
+  padding: 3px;
+}
+
+/* Close icon in the products-form */
+.close-icon {
+  position: absolute;
+  top: 15px;
+  right: 15px;
 }
