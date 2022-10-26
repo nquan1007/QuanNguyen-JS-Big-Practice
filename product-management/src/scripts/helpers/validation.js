@@ -1,4 +1,5 @@
 import { MESSAGES } from "../constants/messages";
+import { VALIDATION_REGEX } from "../constants/regex-value";
 
 /**
  * Check if the value of that element is blank or not
@@ -7,7 +8,7 @@ import { MESSAGES } from "../constants/messages";
  */
 const isBlank = (element) => {
   return !element.value;
-};
+}
 
 /**
  * Pass the element to show the input error by adding the red border
@@ -16,7 +17,7 @@ const isBlank = (element) => {
 const showInputError = (element) => {
   element.classList.add('error');
   element.classList.remove('success');
-};
+}
 
 /**
  * Pass the element to show the input success by adding the green border
@@ -25,7 +26,7 @@ const showInputError = (element) => {
 const showInputSuccess = (element) => {
   element.classList.add('success');
   element.classList.remove('error');
-};
+}
 
 const removeInputSuccess = (element) => {
   element.classList.remove('success');
@@ -64,11 +65,33 @@ const validateValidFormat = (element, regexValue, message) => {
       invalidMessage.innerHTML = message;
       showInputError(element);
       return;
-    };
+    }
     // Show the success information
     invalidMessage.innerHTML = '';
     showInputSuccess(element);
-  });
+  })
+}
+
+/**
+ * Check if the user uploads the correct image files format or not
+ * If the image file format is invalid, the message appears
+ * @param {DOM} element 
+ */
+const validateImageFormat = (element) => {
+  const invalidMessage = getInvalidMessageElement(element);
+  element.addEventListener('focusout', () => {
+    // Check if the element value is blank or not
+    if (isBlank(element)) {
+      invalidMessage.innerHTML = MESSAGES.FIELD_REQUIRED;
+      return;
+    }
+    // Check if the element value is valid format or not
+    if(!element.value.match(VALIDATION_REGEX.FILE_FORMAT)) {
+      invalidMessage.innerHTML = MESSAGES.FORMAT_INVALID;
+      return;
+    }
+    invalidMessage.innerHTML = '';
+  })
 }
 
 /**
@@ -86,4 +109,11 @@ const validatePasswordMatch = (password, confirmpassword) => {
   })
 }
 
-export { validateValidFormat, validatePasswordMatch, showInputError, removeInputSuccess, getInvalidMessageElement }
+export { 
+  validateValidFormat, 
+  validateImageFormat, 
+  validatePasswordMatch, 
+  showInputError, 
+  removeInputSuccess, 
+  getInvalidMessageElement
+}
