@@ -18,7 +18,7 @@ export default class UserView {
     this.btnLogin = document.getElementById('btn-register-redirect');
     this.loginForm = document.getElementById('login-form');
     this.registerForm = document.getElementById('register-form');
-    this.indexSpinner = document.getElementById('index-spinner');
+    this.indexSpinner = document.getElementById('spinner');
 
     // Get the elements in the Register Form
     this.registerName = document.getElementById('register-name');

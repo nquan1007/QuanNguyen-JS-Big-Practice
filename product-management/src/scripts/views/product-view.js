@@ -1,7 +1,8 @@
 import { MESSAGES } from "../constants/messages";
 import { VALIDATION_REGEX } from "../constants/regex-value";
+import { toBase64 } from "../helpers/files";
 import { validateImageFormat, validateValidFormat } from "../helpers/validation";
-import { showFlexElement, hideElement } from "../helpers/view-utilities";
+import { showFlexElement, hideElement, showElement } from "../helpers/view-utilities";
 
 export default class ProductView {
   constructor() {}
@@ -16,11 +17,14 @@ export default class ProductView {
     this.avatarIcon = document.getElementById('avatar-icon')
     this.userBox = document.getElementById('user-box');
     this.btnLogout = document.getElementById('btn-logout');
+    this.productSpinner = document.getElementById('spinner');
+    this.productList = document.getElementById('products-list');
 
     // Get elements in the Add New Form 
     this.popupAddForm = document.getElementById('popup-add-form');
     this.btnAddNew = document.getElementById('btn-add-new');
     this.btnCloseAddForm = document.getElementById('popup-add-form-close');
+    this.addNewForm = document.getElementById('add-new-form');
     this.addFormName = document.getElementById('add-name');
     this.addFormPrice = document.getElementById('add-price');
     this.addFormImage = document.getElementById('add-image');
@@ -83,5 +87,49 @@ export default class ProductView {
     validateValidFormat(this.addFormName, VALIDATION_REGEX.PRODUCT_NAME, MESSAGES.PRODUCT_NAME_INVALID);
     validateValidFormat(this.addFormPrice);
     validateImageFormat(this.addFormImage);
+  }
+
+  bindAddNewProduct = (handler) => {
+    this.addNewForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const name = this.addFormName.value;
+      const price = this.addFormPrice.value;
+      const description = this.addFormDescription.value;
+      const image = this.addFormImage.files[0];
+      const product = { name, price, image, description };
+      handler(product);
+
+      const itemWrapper = document.createElement('article');
+      itemWrapper.classList.add('products-item');
+      this.productList.appendChild(itemWrapper);
+      
+      const btnEditItem = document.createElement('button');
+      btnEditItem.classList.add('btn-secondary', 'btn-edit-item');
+      btnEditItem.innerHTML = '<i class="fa-solid fa-pen-to-square">';
+      const btnDeleteItem = document.createElement('button');
+      btnDeleteItem.classList.add('btn-secondary', 'btn-delete-item');
+      btnDeleteItem.innerHTML = '<i class="fa-solid fa-xmark"></i>';
+      const itemImage = document.createElement('img');
+      itemImage.classList.add('item-image');
+      itemImage.src = 'https://anchuongshoes.vn/storage/2021/01/air-jordan-1-high-retro-dark-mocha-2.jpg';
+      
+      const itemInfo = document.createElement('div');
+      itemInfo.classList.add('item-info');
+      const itemName = document.createElement('p');
+      itemName.classList.add('item-name', 'text-secondary');
+      itemName.innerHTML = name;
+      const itemPrice = document.createElement('p');
+      itemPrice.classList.add('item-price', 'text-price');
+      // const itemPriceSpan = document.createElement('span');
+      // itemPriceSpan.innerHTML = ' VND';
+      // itemPrice.appendChild(itemPriceSpan);
+      itemPrice.innerHTML = price;
+      const itemDescription = document.createElement('p');
+      itemDescription.classList.add('item-description', 'text-primary');
+      itemDescription.innerHTML = description;
+
+      itemInfo.append(itemName, itemPrice, itemDescription);
+      itemWrapper.append(btnEditItem, btnDeleteItem, itemImage, itemInfo);
+    })
   }
 }
