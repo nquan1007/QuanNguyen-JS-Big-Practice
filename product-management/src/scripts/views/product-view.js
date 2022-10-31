@@ -5,7 +5,12 @@ import { validateImageFormat, validateValidFormat } from "../helpers/validation"
 import { showFlexElement, hideElement, showElement } from "../helpers/view-utilities";
 
 export default class ProductView {
-  constructor() {}
+  constructor() {
+    this.userName = localStorage.getItem('userName');
+    console.log('name:', this.userName);
+    this.userId = localStorage.getItem('userId');
+    console.log('userId:', this.userId);
+  }
 
   initialize = () => {
     this.queryElements();
@@ -89,46 +94,6 @@ export default class ProductView {
     validateImageFormat(this.addFormImage);
   }
 
-  // createNewProduct = (name, price, image, description) => {
-  //   const itemWrapper = document.createElement('article');
-  //   itemWrapper.classList.add('products-item');
-  //   this.productList.appendChild(itemWrapper);
-      
-  //   const btnEditItem = document.createElement('button');
-  //   btnEditItem.classList.add('btn-secondary', 'btn-edit-item');
-  //   btnEditItem.innerHTML = '<i class="fa-solid fa-pen-to-square">';
-
-  //   const btnDeleteItem = document.createElement('button');
-  //   btnDeleteItem.classList.add('btn-secondary', 'btn-delete-item');
-  //   btnDeleteItem.innerHTML = '<i class="fa-solid fa-xmark"></i>';
-
-  //   const itemImage = document.createElement('img');
-  //   itemImage.classList.add('item-image');
-  //   itemImage.src = image;
-  //   console.log(itemImage.src);
-      
-  //   const itemInfo = document.createElement('div');
-  //   itemInfo.classList.add('item-info');
-
-  //   const itemName = document.createElement('p');
-  //   itemName.classList.add('item-name', 'text-secondary');
-  //   itemName.innerHTML = name;
-
-  //   const itemPrice = document.createElement('p');
-  //   itemPrice.classList.add('item-price', 'text-price');
-  //   // const itemPriceSpan = document.createElement('span');
-  //   // itemPriceSpan.innerHTML = ' VND';
-  //   // itemPrice.appendChild(itemPriceSpan);
-  //   itemPrice.innerHTML = price;
-
-  //   const itemDescription = document.createElement('p');
-  //   itemDescription.classList.add('item-description', 'text-primary');
-  //   itemDescription.innerHTML = description;
-
-  //   itemInfo.append(itemName, itemPrice, itemDescription);
-  //   itemWrapper.append(btnEditItem, btnDeleteItem, itemImage, itemInfo);
-  // }
-
   bindAddNewProduct = (handler) => {
     this.addNewForm.addEventListener('submit', (e) => {
       e.preventDefault();
@@ -143,8 +108,8 @@ export default class ProductView {
       // console.log(product);
 
       // this.createNewProduct(
-      //   name, 
-      //   price, 
+      //   name,
+      //   price,
       //   image,
       //   description
       // );

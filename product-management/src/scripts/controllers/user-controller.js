@@ -56,6 +56,11 @@ export default class UserController {
     }
 
     await this.model.createNewUser(user);
+
+    localStorage.setItem('userName', user.name);
+    const userId = await this.model.getIdByEmail(user.email);
+    localStorage.setItem('userId', userId);
+
     hideElement(this.view.indexSpinner);
     window.location.assign('./products.html');
   }
@@ -88,6 +93,11 @@ export default class UserController {
       }
     }
 
+    const userName = await this.model.getNameByEmail(user.email);
+    localStorage.setItem('userName', userName);
+    const userId = await this.model.getIdByEmail(user.email);
+    localStorage.setItem('userId', userId);
+    
     hideElement(this.view.indexSpinner);
     window.location.assign('./products.html');
   }

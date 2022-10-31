@@ -51,4 +51,21 @@ export default class UserModel {
   deleteUserById = async (id) => {
     await axios.delete(`${USERS_URL}/${id}`);
   }
+
+  /**
+   * Pass the email to get the corresponding user's name
+   * @param {String} email 
+   * @returns {String}
+   */
+  getNameByEmail = async (email) => {
+    const users = await this.getUsers();
+    const result = users.find(user => user.email === email);
+    return result.name;
+  }
+
+  getIdByEmail = async (email) => {
+    const users = await this.getUsers();
+    const result = users.find(user => user.email === email);
+    return result.id;
+  }
 }

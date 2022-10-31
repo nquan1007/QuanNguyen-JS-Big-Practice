@@ -5,7 +5,7 @@ export default class ProductModel {
 
   getProducts = async () => {
     const response = await axios.get(PRODUCTS_URL);
-    console.log(response.data);
+    // console.log(response.data);
     return response.data;
   }
 
