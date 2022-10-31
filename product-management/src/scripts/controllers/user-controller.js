@@ -57,6 +57,7 @@ export default class UserController {
 
     await this.model.createNewUser(user);
 
+    // Store the userName and userId to the localStorage to get them out in Product View
     localStorage.setItem('userName', user.name);
     const userId = await this.model.getIdByEmail(user.email);
     localStorage.setItem('userId', userId);
@@ -93,11 +94,12 @@ export default class UserController {
       }
     }
 
+    // Store the userName and userId to the localStorage to get them out in Product View
     const userName = await this.model.getNameByEmail(user.email);
     localStorage.setItem('userName', userName);
     const userId = await this.model.getIdByEmail(user.email);
     localStorage.setItem('userId', userId);
-    
+
     hideElement(this.view.indexSpinner);
     window.location.assign('./products.html');
   }

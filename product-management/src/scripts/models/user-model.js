@@ -63,6 +63,11 @@ export default class UserModel {
     return result.name;
   }
 
+  /**
+   * Pass the email to get the corresponding user's id
+   * @param {String} email 
+   * @returns {Number}
+   */
   getIdByEmail = async (email) => {
     const users = await this.getUsers();
     const result = users.find(user => user.email === email);
