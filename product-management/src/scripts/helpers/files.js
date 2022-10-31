@@ -3,7 +3,7 @@
  * @param {File} file 
  * @returns {String}
  */
-const toBase64 = (file) => {
+const convertToBase64 = (file) => {
   return new Promise((resolve, reject) => {
     const reader = new FileReader();
     reader.readAsDataURL(file);
@@ -16,4 +16,4 @@ const toBase64 = (file) => {
   })
 }
 
-export { toBase64 }
+export { convertToBase64 }
