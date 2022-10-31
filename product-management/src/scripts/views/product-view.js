@@ -7,13 +7,14 @@ import { showFlexElement, hideElement, showElement } from "../helpers/view-utili
 export default class ProductView {
   constructor() {
     this.userName = localStorage.getItem('userName');
-    console.log('name:', this.userName);
+    // console.log('name:', this.userName);
     this.userId = localStorage.getItem('userId');
-    console.log('userId:', this.userId);
+    // console.log('userId:', this.userId);
   }
 
   initialize = () => {
     this.queryElements();
+    this.renderUserName();
     this.bindEventListeners();
     this.handleAddFormValidate();
   }
@@ -21,6 +22,7 @@ export default class ProductView {
   queryElements = () => { 
     this.avatarIcon = document.getElementById('avatar-icon')
     this.userBox = document.getElementById('user-box');
+    this.userNameElement = document.querySelector('.user-name'); 
     this.btnLogout = document.getElementById('btn-logout');
     this.productSpinner = document.getElementById('spinner');
     this.productList = document.getElementById('products-list');
@@ -34,6 +36,10 @@ export default class ProductView {
     this.addFormPrice = document.getElementById('add-price');
     this.addFormImage = document.getElementById('add-image');
     this.addFormDescription = document.getElementById('add-description');
+  }
+
+  renderUserName = () => {
+    this.userNameElement.innerHTML = this.userName;
   }
 
   bindEventListeners = () => {
@@ -97,23 +103,15 @@ export default class ProductView {
   bindAddNewProduct = (handler) => {
     this.addNewForm.addEventListener('submit', (e) => {
       e.preventDefault();
+      const userId = this.userId;
       const name = this.addFormName.value;
       const price = this.addFormPrice.value;
       const image = '';
       const description = this.addFormDescription.value;
 
-      const product = { name, price, image, description };
+      const product = { userId, name, price, image, description };
       handler(product);
 
-      // console.log(product);
-
-      // this.createNewProduct(
-      //   name,
-      //   price,
-      //   image,
-      //   description
-      // );
-      
       hideElement(this.popupAddForm);
     })
   }

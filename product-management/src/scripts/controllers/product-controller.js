@@ -13,14 +13,7 @@ export default class ProductController {
   }
 
   handleAddNewProduct = async (product) => {
-    const productData = {
-      userID: 1, // userID get from the account used to log in 
-      name: product.name,
-      price: product.price,
-      image: product.image,
-      description: product.description
-    }
-    console.log(productData);
+    console.log(product);
 
     // showFlexElement(this.view.productSpinner);
     // await this.model.createNewProduct(productData);
