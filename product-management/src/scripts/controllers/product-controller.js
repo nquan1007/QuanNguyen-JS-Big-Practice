@@ -12,13 +12,6 @@ export default class ProductController {
     this.view.bindAddNewProduct(this.handleAddNewProduct);
   }
 
-  // renderProducts = async () => {
-  //   showFlexElement(this.view.productSpinner);
-  //   const productList = await this.model.getProductsByUserId(this.view.userId);
-  //   this.view.renderAllProducts(productList);
-  //   hideElement(this.view.productSpinner);
-  // }
-
   /**
    * Handle Add New Product 
    * Click Submit to show spinner
