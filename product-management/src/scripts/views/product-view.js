@@ -106,7 +106,7 @@ export default class ProductView {
       const userId = this.userId;
       const name = this.addFormName.value;
       const price = this.addFormPrice.value;
-      const image = '';
+      const image = this.addFormImage.files[0];
       const description = this.addFormDescription.value;
 
       const product = { userId, name, price, image, description };

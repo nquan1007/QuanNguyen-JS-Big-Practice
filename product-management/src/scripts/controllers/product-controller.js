@@ -1,4 +1,5 @@
 import { hideElement, showElement, showFlexElement } from "../helpers/view-utilities";
+import { toBase64 } from "../helpers/files"
 
 export default class ProductController {
   constructor(view, model) {
@@ -13,10 +14,17 @@ export default class ProductController {
   }
 
   handleAddNewProduct = async (product) => {
-    console.log(product);
-
-    // showFlexElement(this.view.productSpinner);
+    showFlexElement(this.view.productSpinner);
+    const imageToBase64 = await toBase64(product.image);
+    const productData = {
+      userId: product.userId,
+      name: product.name,
+      price: product.price,
+      image: imageToBase64,
+      description: product.description
+    }
+    console.log(productData);
     // await this.model.createNewProduct(productData);
-    // hideElement(this.view.productSpinner);
+    hideElement(this.view.productSpinner);
   }
 }
