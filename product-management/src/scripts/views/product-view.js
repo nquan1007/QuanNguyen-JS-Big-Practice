@@ -1,15 +1,12 @@
 import { MESSAGES } from "../constants/messages";
 import { VALIDATION_REGEX } from "../constants/regex-value";
-import { toBase64 } from "../helpers/files";
 import { validateImageFormat, validateValidFormat } from "../helpers/validation";
 import { showFlexElement, hideElement, showElement } from "../helpers/view-utilities";
 
 export default class ProductView {
   constructor() {
     this.userName = localStorage.getItem('userName');
-    // console.log('name:', this.userName);
     this.userId = localStorage.getItem('userId');
-    // console.log('userId:', this.userId);
   }
 
   initialize = () => {
@@ -100,6 +97,13 @@ export default class ProductView {
     validateImageFormat(this.addFormImage);
   }
 
+  /**
+   * Handle the event Submit the Add New Product form
+   * Get the value from the input fields 
+   * Create an object called product to store the product's data 
+   * Pass that object to user-controller to glue data with user-model
+   * @param {Callback} handler 
+   */
   bindAddNewProduct = (handler) => {
     this.addNewForm.addEventListener('submit', (e) => {
       e.preventDefault();
