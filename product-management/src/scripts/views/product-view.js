@@ -100,8 +100,7 @@ export default class ProductView {
   /**
    * Handle the event Submit the Add New Product form
    * Get the value from the input fields 
-   * Create an object called product to store the product's data 
-   * Pass that object to user-controller to glue data with user-model
+   * Pass these values to product-controller to glue data with product-model
    * @param {Callback} handler 
    */
   bindAddNewProduct = (handler) => {

@@ -95,9 +95,8 @@ export default class UserView {
 
   /**
    * Handle the event Submit the Login Form 
-   * Get the value from the input fields of the Form - email, password 
-   * Create an object called user to store the user's data
-   * Pass that object to user-controller to glue data with user-model
+   * Get the value from the input fields of the Form - email, password
+   * Pass these values to user-controller to glue data with user-model
    * @param {Callback} handler 
    */
   bindLogin = (handler) => {

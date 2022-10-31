@@ -1,5 +1,6 @@
 import axios from "axios";
 import { PRODUCTS_URL } from "../constants/api";
+
 export default class ProductModel {
   constructor() {}
 

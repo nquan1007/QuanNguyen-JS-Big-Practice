@@ -40,11 +40,10 @@ export default class UserController {
 
   /**
    * Handle registration 
-   * Click submit to show spinner
    * Check if email got from input field exists in the database or not
-   * If it existed, hide the spinner and show error signals then return 
-   * If it is a new one, show the spinner and create a new user object with name, email, password information in the database
-   * Then hide the spinner and redirect to the Products Page
+   * If it existed, show error signals then return 
+   * Otherwise, create a new user object with name, email, password information in the database
+   * Then redirect to the Products Page
    * @param {Object} user 
    */
   handleRegister = async (user) => {
@@ -67,13 +66,12 @@ export default class UserController {
   }
 
   /**
-   * Handle Login 
-   * Click submit to show spinner
+   * Handle Login
    * Check if the email from input exists in the database or not
-   * If it doesn't, hide the spinner & show error signals
-   * If it does, compare the password got from database with the one from the input 
-   * If they match, hide the spinner & redirect to the Products page 
-   * If they don't, hide the spinner & show error signals to type the password again 
+   * If it doesn't, show error signals
+   * Otherwise, compare the password got from database with the one from the input 
+   * If they match, redirect to the Products page 
+   * Otherwise, show error signals
    * @param {Object} user 
    */
   handleLogin = async (user) => {
