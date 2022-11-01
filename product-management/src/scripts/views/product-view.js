@@ -3,11 +3,11 @@ import { VALIDATION_REGEX } from "../constants/regex-value";
 import { redirect } from "../helpers/redirect";
 import { validateImageFormat, validateValidFormat } from "../helpers/validation";
 import { showFlexElement, hideElement, showElement } from "../helpers/view-utilities";
+import { LocalStorage } from "../helpers/service";
 
 export default class ProductView {
   constructor() {
-    this.userName = localStorage.getItem('userName');
-    this.userId = localStorage.getItem('userId');
+    this.Storage = new LocalStorage();
   }
 
   initialize = () => {
@@ -37,7 +37,8 @@ export default class ProductView {
   }
 
   renderUserName = () => {
-    this.userNameElement.innerHTML = this.userName;
+    const userName = this.Storage.get('userName')
+    this.userNameElement.innerHTML = userName;
   }
 
   bindEventListeners = () => {
@@ -60,7 +61,7 @@ export default class ProductView {
   // Handle to logout to the Index Page
   logout = (e) => {
     e.preventDefault();
-    redirect.assign('./index.html');
+    redirect('./index.html');
   }
 
   // Handle to show User Box
@@ -107,7 +108,7 @@ export default class ProductView {
   bindAddNewProduct = (handler) => {
     this.addNewForm.addEventListener('submit', (e) => {
       e.preventDefault();
-      const userId = this.userId;
+      const userId = this.Storage.get('userId');
       const name = this.addFormName.value;
       const price = this.addFormPrice.value;
       const image = this.addFormImage.files[0];

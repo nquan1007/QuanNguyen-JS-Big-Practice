@@ -2,11 +2,13 @@ import { MESSAGES } from "../constants/messages";
 import { redirect } from "../helpers/redirect";
 import { getInvalidMessageElement, removeInputSuccess, showInputError } from "../helpers/validation";
 import { showFlexElement, hideElement } from "../helpers/view-utilities";
+import { LocalStorage } from "../helpers/service";
 
 export default class UserController {
   constructor(view, model) {
     this.view = view;
     this.model = model;
+    this.Storage = new LocalStorage();
   }
 
   initialize = () => {
@@ -58,9 +60,9 @@ export default class UserController {
     await this.model.createNewUser(user);
 
     // Store the userName and userId to the localStorage to get them out in Product View
-    localStorage.setItem('userName', user.name);
+    this.Storage.set('userName', user.name);
     const userId = await this.model.getIdByEmail(user.email);
-    localStorage.setItem('userId', userId);
+    this.Storage.set('userId', userId);
 
     hideElement(this.view.indexSpinner);
     redirect('./products.html');
@@ -95,9 +97,9 @@ export default class UserController {
 
     // Store the userName and userId to the localStorage to get them out in Product View
     const userName = await this.model.getNameByEmail(user.email);
-    localStorage.setItem('userName', userName);
+    this.Storage.set('userName', userName);
     const userId = await this.model.getIdByEmail(user.email);
-    localStorage.setItem('userId', userId);
+    this.Storage.set('userId', userId);
 
     hideElement(this.view.indexSpinner);
     redirect('./products.html');
