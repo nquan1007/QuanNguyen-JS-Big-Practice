@@ -1,7 +1,4 @@
-import {
-  hideElement,
-  showFlexElement,
-} from '../helpers/view-utilities';
+import { hideElement, showFlexElement } from '../helpers/view-utilities';
 import { convertToBase64 } from '../helpers/files';
 
 export default class ProductController {
@@ -14,6 +11,7 @@ export default class ProductController {
     this.renderProducts();
     this.view.initialize();
     this.view.bindAddNewProduct(this.handleAddNewProduct);
+    this.view.bindOpenEditProductForm(this.handleShowEditForm);
   };
 
   /**
@@ -42,6 +40,15 @@ export default class ProductController {
     try {
       const products = await this.model.getAllProducts();
       this.view.renderProductList(products);
+    } catch (error) {
+      // Show error
+    }
+  };
+
+  handleShowEditForm = async (id) => {
+    try {
+      const product = await this.model.getProductById(id);
+      this.view.openEditProductForm(product);
     } catch (error) {
       // Show error
     }

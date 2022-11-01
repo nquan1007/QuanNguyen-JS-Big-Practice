@@ -13,9 +13,9 @@
   display: grid;
   grid-template-columns: repeat(6, 1fr);
   gap: 50px;
-} 
+}
 
-.products-item {
+.product-card {
   position: relative;
   width: 300px;
   height: 400px;
@@ -24,28 +24,28 @@
   border-radius: 5px;
 }
 
-.products-item:hover {
-  opacity: .8;
+.product-card:hover {
+  opacity: 0.8;
   cursor: pointer;
 }
 
-.products-item:hover .btn-edit-item,
-.products-item:hover .btn-delete-item {
+.product-card:hover .btn-edit-product,
+.product-card:hover .btn-delete-product {
   visibility: visible;
   opacity: 1;
 }
 
-.btn-edit-item,
-.btn-delete-item {
+.btn-edit-product,
+.btn-delete-product {
   position: absolute;
   visibility: hidden;
 }
 
-.btn-delete-item {
+.btn-delete-product {
   right: 10px;
 }
 
-.item-name {
+.product-name {
   padding-top: 10px;
 }
 
@@ -53,11 +53,11 @@
   padding-top: 30px;
 }
 
-.item-price {
+.product-price {
   padding-top: 5px;
 }
 
-.item-description {
+.product-description {
   padding-top: 5px;
   text-align: justify;
 }

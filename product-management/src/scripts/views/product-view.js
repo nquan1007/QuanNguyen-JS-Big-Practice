@@ -34,6 +34,8 @@ export default class ProductView {
     this.btnAddNew = document.getElementById('btnAddNew');
     this.btnCloseAddForm = document.getElementById('popupAddFormClose');
     this.productForm = document.getElementById('productForm');
+
+    this.productTitle = document.getElementById('productTitle');
   };
 
   renderUserName = () => {
@@ -135,4 +137,29 @@ export default class ProductView {
     }
     this.productList.innerHTML = result;
   };
+
+  openEditProductForm = (product) => {
+    showFlexElement(this.popupAddForm);
+    if (product) {
+      this.productTitle.innerHTML = 'Edit Product';
+      this.productForm['product-name'].value = product.name;
+      this.productForm['product-price'].value = product.price;
+      this.productForm['product-image'].src = product.image;
+      this.productForm['product-description'].value = product.description;
+    }
+  };
+
+  bindOpenEditProductForm(handler) {
+    this.productList.addEventListener('click', (e) => {
+      e.preventDefault();
+
+      if (e.target.className.includes('btn-edit-product')) {
+        const id = e.target.dataset.id;
+
+        if (id) {
+          handler(id);
+        }
+      }
+    });
+  }
 }
