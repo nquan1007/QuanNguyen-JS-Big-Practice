@@ -8,7 +8,7 @@ export default class UserController {
   constructor(view, model) {
     this.view = view;
     this.model = model;
-    this.Storage = new LocalStorage();
+    this.storage = new LocalStorage();
   }
 
   initialize = () => {
@@ -60,9 +60,9 @@ export default class UserController {
     await this.model.createNewUser(user);
 
     // Store the userName and userId to the localStorage to get them out in Product View
-    this.Storage.set('userName', user.name);
+    this.storage.set('userName', user.name);
     const userId = await this.model.getIdByEmail(user.email);
-    this.Storage.set('userId', userId);
+    this.storage.set('userId', userId);
 
     hideElement(this.view.indexSpinner);
     redirect('./products.html');
@@ -97,9 +97,9 @@ export default class UserController {
 
     // Store the userName and userId to the localStorage to get them out in Product View
     const userName = await this.model.getNameByEmail(user.email);
-    this.Storage.set('userName', userName);
+    this.storage.set('userName', userName);
     const userId = await this.model.getIdByEmail(user.email);
-    this.Storage.set('userId', userId);
+    this.storage.set('userId', userId);
 
     hideElement(this.view.indexSpinner);
     redirect('./products.html');

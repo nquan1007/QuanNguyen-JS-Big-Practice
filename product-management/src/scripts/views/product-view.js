@@ -7,7 +7,7 @@ import { LocalStorage } from "../helpers/service";
 
 export default class ProductView {
   constructor() {
-    this.Storage = new LocalStorage();
+    this.storage = new LocalStorage();
   }
 
   initialize = () => {
@@ -37,7 +37,7 @@ export default class ProductView {
   }
 
   renderUserName = () => {
-    const userName = this.Storage.get('userName')
+    const userName = this.storage.get('userName')
     this.userNameElement.innerHTML = userName;
   }
 
@@ -108,7 +108,7 @@ export default class ProductView {
   bindAddNewProduct = (handler) => {
     this.addNewForm.addEventListener('submit', (e) => {
       e.preventDefault();
-      const userId = this.Storage.get('userId');
+      const userId = this.storage.get('userId');
       const name = this.addFormName.value;
       const price = this.addFormPrice.value;
       const image = this.addFormImage.files[0];
