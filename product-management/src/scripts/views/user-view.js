@@ -1,7 +1,10 @@
-import { validateValidFormat, validatePasswordMatch } from "../helpers/validation";
-import { showElement, hideElement } from "../helpers/view-utilities";
-import { VALIDATION_REGEX } from "../constants/regex-value";
-import { MESSAGES } from "../constants/messages";
+import {
+  validateValidFormat,
+  validatePasswordMatch,
+} from '../helpers/validation';
+import { showElement, hideElement } from '../helpers/view-utilities';
+import { VALIDATION_REGEX } from '../constants/regex-value';
+import { MESSAGES } from '../constants/messages';
 
 export default class UserView {
   constructor() {}
@@ -59,19 +62,35 @@ export default class UserView {
    * Password and confirm password match
    */
   handleRegisterValidate = () => {
-    validateValidFormat(this.registerName, VALIDATION_REGEX.INPUT_CHARACTER, MESSAGES.NAME_INVALID);
-    validateValidFormat(this.registerEmail, VALIDATION_REGEX.EMAIL, MESSAGES.EMAIL_INVALID);
-    validateValidFormat(this.registerPassword, VALIDATION_REGEX.PASSWORD, MESSAGES.PASSWORD_INVALID);
-    validateValidFormat(this.registerConfirm, VALIDATION_REGEX.PASSWORD, MESSAGES.PASSWORD_INVALID);
+    validateValidFormat(
+      this.registerName,
+      VALIDATION_REGEX.INPUT_CHARACTER,
+      MESSAGES.NAME_INVALID
+    );
+    validateValidFormat(
+      this.registerEmail,
+      VALIDATION_REGEX.EMAIL,
+      MESSAGES.EMAIL_INVALID
+    );
+    validateValidFormat(
+      this.registerPassword,
+      VALIDATION_REGEX.PASSWORD,
+      MESSAGES.PASSWORD_INVALID
+    );
+    validateValidFormat(
+      this.registerConfirm,
+      VALIDATION_REGEX.PASSWORD,
+      MESSAGES.PASSWORD_INVALID
+    );
     validatePasswordMatch(this.registerPassword, this.registerConfirm);
   };
 
   /**
-   * Handle the event Submit the Register Form 
-   * Get the value from the input fields of the Form - name, email, password 
+   * Handle the event Submit the Register Form
+   * Get the value from the input fields of the Form - name, email, password
    * Create an object called user to store the user's data
    * Pass that object to user-controller to glue data with user-model
-   * @param {Callback} handler 
+   * @param {Callback} handler
    */
   bindRegister = (handler) => {
     this.registerForm.addEventListener('submit', (e) => {
@@ -82,22 +101,30 @@ export default class UserView {
       const user = { name, email, password };
       handler(user);
     });
-  }
+  };
 
   /**
    * Handle to validate the Login form:
    * Valid format validation for email and password fields
    */
   handleLoginValidate = () => {
-    validateValidFormat(this.loginEmail, VALIDATION_REGEX.EMAIL, MESSAGES.EMAIL_INVALID);
-    validateValidFormat(this.loginPassword, VALIDATION_REGEX.PASSWORD, MESSAGES.PASSWORD_INVALID);
-  }
+    validateValidFormat(
+      this.loginEmail,
+      VALIDATION_REGEX.EMAIL,
+      MESSAGES.EMAIL_INVALID
+    );
+    validateValidFormat(
+      this.loginPassword,
+      VALIDATION_REGEX.PASSWORD,
+      MESSAGES.PASSWORD_INVALID
+    );
+  };
 
   /**
-   * Handle the event Submit the Login Form 
+   * Handle the event Submit the Login Form
    * Get the value from the input fields of the Form - email, password
    * Pass these values to user-controller to glue data with user-model
-   * @param {Callback} handler 
+   * @param {Callback} handler
    */
   bindLogin = (handler) => {
     this.loginForm.addEventListener('submit', (e) => {
@@ -106,6 +133,6 @@ export default class UserView {
       const password = this.loginPassword.value;
       const user = { email, password };
       handler(user);
-    })
-  }
+    });
+  };
 }

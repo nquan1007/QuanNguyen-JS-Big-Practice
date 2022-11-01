@@ -31,7 +31,7 @@
           <i class="fa-solid fa-circle-user user-icon"></i>
         </div>
       </nav>
-      <div class="user-box" id="user-box">
+      <div class="user-box" id="userBox">
         <p class="user-name"></p>
         <button id="btn-logout">Logout</button>
       </div>
@@ -39,31 +39,24 @@
 
     <main class="products-homepage">
       <div class="products-buttons">
-        <button class="btn-primary btn-add" id="btn-add-new">Add new product</button>
-        <button class="btn-primary btn-delete" id="btn-delete-selected">Delete selected products</button>
-        <button class="btn-primary btn-delete" id="btn-delete-all">Delete all products</button>
+        <button class="btn-primary btn-add" id="btnAddNew">
+          Add new product
+        </button>
+        <button class="btn-primary btn-delete" id="btn-delete-selected">
+          Delete selected products
+        </button>
+        <button class="btn-primary btn-delete" id="btn-delete-all">
+          Delete all products
+        </button>
       </div>
 
-      <div class="products-list" id="products-list">
-        <!-- <article class="products-item">
-          <button class="btn-secondary btn-edit-item"><i class="fa-solid fa-pen-to-square"></i></button>
-          <button class="btn-secondary btn-delete-item"><i class="fa-solid fa-xmark"></i></button>
-          <img
-            src="../assets/images/test.jpg"
-            alt="item-iame"
-            class="item-image"
-          />
-          <div class="item-info">
-            <p class="item-name text-secondary">Jordan 1</p>
-            <p class="item-price text-price">100000<span> VND</span></p>
-            <p class="item-description text-primary">This is Jordan 1. This is Jordan 1. This is Jordan 1. This is Jordan 1.</p>
-          </div>
-        </article> -->
-      </div>
+      <div class="products-list" id="productList"></div>
 
-      <div class="popup-background" id="popup-add-form">
+      <div class="popup-background" id="popupAddForm">
         <div class="popup">
-          <button class="btn-secondary popup-close" id="popup-add-form-close"><i class="fa-solid fa-xmark"></i></button>
+          <button class="btn-secondary popup-close" id="popupAddFormClose">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
           <include src="./partials/products/add-new-form.html"></include>
         </div>
       </div>
