@@ -1,55 +1,55 @@
-import { MESSAGES } from "../constants/messages";
-import { VALIDATION_REGEX } from "../constants/regex-value";
+import { MESSAGES } from '../constants/messages';
+import { VALIDATION_REGEX } from '../constants/regex-value';
 
 /**
  * Check if the value of that element is blank or not
- * @param {DOM} element 
+ * @param {DOM} element
  * @returns {Boolean}
  */
 const isBlank = (element) => {
   return !element.value;
-}
+};
 
 /**
  * Pass the element to show the input error by adding the red border
- * @param {DOM} element 
+ * @param {DOM} element
  */
 const showInputError = (element) => {
   element.classList.add('error');
   element.classList.remove('success');
-}
+};
 
 /**
  * Pass the element to show the input success by adding the green border
- * @param {DOM} element 
+ * @param {DOM} element
  */
 const showInputSuccess = (element) => {
   element.classList.add('success');
   element.classList.remove('error');
-}
+};
 
 const removeInputSuccess = (element) => {
   element.classList.remove('success');
-}
+};
 
 /**
  * Pass the element to get the invalid message element of the corresponding form group
- * @param {DOM} element 
- * @returns {DOM} 
+ * @param {DOM} element
+ * @returns {DOM}
  */
 const getInvalidMessageElement = (element) => {
   const formGroup = element.parentElement;
   return formGroup.querySelector('.form-message');
-}
+};
 
 /**
  * Check if the element value is blank or not
  * Pass the element with the regex value to validate whether it is valid or not
  * If the element value is invalid, the invalid message appears with the red border
  * If it is valid, its border is green and there is no invalid message anymore
- * @param {DOM} element 
- * @param {String} regexValue 
- * @param {String} message 
+ * @param {DOM} element
+ * @param {String} regexValue
+ * @param {String} message
  */
 const validateValidFormat = (element, regexValue, message) => {
   const invalidMessage = getInvalidMessageElement(element);
@@ -61,7 +61,7 @@ const validateValidFormat = (element, regexValue, message) => {
       return;
     }
     // Check if the element value is valid format or not
-    if(!element.value.match(regexValue)) {
+    if (!element.value.match(regexValue)) {
       invalidMessage.innerHTML = message;
       showInputError(element);
       return;
@@ -69,13 +69,13 @@ const validateValidFormat = (element, regexValue, message) => {
     // Show the success information
     invalidMessage.innerHTML = '';
     showInputSuccess(element);
-  })
-}
+  });
+};
 
 /**
  * Check if the user uploads the correct image files format or not
  * If the image file format is invalid, the message appears
- * @param {DOM} element 
+ * @param {DOM} element
  */
 const validateImageFormat = (element) => {
   const invalidMessage = getInvalidMessageElement(element);
@@ -86,34 +86,34 @@ const validateImageFormat = (element) => {
       return;
     }
     // Check if the element value is valid format or not
-    if(!element.value.match(VALIDATION_REGEX.FILE_FORMAT)) {
+    if (!element.value.match(VALIDATION_REGEX.FILE_FORMAT)) {
       invalidMessage.innerHTML = MESSAGES.FORMAT_INVALID;
       return;
     }
     invalidMessage.innerHTML = '';
-  })
-}
+  });
+};
 
 /**
  * Pass the password and confirm password elements to validate whether they match or not
- * @param {DOM} password 
- * @param {DOM} confirmpassword 
+ * @param {DOM} password
+ * @param {DOM} confirmpassword
  */
 const validatePasswordMatch = (password, confirmpassword) => {
   const invalidMessage = getInvalidMessageElement(confirmpassword);
   confirmpassword.addEventListener('focusout', () => {
-    if(!isBlank(confirmpassword) && password.value !== confirmpassword.value) {
+    if (!isBlank(confirmpassword) && password.value !== confirmpassword.value) {
       invalidMessage.innerHTML = MESSAGES.PASSWORD_CONFIRM;
       showInputError(confirmpassword);
     }
-  })
-}
+  });
+};
 
-export { 
-  validateValidFormat, 
-  validateImageFormat, 
-  validatePasswordMatch, 
-  showInputError, 
-  removeInputSuccess, 
-  getInvalidMessageElement
-}
+export {
+  validateValidFormat,
+  validateImageFormat,
+  validatePasswordMatch,
+  showInputError,
+  removeInputSuccess,
+  getInvalidMessageElement,
+};

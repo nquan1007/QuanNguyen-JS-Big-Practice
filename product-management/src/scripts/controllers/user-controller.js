@@ -1,8 +1,12 @@
-import { MESSAGES } from "../constants/messages";
-import { redirect } from "../helpers/redirect";
-import { getInvalidMessageElement, removeInputSuccess, showInputError } from "../helpers/validation";
-import { showFlexElement, hideElement } from "../helpers/view-utilities";
-import { LocalStorage } from "../helpers/service";
+import { MESSAGES } from '../constants/messages';
+import { redirect } from '../helpers/redirect';
+import {
+  getInvalidMessageElement,
+  removeInputSuccess,
+  showInputError,
+} from '../helpers/validation';
+import { showFlexElement, hideElement } from '../helpers/view-utilities';
+import { LocalStorage } from '../helpers/service';
 
 export default class UserController {
   constructor(view, model) {
@@ -18,36 +22,36 @@ export default class UserController {
   };
 
   /**
-   * Pass the element and errorMessage to show the error signals including: 
-   * Hide the spinner 
-   * Show the invalid message 
+   * Pass the element and errorMessage to show the error signals including:
+   * Hide the spinner
+   * Show the invalid message
    * Show the red border
-   * @param {DOM} element 
-   * @param {String} errorMessage 
+   * @param {DOM} element
+   * @param {String} errorMessage
    */
   showError = (element, errorMessage) => {
     hideElement(this.view.indexSpinner);
     const invalidMessage = getInvalidMessageElement(element);
     invalidMessage.innerHTML = errorMessage;
     showInputError(element);
-  }
+  };
 
   /**
    * Pass the email to call hasUser in user-model
-   * @param {String} email 
+   * @param {String} email
    * @returns {Boolean}
    */
   hasUser = async (email) => {
     return await this.model.hasUser(email);
-  }
+  };
 
   /**
-   * Handle registration 
+   * Handle registration
    * Check if email got from input field exists in the database or not
-   * If it existed, show error signals then return 
+   * If it existed, show error signals then return
    * Otherwise, create a new user object with name, email, password information in the database
    * Then redirect to the Products Page
-   * @param {Object} user 
+   * @param {Object} user
    */
   handleRegister = async (user) => {
     showFlexElement(this.view.indexSpinner);
@@ -66,16 +70,16 @@ export default class UserController {
 
     hideElement(this.view.indexSpinner);
     redirect('./products.html');
-  }
+  };
 
   /**
    * Handle Login
    * Check if the email from input exists in the database or not
    * If it doesn't, show error signals
-   * Otherwise, compare the password got from database with the one from the input 
-   * If they match, redirect to the Products page 
+   * Otherwise, compare the password got from database with the one from the input
+   * If they match, redirect to the Products page
    * Otherwise, show error signals
-   * @param {Object} user 
+   * @param {Object} user
    */
   handleLogin = async (user) => {
     showFlexElement(this.view.indexSpinner);
@@ -103,5 +107,5 @@ export default class UserController {
 
     hideElement(this.view.indexSpinner);
     redirect('./products.html');
-  }
+  };
 }

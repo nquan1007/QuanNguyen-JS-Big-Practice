@@ -6,9 +6,9 @@ export default class ProductModel {
 
   getAllProducts = async () => {
     return ApiService.getList(API_URLS.PRODUCT);
-  }
+  };
 
   createNewProduct = async (product) => {
     await ApiService.create(API_URLS.PRODUCT, product);
-  }
+  };
 }

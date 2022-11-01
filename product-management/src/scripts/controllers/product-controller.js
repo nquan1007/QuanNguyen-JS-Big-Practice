@@ -1,5 +1,8 @@
-import { hideElement, showElement, showFlexElement } from "../helpers/view-utilities";
-import { convertToBase64 } from "../helpers/files"
+import {
+  hideElement,
+  showFlexElement,
+} from '../helpers/view-utilities';
+import { convertToBase64 } from '../helpers/files';
 
 export default class ProductController {
   constructor(view, model) {
@@ -11,11 +14,11 @@ export default class ProductController {
     this.renderProducts();
     this.view.initialize();
     this.view.bindAddNewProduct(this.handleAddNewProduct);
-  }
+  };
 
   /**
    * Handle Add New Product
-   * @param {Object} product 
+   * @param {Object} product
    */
   handleAddNewProduct = async (product) => {
     showFlexElement(this.view.productSpinner);
@@ -25,22 +28,22 @@ export default class ProductController {
       name: product.name,
       price: product.price,
       image: convertedImage,
-      description: product.description
-    }
+      description: product.description,
+    };
     await this.model.createNewProduct(productData);
     await this.renderProducts();
     hideElement(this.view.productSpinner);
-  }
+  };
 
   /**
-   * Handle render products on UI 
+   * Handle render products on UI
    */
-   renderProducts = async () => {
+  renderProducts = async () => {
     try {
       const products = await this.model.getAllProducts();
       this.view.renderProductList(products);
-    } catch(error) {
+    } catch (error) {
       // Show error
     }
-  }
+  };
 }

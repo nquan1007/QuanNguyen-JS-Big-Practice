@@ -14,7 +14,7 @@ const buildProductTemplate = (product) => {
         <p class="item-description text-primary">${description}</p>
       </div>
     </article>`;
-  return productCard; 
-}
+  return productCard;
+};
 
-export { buildProductTemplate }
+export { buildProductTemplate };
