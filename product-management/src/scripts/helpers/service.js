@@ -1,13 +1,9 @@
 class LocalStorage {
   constructor() {}
 
-  get = (key) => {
-    return localStorage.getItem(key);
-  }
+  getKey = (key) => localStorage.getItem(key);
   
-  set = (key, value) => {
-    localStorage.setItem(key, value);
-  }
+  setKey = (key, value) => localStorage.setItem(key, value);
 }
 
 export { LocalStorage }

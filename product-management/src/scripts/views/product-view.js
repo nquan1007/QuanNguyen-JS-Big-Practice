@@ -37,7 +37,7 @@ export default class ProductView {
   }
 
   renderUserName = () => {
-    const userName = this.storage.get('userName')
+    const userName = this.storage.getKey('userName')
     this.userNameElement.innerHTML = userName;
   }
 
@@ -108,7 +108,7 @@ export default class ProductView {
   bindAddNewProduct = (handler) => {
     this.addNewForm.addEventListener('submit', (e) => {
       e.preventDefault();
-      const userId = this.storage.get('userId');
+      const userId = this.storage.getKey('userId');
       const name = this.addFormName.value;
       const price = this.addFormPrice.value;
       const image = this.addFormImage.files[0];

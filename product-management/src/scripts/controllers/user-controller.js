@@ -60,9 +60,9 @@ export default class UserController {
     await this.model.createNewUser(user);
 
     // Store the userName and userId to the localStorage to get them out in Product View
-    this.storage.set('userName', user.name);
+    this.storage.setKey('userName', user.name);
     const userId = await this.model.getIdByEmail(user.email);
-    this.storage.set('userId', userId);
+    this.storage.setKey('userId', userId);
 
     hideElement(this.view.indexSpinner);
     redirect('./products.html');
@@ -97,9 +97,9 @@ export default class UserController {
 
     // Store the userName and userId to the localStorage to get them out in Product View
     const userName = await this.model.getNameByEmail(user.email);
-    this.storage.set('userName', userName);
+    this.storage.setKey('userName', userName);
     const userId = await this.model.getIdByEmail(user.email);
-    this.storage.set('userId', userId);
+    this.storage.setKey('userId', userId);
 
     hideElement(this.view.indexSpinner);
     redirect('./products.html');
