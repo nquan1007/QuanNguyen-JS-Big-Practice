@@ -22,7 +22,7 @@ export default class UserModel {
   hasUser = async (email) => {
     const users = await this.getUsers();
     const result = users.filter(user => user.email === email);
-    return !(result.length === 0);
+    return result.length !== 0;
   }
   
   /**
@@ -50,5 +50,27 @@ export default class UserModel {
    */
   deleteUserById = async (id) => {
     await axios.delete(`${USERS_URL}/${id}`);
+  }
+
+  /**
+   * Pass the email to get the corresponding user's name
+   * @param {String} email 
+   * @returns {String}
+   */
+  getNameByEmail = async (email) => {
+    const users = await this.getUsers();
+    const result = users.find(user => user.email === email);
+    return result.name;
+  }
+
+  /**
+   * Pass the email to get the corresponding user's id
+   * @param {String} email 
+   * @returns {Number}
+   */
+  getIdByEmail = async (email) => {
+    const users = await this.getUsers();
+    const result = users.find(user => user.email === email);
+    return result.id;
   }
 }

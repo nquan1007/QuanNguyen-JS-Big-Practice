@@ -18,7 +18,7 @@ export default class UserView {
     this.btnLogin = document.getElementById('btn-register-redirect');
     this.loginForm = document.getElementById('login-form');
     this.registerForm = document.getElementById('register-form');
-    this.indexSpinner = document.getElementById('index-spinner');
+    this.indexSpinner = document.getElementById('spinner');
 
     // Get the elements in the Register Form
     this.registerName = document.getElementById('register-name');
@@ -95,9 +95,8 @@ export default class UserView {
 
   /**
    * Handle the event Submit the Login Form 
-   * Get the value from the input fields of the Form - email, password 
-   * Create an object called user to store the user's data
-   * Pass that object to user-controller to glue data with user-model
+   * Get the value from the input fields of the Form - email, password
+   * Pass these values to user-controller to glue data with user-model
    * @param {Callback} handler 
    */
   bindLogin = (handler) => {

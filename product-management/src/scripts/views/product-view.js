@@ -1,13 +1,18 @@
 import { MESSAGES } from "../constants/messages";
 import { VALIDATION_REGEX } from "../constants/regex-value";
+import { redirect } from "../helpers/redirect";
 import { validateImageFormat, validateValidFormat } from "../helpers/validation";
-import { showFlexElement, hideElement } from "../helpers/view-utilities";
+import { showFlexElement, hideElement, showElement } from "../helpers/view-utilities";
+import { LocalStorage } from "../helpers/service";
 
 export default class ProductView {
-  constructor() {}
+  constructor() {
+    this.storage = new LocalStorage();
+  }
 
   initialize = () => {
     this.queryElements();
+    this.renderUserName();
     this.bindEventListeners();
     this.handleAddFormValidate();
   }
@@ -15,16 +20,25 @@ export default class ProductView {
   queryElements = () => { 
     this.avatarIcon = document.getElementById('avatar-icon')
     this.userBox = document.getElementById('user-box');
+    this.userNameElement = document.querySelector('.user-name'); 
     this.btnLogout = document.getElementById('btn-logout');
+    this.productSpinner = document.getElementById('spinner');
+    this.productList = document.getElementById('products-list');
 
     // Get elements in the Add New Form 
     this.popupAddForm = document.getElementById('popup-add-form');
     this.btnAddNew = document.getElementById('btn-add-new');
     this.btnCloseAddForm = document.getElementById('popup-add-form-close');
+    this.addNewForm = document.getElementById('add-new-form');
     this.addFormName = document.getElementById('add-name');
     this.addFormPrice = document.getElementById('add-price');
     this.addFormImage = document.getElementById('add-image');
     this.addFormDescription = document.getElementById('add-description');
+  }
+
+  renderUserName = () => {
+    const userName = this.storage.getKey('userName')
+    this.userNameElement.innerHTML = userName;
   }
 
   bindEventListeners = () => {
@@ -47,7 +61,7 @@ export default class ProductView {
   // Handle to logout to the Index Page
   logout = (e) => {
     e.preventDefault();
-    window.location.assign('./index.html');
+    redirect('./index.html');
   }
 
   // Handle to show User Box
@@ -83,5 +97,27 @@ export default class ProductView {
     validateValidFormat(this.addFormName, VALIDATION_REGEX.PRODUCT_NAME, MESSAGES.PRODUCT_NAME_INVALID);
     validateValidFormat(this.addFormPrice);
     validateImageFormat(this.addFormImage);
+  }
+
+  /**
+   * Handle the event Submit the Add New Product form
+   * Get the value from the input fields 
+   * Pass these values to product-controller to glue data with product-model
+   * @param {Callback} handler 
+   */
+  bindAddNewProduct = (handler) => {
+    this.addNewForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const userId = this.storage.getKey('userId');
+      const name = this.addFormName.value;
+      const price = this.addFormPrice.value;
+      const image = this.addFormImage.files[0];
+      const description = this.addFormDescription.value;
+
+      const product = { userId, name, price, image, description };
+      handler(product);
+
+      hideElement(this.popupAddForm);
+    })
   }
 }
