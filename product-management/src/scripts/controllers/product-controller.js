@@ -8,16 +8,13 @@ export default class ProductController {
   }
 
   initialize = () => {
+    this.renderProducts();
     this.view.initialize();
     this.view.bindAddNewProduct(this.handleAddNewProduct);
   }
 
   /**
-   * Handle Add New Product 
-   * Click Submit to show spinner
-   * Use convertToBase64 function in helpers to convert the image from File Format to String format
-   * Define an object including 5 fields: userId, name, price, image, description 
-   * Pass that object to createNewProduct function in product-model to create a new product in database
+   * Handle Add New Product
    * @param {Object} product 
    */
   handleAddNewProduct = async (product) => {
@@ -31,6 +28,19 @@ export default class ProductController {
       description: product.description
     }
     await this.model.createNewProduct(productData);
+    await this.renderProducts();
     hideElement(this.view.productSpinner);
+  }
+
+  /**
+   * Handle render products on UI 
+   */
+   renderProducts = async () => {
+    try {
+      const products = await this.model.getAllProducts();
+      this.view.renderProductList(products);
+    } catch(error) {
+      // Show error
+    }
   }
 }

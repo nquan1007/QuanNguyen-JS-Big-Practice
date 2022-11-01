@@ -1,25 +1,14 @@
-import axios from "axios";
-import { PRODUCTS_URL } from "../constants/api";
+import { ApiService } from '../core/api-service';
+import { API_URLS } from '../core/app-config';
 
 export default class ProductModel {
   constructor() {}
 
   getAllProducts = async () => {
-    const response = await axios.get(PRODUCTS_URL);
-    return response.data;
+    return ApiService.getList(API_URLS.PRODUCT);
   }
 
-  createNewProduct = async (data) => {
-    await axios.post(PRODUCTS_URL, data);
-  }
-
-  /**
-   * Pass the userId to get all the products having that userId 
-   * @param {Number} userId 
-   * @returns {Array}
-   */
-  getProductsByUserId = async (userId) => {
-    const products = await this.getAllProducts();
-    return products.filter(product => product.userId == userId);
+  createNewProduct = async (product) => {
+    await ApiService.create(API_URLS.PRODUCT, product);
   }
 }

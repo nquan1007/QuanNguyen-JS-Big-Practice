@@ -1,11 +1,11 @@
-<form action="#" class="form" id="add-new-form" method="POST">
+<form action="#" class="form" id="productForm" method="POST">
   <h3 class="text-title">Add a new product</h3>
   <div class="form-group">
     <label for="add-name" class="text-subtitle"
       >Name <span class="label-star">*</span></label
     >
     <i class="fa-brands fa-ethereum form-symbol"></i>
-    <input type="text" id="add-name" placeholder="Jordan 1" />
+    <input type="text" name="product-name" placeholder="Jordan 1" />
     <p class="form-message"></p>
   </div>
   <div class="form-group">
@@ -13,22 +13,23 @@
       >Price <span class="label-star">*</span></label
     >
     <i class="fa-solid fa-tag form-symbol"></i>
-    <input type="number" id="add-price" placeholder="2500000" />
+    <input type="number" name="product-price" placeholder="2500000" />
     <p class="form-message"></p>
   </div>
   <div class="form-group">
     <label for="add-image" class="text-subtitle"
       >Image <span class="label-star">*</span></label
     >
-    <input type="file" id="add-image" />
+    <input type="file" name="product-image" />
     <p class="form-message"></p>
   </div>
   <div class="form-group">
     <label for="add-description" class="text-subtitle">Description</label>
     <textarea
-      id="add-description"
+      name="product-description"
       placeholder="Add some information about this product"
-      maxlength="130"></textarea>
+      maxlength="130"
+    ></textarea>
     <p class="form-message"></p>
   </div>
   <button type="submit" class="btn-submit">Submit</button>
