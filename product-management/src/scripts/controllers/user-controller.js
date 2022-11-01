@@ -1,4 +1,5 @@
 import { MESSAGES } from "../constants/messages";
+import { redirect } from "../helpers/redirect";
 import { getInvalidMessageElement, removeInputSuccess, showInputError } from "../helpers/validation";
 import { showFlexElement, hideElement } from "../helpers/view-utilities";
 
@@ -62,7 +63,7 @@ export default class UserController {
     localStorage.setItem('userId', userId);
 
     hideElement(this.view.indexSpinner);
-    window.location.assign('./products.html');
+    redirect('./products.html');
   }
 
   /**
@@ -99,6 +100,6 @@ export default class UserController {
     localStorage.setItem('userId', userId);
 
     hideElement(this.view.indexSpinner);
-    window.location.assign('./products.html');
+    redirect('./products.html');
   }
 }

@@ -1,5 +1,6 @@
 import { MESSAGES } from "../constants/messages";
 import { VALIDATION_REGEX } from "../constants/regex-value";
+import { redirect } from "../helpers/redirect";
 import { validateImageFormat, validateValidFormat } from "../helpers/validation";
 import { showFlexElement, hideElement, showElement } from "../helpers/view-utilities";
 
@@ -59,7 +60,7 @@ export default class ProductView {
   // Handle to logout to the Index Page
   logout = (e) => {
     e.preventDefault();
-    window.location.assign('./index.html');
+    redirect.assign('./index.html');
   }
 
   // Handle to show User Box
