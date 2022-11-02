@@ -30,9 +30,9 @@ export default class ProductView {
     this.productList = document.getElementById('productList');
 
     // Get elements in the Add New Form
-    this.popupAddForm = document.getElementById('popupAddForm');
+    this.popupProductForm = document.getElementById('popupProductForm');
     this.btnAddNew = document.getElementById('btnAddNew');
-    this.btnCloseAddForm = document.getElementById('popupAddFormClose');
+    this.btnClosePopup = document.getElementById('btnClosePopup');
     this.productForm = document.getElementById('productForm');
 
     this.productTitle = document.getElementById('productTitle');
@@ -57,7 +57,7 @@ export default class ProductView {
     this.btnAddNew.addEventListener('click', this.showAddForm);
 
     // Click the Close Button in the Add New form to close it
-    this.btnCloseAddForm.addEventListener('click', this.hideAddForm);
+    this.btnClosePopup.addEventListener('click', this.hideAddForm);
   };
 
   // Handle to logout to the Index Page
@@ -79,16 +79,26 @@ export default class ProductView {
     }
   };
 
+  // Reset product form values
+  resetProductFormValue = () => {
+    this.productForm['product-name'].value = '';
+    this.productForm['product-price'].value = '';
+    this.productForm['product-image'].src = '';
+    this.productForm['product-description'].value = '';
+  };
+
   // Handle to show Add New Form
   showAddForm = (e) => {
     e.preventDefault();
-    showFlexElement(this.popupAddForm);
+    showFlexElement(this.popupProductForm);
+    this.productTitle.innerHTML = 'Add New Product';
+    this.resetProductFormValue();
   };
 
   // Handle to hide Add New Form
   hideAddForm = (e) => {
     e.preventDefault();
-    hideElement(this.popupAddForm);
+    hideElement(this.popupProductForm);
   };
 
   // Valid format validation form value file format
@@ -118,7 +128,7 @@ export default class ProductView {
       const product = { userId, name, price, image, description };
       handler(product);
 
-      hideElement(this.popupAddForm);
+      hideElement(this.productForm);
     });
   };
 
@@ -138,9 +148,13 @@ export default class ProductView {
     this.productList.innerHTML = result;
   };
 
+  /**
+   * Handle to open the edit product form
+   * @param {Object} product
+   */
   openEditProductForm = (product) => {
-    showFlexElement(this.popupAddForm);
     if (product) {
+      showFlexElement(this.popupProductForm);
       this.productTitle.innerHTML = 'Edit Product';
       this.productForm['product-name'].value = product.name;
       this.productForm['product-price'].value = product.price;
@@ -149,13 +163,16 @@ export default class ProductView {
     }
   };
 
+  /**
+   * Click the btn-edit on the product card to pass the id to product-controller
+   * @param {Callback} handler
+   */
   bindOpenEditProductForm(handler) {
     this.productList.addEventListener('click', (e) => {
       e.preventDefault();
 
       if (e.target.className.includes('btn-edit-product')) {
         const id = e.target.dataset.id;
-
         if (id) {
           handler(id);
         }
