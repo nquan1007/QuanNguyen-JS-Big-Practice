@@ -1,11 +1,5 @@
 import { MESSAGES } from '../constants/messages';
 import { redirect } from '../helpers/redirect';
-import {
-  getInvalidMessageElement,
-  removeInputSuccess,
-  showInputError,
-} from '../helpers/validation';
-import { showFlexElement, hideElement } from '../helpers/view-utilities';
 import { LocalStorage } from '../helpers/service';
 
 export default class UserController {
@@ -22,42 +16,18 @@ export default class UserController {
   };
 
   /**
-   * Pass the element and errorMessage to show the error signals including:
-   * Hide the spinner
-   * Show the invalid message
-   * Show the red border
-   * @param {DOM} element
-   * @param {String} errorMessage
-   */
-  showError = (element, errorMessage) => {
-    hideElement(this.view.indexSpinner);
-    const invalidMessage = getInvalidMessageElement(element);
-    invalidMessage.innerHTML = errorMessage;
-    showInputError(element);
-  };
-
-  /**
-   * Pass the email to call hasUser in user-model
-   * @param {String} email
-   * @returns {Boolean}
-   */
-  hasUser = async (email) => {
-    return await this.model.hasUser(email);
-  };
-
-  /**
    * Handle registration
-   * Check if email got from input field exists in the database or not
-   * If it existed, show error signals then return
-   * Otherwise, create a new user object with name, email, password information in the database
-   * Then redirect to the Products Page
    * @param {Object} user
    */
   handleRegister = async (user) => {
-    showFlexElement(this.view.indexSpinner);
-    const hasUser = await this.hasUser(user.email);
+    this.view.showSpinner();
+    const hasUser = await this.model.hasUser(user.email);
     if (hasUser) {
-      this.showError(this.view.registerEmail, MESSAGES.EMAIL_EXISTED);
+      this.view.hideSpinner();
+      this.view.showError(
+        this.view.registerForm['register-email'],
+        MESSAGES.EMAIL_EXISTED
+      );
       return;
     }
 
@@ -68,33 +38,33 @@ export default class UserController {
     const userId = await this.model.getIdByEmail(user.email);
     this.storage.setKey('userId', userId);
 
-    hideElement(this.view.indexSpinner);
+    this.view.hideSpinner();
     redirect('./products.html');
   };
 
   /**
    * Handle Login
-   * Check if the email from input exists in the database or not
-   * If it doesn't, show error signals
-   * Otherwise, compare the password got from database with the one from the input
-   * If they match, redirect to the Products page
-   * Otherwise, show error signals
    * @param {Object} user
    */
   handleLogin = async (user) => {
-    showFlexElement(this.view.indexSpinner);
-    const hasUser = await this.hasUser(user.email);
+    this.view.showSpinner();
+    const hasUser = await this.model.hasUser(user.email);
     if (!hasUser) {
-      this.showError(this.view.loginEmail, MESSAGES.EMAIL_NON_EXISTED);
-      this.view.loginPassword.value = '';
-      removeInputSuccess(this.view.loginPassword);
+      this.view.hideSpinner();
+      this.view.showError(
+        this.view.loginForm['login-email'],
+        MESSAGES.EMAIL_NON_EXISTED
+      );
+      this.view.resetInputValue(this.view.loginForm['login-password']);
       return;
     } else {
       const password = await this.model.getPasswordByEmail(user.email);
       if (password !== user.password) {
-        this.showError(this.view.loginPassword, MESSAGES.PASSWORD_INCORRECT);
-        this.view.loginPassword.value = '';
-        removeInputSuccess(this.view.loginEmail);
+        this.view.showError(
+          this.view.loginForm['login-password'],
+          MESSAGES.PASSWORD_INCORRECT
+        );
+        this.view.resetInputValue(this.view.loginForm['login-password']);
         return;
       }
     }
@@ -105,7 +75,7 @@ export default class UserController {
     const userId = await this.model.getIdByEmail(user.email);
     this.storage.setKey('userId', userId);
 
-    hideElement(this.view.indexSpinner);
+    this.view.hideSpinner();
     redirect('./products.html');
   };
 }

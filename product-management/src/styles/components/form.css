@@ -72,7 +72,6 @@
   box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
   letter-spacing: 1px;
   font-size: var(--font-size-secondary);
-
 }
 
 .form p {
@@ -81,7 +80,7 @@
 }
 
 /* Default: Login Form is hidden */
-#login-form {
+#loginForm {
   display: none;
 }
 

@@ -22,10 +22,10 @@ export default class ProductView {
   };
 
   queryElements = () => {
-    this.avatarIcon = document.getElementById('avatar-icon');
+    this.avatarIcon = document.getElementById('avatarIcon');
     this.userBox = document.getElementById('userBox');
     this.userNameElement = document.querySelector('.user-name');
-    this.btnLogout = document.getElementById('btn-logout');
+    this.btnLogout = document.getElementById('btnLogout');
     this.popupSpinner = document.getElementById('spinner');
     this.productList = document.getElementById('productList');
 
