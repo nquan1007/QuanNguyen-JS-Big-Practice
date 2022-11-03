@@ -1,5 +1,5 @@
-import axios from 'axios';
-import { USERS_URL } from '../constants/api';
+import { ApiService } from '../core/api-service';
+import { API_URLS } from '../core/app-config';
 
 export default class UserModel {
   constructor() {}
@@ -9,8 +9,7 @@ export default class UserModel {
    * @returns {Array}
    */
   getUsers = async () => {
-    const response = await axios.get(USERS_URL);
-    return response.data;
+    return ApiService.getList(API_URLS.USER);
   };
 
   /**
@@ -28,8 +27,8 @@ export default class UserModel {
    * Create new user with data from view and add it to the database
    * @param {Object} data
    */
-  createNewUser = async (data) => {
-    await axios.post(USERS_URL, data);
+  createNewUser = async (user) => {
+    await ApiService.create(API_URLS.USER, user);
   };
 
   /**
@@ -41,14 +40,6 @@ export default class UserModel {
     const users = await this.getUsers();
     const user = users.filter((user) => user.email === email);
     return user.map((user) => user.password).toString();
-  };
-
-  /**
-   * Pass the id of the user to delete it in the database
-   * @param {Number} id
-   */
-  deleteUserById = async (id) => {
-    await axios.delete(`${USERS_URL}/${id}`);
   };
 
   /**

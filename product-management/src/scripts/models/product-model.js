@@ -11,4 +11,8 @@ export default class ProductModel {
   createNewProduct = async (product) => {
     await ApiService.create(API_URLS.PRODUCT, product);
   };
+
+  getProductById = async (id) => {
+    return ApiService.getItemById(`${API_URLS.PRODUCT}/${id}`);
+  }
 }
