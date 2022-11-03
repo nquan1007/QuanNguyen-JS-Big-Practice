@@ -7,8 +7,8 @@ export default class ProductController {
     this.model = model;
   }
 
-  initialize = () => {
-    this.renderProducts();
+  initialize = async () => {
+    await this.renderProducts();
     this.view.initialize();
     this.view.bindAddNewProduct(this.handleAddNewProduct);
     this.view.bindOpenEditProductForm(this.handleShowEditForm);
@@ -19,18 +19,16 @@ export default class ProductController {
    * @param {Object} product
    */
   handleAddNewProduct = async (product) => {
-    this.view.showSpinner();
-    const convertedImage = await convertToBase64(product.image);
-    const productData = {
-      userId: product.userId,
-      name: product.name,
-      price: product.price,
-      image: convertedImage,
-      description: product.description,
-    };
-    await this.model.createNewProduct(productData);
-    await this.renderProducts();
-    this.view.hideSpinner();
+    try {
+      this.view.showSpinner();
+      const convertedImage = await convertToBase64(product.image);
+      product.image = convertedImage;
+      await this.model.createNewProduct(product);
+      this.view.renderNewProduct(product);
+      this.view.hideSpinner();
+    } catch (error) {
+      // Show error
+    }
   };
 
   /**

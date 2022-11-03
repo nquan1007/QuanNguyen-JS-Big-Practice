@@ -156,6 +156,13 @@ export default class ProductView {
     this.productList.innerHTML = result;
   };
 
+  renderNewProduct = (product) => {
+    if (product) {
+      let x = buildProductTemplate(product);
+      this.productList.innerHTML += x;
+    }
+  }
+
   /**
    * Handle to open the edit product form
    * @param {Object} product
