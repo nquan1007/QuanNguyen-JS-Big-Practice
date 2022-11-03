@@ -26,7 +26,7 @@ export default class ProductView {
     this.userBox = document.getElementById('userBox');
     this.userNameElement = document.querySelector('.user-name');
     this.btnLogout = document.getElementById('btn-logout');
-    this.productSpinner = document.getElementById('spinner');
+    this.popupSpinner = document.getElementById('spinner');
     this.productList = document.getElementById('productList');
 
     // Get elements in the Add New Form
@@ -112,6 +112,14 @@ export default class ProductView {
     validateImageFormat(this.productForm['product-image']);
   };
 
+  showSpinner = () => {
+    showFlexElement(this.popupSpinner);
+  };
+
+  hideSpinner = () => {
+    hideElement(this.popupSpinner);
+  };
+
   /**
    * Pass the value from the input fields to product-controller to glue data with product-model
    * @param {Callback} handler
@@ -128,7 +136,7 @@ export default class ProductView {
       const product = { userId, name, price, image, description };
       handler(product);
 
-      hideElement(this.productForm);
+      hideElement(this.popupProductForm);
     });
   };
 
