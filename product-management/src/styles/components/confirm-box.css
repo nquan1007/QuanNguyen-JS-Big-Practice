@@ -1,0 +1,16 @@
+.confirm-popup {
+  background-color: var(--color-primary);
+  width: 600px;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  border-radius: 10px;
+}
+
+.confirm-buttons {
+  display: flex;
+  gap: 150px;
+}

@@ -21,6 +21,10 @@
   background-color: var(--bg-btn-delete);
 }
 
+.btn-cancel {
+  background-color: var(--bg-btn-cancel);
+}
+
 .btn-secondary {
   border: none;
   background-color: var(--bg-primary);

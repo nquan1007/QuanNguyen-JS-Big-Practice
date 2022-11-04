@@ -24,6 +24,7 @@ export default class ProductView {
     this.renderUserName();
     this.bindEventListeners();
     this.handleProductFormValidate();
+    // showFlexElement(this.popupConfirm);
   };
 
   queryElements = () => {
@@ -31,9 +32,12 @@ export default class ProductView {
     this.userBox = document.getElementById('userBox');
     this.userNameElement = document.querySelector('.user-name');
     this.btnLogout = document.getElementById('btnLogout');
+
     this.popupSpinner = document.getElementById('spinner');
     this.popupProductForm = document.getElementById('popupProductForm');
     this.btnClosePopup = document.getElementById('btnClosePopup');
+
+    this.popupConfirm = document.getElementById('popupConfirm');
 
     this.btnAddNew = document.getElementById('btnAddNew');
 
@@ -42,7 +46,6 @@ export default class ProductView {
     this.productForm = document.getElementById('productForm');
     this.productTitle = document.getElementById('productTitle');
     this.productPreviewImage = document.querySelector('.preview-image');
-    // this.btnSubmit = document.getElementById('btnSubmit');
   };
 
   renderUserName = () => {
