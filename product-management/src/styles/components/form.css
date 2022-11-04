@@ -85,9 +85,9 @@
 }
 
 /* Clear the padding left of the input image */
-#add-image {
+/* .product-form input[product-image] {
   padding: 3px;
-}
+} */
 
 /* Products Page form textarea for the description */
 .form-group textarea {
@@ -99,4 +99,12 @@
   padding: 8px;
   border-radius: 10px;
   resize: none;
+}
+
+.preview-image {
+  object-fit: cover;
+  width: 250px;
+  height: 170px;
+  margin: 0 auto;
+  margin-bottom: 10px;
 }

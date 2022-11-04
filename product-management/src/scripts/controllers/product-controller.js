@@ -1,6 +1,3 @@
-import { hideElement, showFlexElement } from '../helpers/view-utilities';
-import { convertToBase64 } from '../helpers/files';
-
 export default class ProductController {
   constructor(view, model) {
     this.view = view;
@@ -10,32 +7,11 @@ export default class ProductController {
   initialize = () => {
     this.renderProducts();
     this.view.initialize();
-    this.view.bindAddNewProduct(this.handleAddNewProduct);
     this.view.bindOpenEditProductForm(this.handleShowEditForm);
+    this.view.bindSubmitProduct(this.handleSubmitProduct);
   };
 
-  /**
-   * Handle Add New Product
-   * @param {Object} product
-   */
-  handleAddNewProduct = async (product) => {
-    this.view.showSpinner();
-    const convertedImage = await convertToBase64(product.image);
-    const productData = {
-      userId: product.userId,
-      name: product.name,
-      price: product.price,
-      image: convertedImage,
-      description: product.description,
-    };
-    await this.model.createNewProduct(productData);
-    await this.renderProducts();
-    this.view.hideSpinner();
-  };
-
-  /**
-   * Handle render products on UI
-   */
+  // Handle render products on UI
   renderProducts = async () => {
     try {
       const products = await this.model.getAllProducts();
@@ -45,12 +21,39 @@ export default class ProductController {
     }
   };
 
+  /**
+   * Get the product id from view to show the data of the corresponding product on Product Form
+   * @param {Number} id
+   */
   handleShowEditForm = async (id) => {
     try {
       this.view.showSpinner();
       const product = await this.model.getProductById(id);
       this.view.hideSpinner();
-      this.view.openEditProductForm(product);
+      this.view.openProductForm(product);
+    } catch (error) {
+      // Show error
+    }
+  };
+
+  /**
+   * Handle submit Product Form
+   * If the productId exists, execute editing product
+   * Otherwise, create a new product
+   * @param {Object} product
+   */
+  handleSubmitProduct = async (product) => {
+    try {
+      this.view.showSpinner();
+      if (product.id) {
+        await this.model.updateProduct(product);
+        // Show success message in view
+      } else {
+        await this.model.createNewProduct(product);
+        // Show success message in view
+      }
+      await this.renderProducts();
+      this.view.hideSpinner();
     } catch (error) {
       // Show error
     }

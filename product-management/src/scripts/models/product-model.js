@@ -2,17 +2,25 @@ import { ApiService } from '../core/api-service';
 import { API_URLS } from '../core/app-config';
 
 export default class ProductModel {
-  constructor() {}
+  constructor() {
+    this.products = [];
+  }
 
   getAllProducts = async () => {
-    return ApiService.getList(API_URLS.PRODUCT);
+    this.products = await ApiService.getList(API_URLS.PRODUCT);
+    return this.products;
   };
 
   createNewProduct = async (product) => {
-    await ApiService.create(API_URLS.PRODUCT, product);
+    const result = await ApiService.create(API_URLS.PRODUCT, product);
+    this.products.push(result);
   };
 
   getProductById = async (id) => {
     return ApiService.getItemById(`${API_URLS.PRODUCT}/${id}`);
-  }
+  };
+
+  updateProduct = async (product) => {
+    await ApiService.update(`${API_URLS.PRODUCT}/${product.id}`, product);
+  };
 }
