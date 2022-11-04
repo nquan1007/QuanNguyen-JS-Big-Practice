@@ -5,9 +5,14 @@ import {
   validateImageFormat,
   validateValidFormat,
 } from '../helpers/validation';
-import { showFlexElement, hideElement } from '../helpers/view-utilities';
+import {
+  showFlexElement,
+  hideElement,
+  showElement,
+} from '../helpers/view-utilities';
 import { LocalStorage } from '../helpers/service';
 import { buildProductTemplate } from './templates/product-card';
+import { convertToBase64 } from '../helpers/files';
 
 export default class ProductView {
   constructor() {
@@ -18,7 +23,7 @@ export default class ProductView {
     this.queryElements();
     this.renderUserName();
     this.bindEventListeners();
-    this.handleAddFormValidate();
+    this.handleProductFormValidate();
   };
 
   queryElements = () => {
@@ -27,15 +32,17 @@ export default class ProductView {
     this.userNameElement = document.querySelector('.user-name');
     this.btnLogout = document.getElementById('btnLogout');
     this.popupSpinner = document.getElementById('spinner');
+    this.popupProductForm = document.getElementById('popupProductForm');
+    this.btnClosePopup = document.getElementById('btnClosePopup');
+
+    this.btnAddNew = document.getElementById('btnAddNew');
+
     this.productList = document.getElementById('productList');
 
-    // Get elements in the Add New Form
-    this.popupProductForm = document.getElementById('popupProductForm');
-    this.btnAddNew = document.getElementById('btnAddNew');
-    this.btnClosePopup = document.getElementById('btnClosePopup');
     this.productForm = document.getElementById('productForm');
-
     this.productTitle = document.getElementById('productTitle');
+    this.productPreviewImage = document.querySelector('.preview-image');
+    // this.btnSubmit = document.getElementById('btnSubmit');
   };
 
   renderUserName = () => {
@@ -54,10 +61,13 @@ export default class ProductView {
     document.addEventListener('mouseup', this.hideUserBox);
 
     // Click the Add New Product Button to show the Add nNw form Popup
-    this.btnAddNew.addEventListener('click', this.showAddForm);
+    this.btnAddNew.addEventListener('click', (e) => {
+      e.preventDefault();
+      this.openProductForm();
+    });
 
-    // Click the Close Button in the Add New form to close it
-    this.btnClosePopup.addEventListener('click', this.hideAddForm);
+    // Click the Close Button in the Popup to close the Product Form
+    this.btnClosePopup.addEventListener('click', this.clodeProductForm);
   };
 
   // Handle to logout to the Index Page
@@ -66,43 +76,37 @@ export default class ProductView {
     redirect('./index.html');
   };
 
-  // Handle to show User Box
+  // Show User Box
   showUserBox = (e) => {
     e.preventDefault();
     showFlexElement(this.userBox);
   };
 
-  // Handle to hide User Box
+  // Hide User Box
   hideUserBox = (e) => {
     if (!this.userBox.contains(e.target)) {
       hideElement(this.userBox);
     }
   };
 
-  // Reset product form values
-  resetProductFormValue = () => {
-    this.productForm['product-name'].value = '';
-    this.productForm['product-price'].value = '';
-    this.productForm['product-image'].src = '';
-    this.productForm['product-description'].value = '';
-  };
-
-  // Handle to show Add New Form
-  showAddForm = (e) => {
-    e.preventDefault();
-    showFlexElement(this.popupProductForm);
-    this.productTitle.innerHTML = 'Add New Product';
-    this.resetProductFormValue();
-  };
-
-  // Handle to hide Add New Form
-  hideAddForm = (e) => {
+  // Close the Product Form
+  clodeProductForm = (e) => {
     e.preventDefault();
     hideElement(this.popupProductForm);
   };
 
-  // Valid format validation form value file format
-  handleAddFormValidate = () => {
+  // Show Spinner
+  showSpinner = () => {
+    showFlexElement(this.popupSpinner);
+  };
+
+  // Hide Spinner
+  hideSpinner = () => {
+    hideElement(this.popupSpinner);
+  };
+
+  // Format validation in the Product Form
+  handleProductFormValidate = () => {
     validateValidFormat(
       this.productForm['product-name'],
       VALIDATION_REGEX.PRODUCT_NAME,
@@ -110,34 +114,6 @@ export default class ProductView {
     );
     validateValidFormat(this.productForm['product-price']);
     validateImageFormat(this.productForm['product-image']);
-  };
-
-  showSpinner = () => {
-    showFlexElement(this.popupSpinner);
-  };
-
-  hideSpinner = () => {
-    hideElement(this.popupSpinner);
-  };
-
-  /**
-   * Pass the value from the input fields to product-controller to glue data with product-model
-   * @param {Callback} handler
-   */
-  bindAddNewProduct = (handler) => {
-    this.productForm.addEventListener('submit', (e) => {
-      e.preventDefault();
-      const userId = this.storage.getKey('userId');
-      const name = this.productForm['product-name'].value;
-      const price = this.productForm['product-price'].value;
-      const image = this.productForm['product-image'].files[0];
-      const description = this.productForm['product-description'].value;
-
-      const product = { userId, name, price, image, description };
-      handler(product);
-
-      hideElement(this.popupProductForm);
-    });
   };
 
   /**
@@ -156,30 +132,28 @@ export default class ProductView {
     this.productList.innerHTML = result;
   };
 
-  renderNewProduct = (product) => {
-    if (product) {
-      let x = buildProductTemplate(product);
-      this.productList.innerHTML += x;
-    }
-  }
-
   /**
-   * Handle to open the edit product form
+   * Handle to open the Product Form
    * @param {Object} product
    */
-  openEditProductForm = (product) => {
+  openProductForm = (product) => {
+    showFlexElement(this.popupProductForm);
     if (product) {
-      showFlexElement(this.popupProductForm);
       this.productTitle.innerHTML = 'Edit Product';
       this.productForm['product-name'].value = product.name;
       this.productForm['product-price'].value = product.price;
-      this.productForm['product-image'].src = product.image;
+      showElement(this.productPreviewImage);
+      this.productPreviewImage.src = product.image;
       this.productForm['product-description'].value = product.description;
+    } else {
+      this.productTitle.innerHTML = 'Add a new product';
+      hideElement(this.productPreviewImage);
+      this.productForm.reset();
     }
   };
 
   /**
-   * Click the btn-edit on the product card to pass the id to product-controller
+   * Click the btn-edit-product on the product card to pass the id to product-controller
    * @param {Callback} handler
    */
   bindOpenEditProductForm(handler) {
@@ -189,9 +163,46 @@ export default class ProductView {
       if (e.target.className.includes('btn-edit-product')) {
         const id = e.target.dataset.id;
         if (id) {
+          this.storage.setKey('productId', id);
           handler(id);
         }
       }
     });
   }
+
+  /**
+   * Submit the Product Form 
+   * If productId exists, pass the productInput with the productId 
+   * Otherwise, pass the productInput without the productId 
+   * @param {Callback} handler 
+   */
+  bindSubmitProduct = (handler) => {
+    this.productForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const productId = this.storage.getKey('productId');
+      const userId = this.storage.getKey('userId');
+      const convertedImage = await convertToBase64(
+        this.productForm['product-image'].files[0]
+      );
+
+      const productInput = {
+        userId: userId,
+        name: this.productForm['product-name'].value,
+        price: this.productForm['product-price'].value,
+        image: convertedImage,
+        description: this.productForm['product-description'].value,
+      };
+
+      if (productId) {
+        productInput.id = productId;
+      } else {
+        productInput.id = undefined;
+      }
+
+      handler(productInput);
+      hideElement(this.popupProductForm);
+
+      localStorage.removeItem('productId');
+    });
+  };
 }
