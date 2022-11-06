@@ -11,6 +11,14 @@ export default class ProductModel {
     return this.products;
   };
 
+  getProductsByUserId = async (userId) => {
+    const products = await this.getAllProducts();
+    const result = products.filter(
+      (product) => product.userId === userId.toString()
+    );
+    return result;
+  };
+
   createNewProduct = async (product) => {
     const result = await ApiService.create(API_URLS.PRODUCT, product);
     this.products.push(result);

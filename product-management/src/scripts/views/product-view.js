@@ -17,6 +17,7 @@ import { convertToBase64 } from '../helpers/files';
 export default class ProductView {
   constructor() {
     this.storage = new LocalStorage();
+    this.userId = this.storage.getKey('userId');
   }
 
   initialize = () => {
@@ -156,6 +157,14 @@ export default class ProductView {
   };
 
   /**
+   * Get the userId and pass to the controller to renders its products
+   * @param {Callback} handler 
+   */
+  bindRenderProducts = (handler) => {
+    handler(this.userId);
+  }
+
+  /**
    * Click the btn-edit-product on the product card to pass the id to product-controller
    * @param {Callback} handler
    */
@@ -174,22 +183,21 @@ export default class ProductView {
   }
 
   /**
-   * Submit the Product Form 
-   * If productId exists, pass the productInput with the productId 
-   * Otherwise, pass the productInput without the productId 
-   * @param {Callback} handler 
+   * Submit the Product Form
+   * If productId exists, pass the productInput with the productId
+   * Otherwise, pass the productInput without the productId
+   * @param {Callback} handler
    */
   bindSubmitProduct = (handler) => {
     this.productForm.addEventListener('submit', async (e) => {
       e.preventDefault();
       const productId = this.storage.getKey('productId');
-      const userId = this.storage.getKey('userId');
       const convertedImage = await convertToBase64(
         this.productForm['product-image'].files[0]
       );
 
       const productInput = {
-        userId: userId,
+        userId: this.userId,
         name: this.productForm['product-name'].value,
         price: this.productForm['product-price'].value,
         image: convertedImage,
