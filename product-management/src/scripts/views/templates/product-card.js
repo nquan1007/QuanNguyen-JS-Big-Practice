@@ -5,7 +5,7 @@ const buildProductTemplate = (product) => {
       <button class="btn-secondary btn-edit-product" data-id=${id}>
         <i class="fa-solid fa-pen-to-square"></i>
       </button>
-      <button class="btn-secondary btn-delete-product">
+      <button class="btn-secondary btn-delete-product" data-id=${id}>
         <i class="fa-solid fa-xmark"></i>
       </button>
       <img src="${image}" alt="item-iame" class="item-image" />

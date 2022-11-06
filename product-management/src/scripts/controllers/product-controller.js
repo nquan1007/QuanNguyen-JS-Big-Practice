@@ -9,11 +9,12 @@ export default class ProductController {
     this.view.bindRenderProducts(this.renderProducts);
     this.view.bindOpenEditProductForm(this.handleShowEditForm);
     this.view.bindSubmitProduct(this.handleSubmitProduct);
+    // this.view.bindDeleteProduct(this.handleDeleteProduct);
   };
 
   /**
    * Handle render products on UI by userId
-   * @param {Number} userId 
+   * @param {Number} userId
    */
   renderProducts = async (userId) => {
     try {
@@ -63,4 +64,12 @@ export default class ProductController {
       // Show error
     }
   };
+
+  // handleDeleteProduct = (id) => {
+  //   try {
+  //     console.log(id);
+  //   } catch (error) {
+  //     // Show error
+  //   }
+  // };
 }
