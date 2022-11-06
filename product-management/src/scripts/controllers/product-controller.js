@@ -11,7 +11,10 @@ export default class ProductController {
     this.view.bindSubmitProduct(this.handleSubmitProduct);
   };
 
-  // Handle render products on UI by userId
+  /**
+   * Handle render products on UI by userId
+   * @param {Number} userId 
+   */
   renderProducts = async (userId) => {
     try {
       this.view.showSpinner();
