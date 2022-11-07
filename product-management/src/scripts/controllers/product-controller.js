@@ -9,7 +9,7 @@ export default class ProductController {
     this.view.bindRenderProducts(this.renderProducts);
     this.view.bindOpenEditProductForm(this.handleShowEditForm);
     this.view.bindSubmitProduct(this.handleSubmitProduct);
-    // this.view.bindDeleteProduct(this.handleDeleteProduct);
+    this.view.bindDeleteProduct(this.handleDeleteProduct);
   };
 
   /**
@@ -65,11 +65,20 @@ export default class ProductController {
     }
   };
 
-  // handleDeleteProduct = (id) => {
-  //   try {
-  //     console.log(id);
-  //   } catch (error) {
-  //     // Show error
-  //   }
-  // };
+  /**
+   * 
+   * @param {Number} userId 
+   * @param {Number} id 
+   */
+  handleDeleteProduct = async (userId, id) => {
+    try {
+      console.log(id);
+      this.view.showSpinner();
+      await this.model.deleteProduct(id);
+      await this.renderProducts(userId);
+      this.view.hideSpinner();
+    } catch (error) {
+      // Show error
+    }
+  };
 }

@@ -232,6 +232,7 @@ export default class ProductView {
     });
   };
 
+  // Open Confirm Popup and save the productId to the localStorage
   bindOpenConfirmPopup = () => {
     this.productList.addEventListener('click', (e) => {
       e.preventDefault();
@@ -239,20 +240,24 @@ export default class ProductView {
       if (e.target.className.includes('btn-delete-product')) {
         showFlexElement(this.popupConfirm);
 
-        const id = e.target.dataset.id;
-        if (id) {
-          this.storage.setKey('productId', id);
-          // handler(id);
+        const productId = e.target.dataset.id;
+        if (productId) {
+          this.storage.setKey('productId', productId);
         }
       }
     });
   };
 
-  // bindDeleteProduct = (handler) => {
-  //   this.btnConfirmDeletion.addEventListener('click', (e) => {
-  //     e.preventDefault();
-  //     const id = this.storage.getKey('productId');
-  //     handler(id);
-  //   })
-  // }
+  /**
+   * Confirm the deletion to pass the userId and productId to the controller
+   * @param {Callback} handler 
+   */
+  bindDeleteProduct = (handler) => {
+    this.btnConfirmDeletion.addEventListener('click', (e) => {
+      e.preventDefault();
+      const productId = this.storage.getKey('productId');
+      handler(this.userId, productId);
+      hideElement(this.popupConfirm);
+    })
+  }
 }

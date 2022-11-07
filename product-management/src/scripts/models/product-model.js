@@ -31,4 +31,8 @@ export default class ProductModel {
   updateProduct = async (product) => {
     await ApiService.update(`${API_URLS.PRODUCT}/${product.id}`, product);
   };
+
+  deleteProduct = async (id) => {
+    await ApiService.delete(`${API_URLS.PRODUCT}/${id}`);
+  }
 }

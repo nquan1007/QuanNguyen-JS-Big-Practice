@@ -79,8 +79,8 @@
   text-align: center;
 }
 
-/* Default: Login Form is hidden */
-#loginForm {
+/* Default: Register Form is hidden */
+#registerForm {
   display: none;
 }
 
