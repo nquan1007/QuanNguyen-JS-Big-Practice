@@ -17,6 +17,8 @@ import { convertToBase64 } from '../helpers/files';
 export default class ProductView {
   constructor() {
     this.storage = new LocalStorage();
+    this.userId = this.storage.getKey('userId');
+    this.userName = this.storage.getKey('userName');
   }
 
   initialize = () => {
@@ -24,6 +26,7 @@ export default class ProductView {
     this.renderUserName();
     this.bindEventListeners();
     this.handleProductFormValidate();
+    this.bindOpenConfirmPopup();
   };
 
   queryElements = () => {
@@ -31,6 +34,7 @@ export default class ProductView {
     this.userBox = document.getElementById('userBox');
     this.userNameElement = document.querySelector('.user-name');
     this.btnLogout = document.getElementById('btnLogout');
+
     this.popupSpinner = document.getElementById('spinner');
     this.popupProductForm = document.getElementById('popupProductForm');
     this.btnClosePopup = document.getElementById('btnClosePopup');
@@ -42,12 +46,18 @@ export default class ProductView {
     this.productForm = document.getElementById('productForm');
     this.productTitle = document.getElementById('productTitle');
     this.productPreviewImage = document.querySelector('.preview-image');
-    // this.btnSubmit = document.getElementById('btnSubmit');
+
+    this.popupConfirm = document.getElementById('popupConfirm');
+    this.btnConfirmDeletion = this.popupConfirm.querySelector(
+      '.confirm-buttons .btn-delete'
+    );
+    this.btnCancelDeletion = this.popupConfirm.querySelector(
+      '.confirm-buttons .btn-cancel'
+    );
   };
 
   renderUserName = () => {
-    const userName = this.storage.getKey('userName');
-    this.userNameElement.innerHTML = userName;
+    this.userNameElement.innerHTML = this.userName;
   };
 
   bindEventListeners = () => {
@@ -68,6 +78,9 @@ export default class ProductView {
 
     // Click the Close Button in the Popup to close the Product Form
     this.btnClosePopup.addEventListener('click', this.clodeProductForm);
+
+    // Click the cancel in the confirm popup to close it 
+    this.btnCancelDeletion.addEventListener('click', this.hideConfirmPopup);
   };
 
   // Handle to logout to the Index Page
@@ -103,6 +116,12 @@ export default class ProductView {
   // Hide Spinner
   hideSpinner = () => {
     hideElement(this.popupSpinner);
+  };
+
+  // Hide the confirm popup
+  hideConfirmPopup = (e) => {
+    e.preventDefault();
+    hideElement(this.popupConfirm);
   };
 
   // Format validation in the Product Form
@@ -153,6 +172,14 @@ export default class ProductView {
   };
 
   /**
+   * Get the userId and pass to the controller to renders its products
+   * @param {Callback} handler
+   */
+  bindRenderProducts = (handler) => {
+    handler(this.userId);
+  };
+
+  /**
    * Click the btn-edit-product on the product card to pass the id to product-controller
    * @param {Callback} handler
    */
@@ -171,22 +198,21 @@ export default class ProductView {
   }
 
   /**
-   * Submit the Product Form 
-   * If productId exists, pass the productInput with the productId 
-   * Otherwise, pass the productInput without the productId 
-   * @param {Callback} handler 
+   * Submit the Product Form
+   * If productId exists, pass the productInput with the productId
+   * Otherwise, pass the productInput without the productId
+   * @param {Callback} handler
    */
   bindSubmitProduct = (handler) => {
     this.productForm.addEventListener('submit', async (e) => {
       e.preventDefault();
       const productId = this.storage.getKey('productId');
-      const userId = this.storage.getKey('userId');
       const convertedImage = await convertToBase64(
         this.productForm['product-image'].files[0]
       );
 
       const productInput = {
-        userId: userId,
+        userId: this.userId,
         name: this.productForm['product-name'].value,
         price: this.productForm['product-price'].value,
         image: convertedImage,
@@ -205,4 +231,28 @@ export default class ProductView {
       localStorage.removeItem('productId');
     });
   };
+
+  bindOpenConfirmPopup = () => {
+    this.productList.addEventListener('click', (e) => {
+      e.preventDefault();
+
+      if (e.target.className.includes('btn-delete-product')) {
+        showFlexElement(this.popupConfirm);
+
+        const id = e.target.dataset.id;
+        if (id) {
+          this.storage.setKey('productId', id);
+          // handler(id);
+        }
+      }
+    });
+  };
+
+  // bindDeleteProduct = (handler) => {
+  //   this.btnConfirmDeletion.addEventListener('click', (e) => {
+  //     e.preventDefault();
+  //     const id = this.storage.getKey('productId');
+  //     handler(id);
+  //   })
+  // }
 }

@@ -5,17 +5,23 @@ export default class ProductController {
   }
 
   initialize = () => {
-    this.renderProducts();
     this.view.initialize();
+    this.view.bindRenderProducts(this.renderProducts);
     this.view.bindOpenEditProductForm(this.handleShowEditForm);
     this.view.bindSubmitProduct(this.handleSubmitProduct);
+    // this.view.bindDeleteProduct(this.handleDeleteProduct);
   };
 
-  // Handle render products on UI
-  renderProducts = async () => {
+  /**
+   * Handle render products on UI by userId
+   * @param {Number} userId
+   */
+  renderProducts = async (userId) => {
     try {
-      const products = await this.model.getAllProducts();
+      this.view.showSpinner();
+      const products = await this.model.getProductsByUserId(userId);
       this.view.renderProductList(products);
+      this.view.hideSpinner();
     } catch (error) {
       // Show error
     }
@@ -52,10 +58,18 @@ export default class ProductController {
         await this.model.createNewProduct(product);
         // Show success message in view
       }
-      await this.renderProducts();
+      await this.renderProducts(product.userId);
       this.view.hideSpinner();
     } catch (error) {
       // Show error
     }
   };
+
+  // handleDeleteProduct = (id) => {
+  //   try {
+  //     console.log(id);
+  //   } catch (error) {
+  //     // Show error
+  //   }
+  // };
 }
