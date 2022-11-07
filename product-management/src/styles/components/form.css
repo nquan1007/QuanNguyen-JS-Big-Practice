@@ -54,7 +54,7 @@
   font-weight: var(--font-weight-subtitle);
   font-size: var(--font-size-tertiary);
   border: none;
-  border-radius: 5px;
+  border-radius: 10px;
   margin-top: 10px;
   letter-spacing: 1px;
   box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
@@ -67,7 +67,7 @@
   background-color: var(--bg-color-footer);
   color: var(--color-primary);
   border: none;
-  border-radius: 5px;
+  border-radius: 10px;
   margin-top: 10px;
   box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
   letter-spacing: 1px;
