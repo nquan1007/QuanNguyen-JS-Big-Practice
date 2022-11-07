@@ -1,3 +1,5 @@
+import { VALIDATION_REGEX } from '../constants/regex-value';
+import { MESSAGES } from '../constants/messages';
 import {
   validateValidFormat,
   validatePasswordMatch,
@@ -9,8 +11,6 @@ import {
   hideElement,
   showFlexElement,
 } from '../helpers/view-utilities';
-import { VALIDATION_REGEX } from '../constants/regex-value';
-import { MESSAGES } from '../constants/messages';
 
 export default class UserView {
   constructor() {}
@@ -31,10 +31,10 @@ export default class UserView {
   };
 
   bindEventListeners = () => {
-    // Click the Login button to show the Login form and hide the Register form
+    // Click the Login Button to show the Login form and hide the Register form
     this.btnLogin.addEventListener('click', this.showLoginForm);
 
-    // Click the Register button to show the Register form and hide the Login form
+    // Click the Register Button to show the Register form and hide the Login form
     this.btnRegister.addEventListener('click', this.showRegisterForm);
   };
 
@@ -52,12 +52,12 @@ export default class UserView {
     hideElement(this.registerForm);
   };
 
-  // Show the spinner
+  // Show the Spinner
   showSpinner = () => {
     showFlexElement(this.indexSpinner);
   };
 
-  // Hide the spinner
+  // Hide the Spinner
   hideSpinner = () => {
     hideElement(this.indexSpinner);
   };
@@ -70,8 +70,8 @@ export default class UserView {
 
   /**
    * Pass the element and errorMessage to show the error signals
-   * @param {DOM} element
-   * @param {String} errorMessage
+   * @param {DOM}
+   * @param {String}
    */
   showError = (element, errorMessage) => {
     const invalidMessage = getInvalidMessageElement(element);
@@ -79,7 +79,7 @@ export default class UserView {
     showInputError(element);
   };
 
-  // Handle to validate the register form
+  // Handle to validate the Register Form
   handleRegisterValidate = () => {
     validateValidFormat(
       this.registerForm['register-name'],
@@ -108,8 +108,8 @@ export default class UserView {
   };
 
   /**
-   * Handle the event Submit the Register Form
-   * @param {Callback} handler
+   * Handle submit the Register Form
+   * @param {Callback}
    */
   bindRegister = (handler) => {
     this.registerForm.addEventListener('submit', (e) => {
@@ -118,11 +118,12 @@ export default class UserView {
       const email = this.registerForm['register-email'].value;
       const password = this.registerForm['register-password'].value;
       const user = { name, email, password };
+      
       handler(user);
     });
   };
 
-  // Handle to validate the Login form
+  // Handle validate the Login Form
   handleLoginValidate = () => {
     validateValidFormat(
       this.loginForm['login-email'],
@@ -137,8 +138,8 @@ export default class UserView {
   };
 
   /**
-   * Handle the event Submit the Login Form
-   * @param {Callback} handler
+   * Handle submit the Login Form
+   * @param {Callback}
    */
   bindLogin = (handler) => {
     this.loginForm.addEventListener('submit', (e) => {
@@ -146,6 +147,7 @@ export default class UserView {
       const email = this.loginForm['login-email'].value;
       const password = this.loginForm['login-password'].value;
       const user = { email, password };
+
       handler(user);
     });
   };

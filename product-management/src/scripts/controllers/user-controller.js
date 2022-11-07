@@ -17,7 +17,7 @@ export default class UserController {
 
   /**
    * Handle registration
-   * @param {Object} user
+   * @param {Object}
    */
   handleRegister = async (user) => {
     this.view.showSpinner();
@@ -43,8 +43,8 @@ export default class UserController {
   };
 
   /**
-   * Handle Login
-   * @param {Object} user
+   * Handle login
+   * @param {Object}
    */
   handleLogin = async (user) => {
     this.view.showSpinner();

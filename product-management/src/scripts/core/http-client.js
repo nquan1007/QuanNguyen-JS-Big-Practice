@@ -1,9 +1,7 @@
 import axios from 'axios';
 import { API_URLS } from './app-config';
 
-/**
- * Create a new instance of axios
- */
+// Create a new instance of axios
 const axiosClient = axios.create({
   baseURL: API_URLS.ROOT_URL,
   headers: {
@@ -11,9 +9,7 @@ const axiosClient = axios.create({
   },
 });
 
-/**
- * Add a response interceptor
- */
+// Add a response interceptor
 axiosClient.interceptors.response.use(
   function (response) {
     // Transform data for all responses

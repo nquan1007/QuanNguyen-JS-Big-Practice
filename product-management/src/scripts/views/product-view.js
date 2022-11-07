@@ -1,6 +1,9 @@
 import { MESSAGES } from '../constants/messages';
 import { VALIDATION_REGEX } from '../constants/regex-value';
 import { redirect } from '../helpers/redirect';
+import { LocalStorage } from '../helpers/service';
+import { buildProductTemplate } from './templates/product-card';
+import { convertToBase64 } from '../helpers/files';
 import {
   validateImageFormat,
   validateValidFormat,
@@ -10,9 +13,6 @@ import {
   hideElement,
   showElement,
 } from '../helpers/view-utilities';
-import { LocalStorage } from '../helpers/service';
-import { buildProductTemplate } from './templates/product-card';
-import { convertToBase64 } from '../helpers/files';
 
 export default class ProductView {
   constructor() {
@@ -56,6 +56,7 @@ export default class ProductView {
     );
   };
 
+  // Render User Name on the User Box
   renderUserName = () => {
     this.userNameElement.innerHTML = this.userName;
   };
@@ -64,13 +65,13 @@ export default class ProductView {
     // Click the Logout Button to redirect to the Index Page
     this.btnLogout.addEventListener('click', this.logout);
 
-    // Click the Avatar Icon to show User Box
+    // Click the Avatar Icon to show the User Box
     this.avatarIcon.addEventListener('click', this.showUserBox);
 
-    // Click out of the User Box and Avatar Icon to hide User Box
+    // Click out of the User Box and Avatar Icon to hide the User Box
     document.addEventListener('mouseup', this.hideUserBox);
 
-    // Click the Add New Product Button to show the Add nNw form Popup
+    // Click the Add New Product Button to show the Add New Form Popup
     this.btnAddNew.addEventListener('click', (e) => {
       e.preventDefault();
       this.openProductForm();
@@ -79,7 +80,7 @@ export default class ProductView {
     // Click the Close Button in the Popup to close the Product Form
     this.btnClosePopup.addEventListener('click', this.clodeProductForm);
 
-    // Click the cancel in the confirm popup to close it 
+    // Click the cancel in the Confirm Popup to close it
     this.btnCancelDeletion.addEventListener('click', this.hideConfirmPopup);
   };
 
@@ -89,13 +90,13 @@ export default class ProductView {
     redirect('./index.html');
   };
 
-  // Show User Box
+  // Show the User Box
   showUserBox = (e) => {
     e.preventDefault();
     showFlexElement(this.userBox);
   };
 
-  // Hide User Box
+  // Hide the User Box
   hideUserBox = (e) => {
     if (!this.userBox.contains(e.target)) {
       hideElement(this.userBox);
@@ -108,17 +109,17 @@ export default class ProductView {
     hideElement(this.popupProductForm);
   };
 
-  // Show Spinner
+  // Show the Spinner
   showSpinner = () => {
     showFlexElement(this.popupSpinner);
   };
 
-  // Hide Spinner
+  // Hide the Spinner
   hideSpinner = () => {
     hideElement(this.popupSpinner);
   };
 
-  // Hide the confirm popup
+  // Hide the Confirm Popup
   hideConfirmPopup = (e) => {
     e.preventDefault();
     hideElement(this.popupConfirm);
@@ -136,8 +137,8 @@ export default class ProductView {
   };
 
   /**
-   * Pass the products to render it on the UI
-   * @param {Array} products
+   * Pass the products to render them on the UI
+   * @param {Array}
    */
   renderProductList = (products) => {
     let result = '';
@@ -151,9 +152,15 @@ export default class ProductView {
     this.productList.innerHTML = result;
   };
 
+  // Add new product to the Products UI
+  addNewProduct = (product) => {
+    const newProduct = buildProductTemplate(product);
+    this.productList.innerHTML += newProduct;
+  };
+
   /**
    * Handle to open the Product Form
-   * @param {Object} product
+   * @param {Object}
    */
   openProductForm = (product) => {
     showFlexElement(this.popupProductForm);
@@ -173,21 +180,21 @@ export default class ProductView {
 
   /**
    * Get the userId and pass to the controller to renders its products
-   * @param {Callback} handler
+   * @param {Callback}
    */
   bindRenderProducts = (handler) => {
     handler(this.userId);
   };
 
   /**
-   * Click the btn-edit-product on the product card to pass the id to product-controller
-   * @param {Callback} handler
+   * Click the Edit Product Button on the Product Card to pass the id to product-controller
+   * @param {Callback}
    */
   bindOpenEditProductForm(handler) {
     this.productList.addEventListener('click', (e) => {
       e.preventDefault();
 
-      if (e.target.className.includes('btn-edit-product')) {
+      if (e.target.className.indexOf('btn-edit-product') !== -1) {
         const id = e.target.dataset.id;
         if (id) {
           this.storage.setKey('productId', id);
@@ -201,7 +208,7 @@ export default class ProductView {
    * Submit the Product Form
    * If productId exists, pass the productInput with the productId
    * Otherwise, pass the productInput without the productId
-   * @param {Callback} handler
+   * @param {Callback}
    */
   bindSubmitProduct = (handler) => {
     this.productForm.addEventListener('submit', async (e) => {
@@ -237,7 +244,7 @@ export default class ProductView {
     this.productList.addEventListener('click', (e) => {
       e.preventDefault();
 
-      if (e.target.className.includes('btn-delete-product')) {
+      if (e.target.className.indexOf('btn-delete-product') !== -1) {
         showFlexElement(this.popupConfirm);
 
         const productId = e.target.dataset.id;
@@ -250,7 +257,7 @@ export default class ProductView {
 
   /**
    * Confirm the deletion to pass the userId and productId to the controller
-   * @param {Callback} handler 
+   * @param {Callback}
    */
   bindDeleteProduct = (handler) => {
     this.btnConfirmDeletion.addEventListener('click', (e) => {
@@ -258,6 +265,7 @@ export default class ProductView {
       const productId = this.storage.getKey('productId');
       handler(this.userId, productId);
       hideElement(this.popupConfirm);
-    })
-  }
+      localStorage.removeItem('productId');
+    });
+  };
 }
