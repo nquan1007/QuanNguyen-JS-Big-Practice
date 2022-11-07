@@ -79,7 +79,7 @@ export default class ProductView {
     });
 
     // Click the Close Button in the Popup to close the Product Form
-    this.btnClosePopup.addEventListener('click', this.clodeProductForm);
+    this.btnClosePopup.addEventListener('click', this.closeProductForm);
 
     // Click the cancel in the Confirm Popup to close it
     this.btnCancelDeletion.addEventListener('click', this.hideConfirmPopup);
@@ -105,8 +105,9 @@ export default class ProductView {
   };
 
   // Close the Product Form
-  clodeProductForm = (e) => {
+  closeProductForm = (e) => {
     e.preventDefault();
+    this.storage.remove('productId');
     hideElement(this.popupProductForm);
   };
 
@@ -123,6 +124,7 @@ export default class ProductView {
   // Hide the Confirm Popup
   hideConfirmPopup = (e) => {
     e.preventDefault();
+    this.storage.remove('productId');
     hideElement(this.popupConfirm);
   };
 
