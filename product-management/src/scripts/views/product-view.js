@@ -5,6 +5,7 @@ import { LocalStorage } from '../helpers/service';
 import { buildProductTemplate } from './templates/product-card';
 import { convertToBase64 } from '../helpers/files';
 import {
+  clearValidation,
   validateImageFormat,
   validateValidFormat,
 } from '../helpers/validation';
@@ -165,6 +166,7 @@ export default class ProductView {
   openProductForm = (product) => {
     showFlexElement(this.popupProductForm);
     if (product) {
+      clearValidation(this.productForm);
       this.productTitle.innerHTML = 'Edit Product';
       this.productForm['product-name'].value = product.name;
       this.productForm['product-price'].value = product.price;
@@ -172,6 +174,7 @@ export default class ProductView {
       this.productPreviewImage.src = product.image;
       this.productForm['product-description'].value = product.description;
     } else {
+      clearValidation(this.productForm);
       this.productTitle.innerHTML = 'Add a new product';
       hideElement(this.productPreviewImage);
       this.productForm.reset();
@@ -235,7 +238,7 @@ export default class ProductView {
       handler(productInput);
       hideElement(this.popupProductForm);
 
-      localStorage.removeItem('productId');
+      this.storage.remove('productId');
     });
   };
 
@@ -265,7 +268,7 @@ export default class ProductView {
       const productId = this.storage.getKey('productId');
       handler(this.userId, productId);
       hideElement(this.popupConfirm);
-      localStorage.removeItem('productId');
+      this.storage.remove('productId');
     });
   };
 }

@@ -84,11 +84,6 @@
   display: none;
 }
 
-/* Clear the padding left of the input image */
-/* .product-form input[product-image] {
-  padding: 3px;
-} */
-
 /* Product Form styles */
 .form-group textarea {
   box-sizing: border-box;

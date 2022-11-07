@@ -51,13 +51,14 @@ export default class ProductController {
       this.view.showSpinner();
       if (product.id) {
         await this.model.updateProduct(product);
-        await this.renderProducts(product.userId);
+        // await this.renderProducts(product.userId);
         // Show success message in view
       } else {
         await this.model.createNewProduct(product);
-        this.view.addNewProduct(product);
+        // this.view.addNewProduct(product);
         // Show success message in view
       }
+      await this.renderProducts(product.userId);
       this.view.hideSpinner();
     } catch (error) {
       // Show error

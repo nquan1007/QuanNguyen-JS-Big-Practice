@@ -55,7 +55,7 @@ export default class UserModel {
 
   /**
    * Pass the email to get the corresponding user's id
-   * @param {String} email
+   * @param {String}
    * @returns {Number}
    */
   getIdByEmail = async (email) => {

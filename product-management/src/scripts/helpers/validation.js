@@ -105,10 +105,31 @@ const validatePasswordMatch = (password, confirmpassword) => {
   });
 };
 
+/**
+ * Pass the form to clear the validation signals
+ * @param {DOM} form 
+ */
+const clearValidation = (form) => {
+  const inputs = form.querySelectorAll('input');
+  const messages = form.querySelectorAll('.form-message');
+  inputs.forEach((input) => {
+    if (input.classList.length !== 0) {
+      input.classList.remove('error');
+      input.classList.remove('success');
+    }
+  });
+  messages.forEach((message) => {
+    if (message.innerHTML !== '') {
+      message.innerHTML = '';
+    }
+  });
+};
+
 export {
   validateValidFormat,
   validateImageFormat,
   validatePasswordMatch,
   showInputError,
   getInvalidMessageElement,
+  clearValidation,
 };
