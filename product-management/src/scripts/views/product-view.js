@@ -285,7 +285,6 @@ export default class ProductView {
       if (e.target.className.indexOf('product-card') !== -1) {
         e.target.classList.toggle('product-selected');
         const productId = e.target.dataset.id;
-        console.log('id', productId);
         handler(productId);
       }
 
@@ -297,7 +296,6 @@ export default class ProductView {
       ) {
         e.target.parentElement.classList.toggle('product-selected');
         const productId = e.target.parentElement.dataset.id;
-        console.log('id', productId);
         handler(productId);
       }
     });
