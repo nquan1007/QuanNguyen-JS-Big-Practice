@@ -69,8 +69,10 @@ export default class ProductModel {
     } else {
       this.productIds.push(id);
     }
+    console.log(this.productIds);
   };
 
+  // Delete products having id in productIds array
   deleteSelectedProducts = async () => {
     if (this.productIds.length === 0) return;
     this.productIds.forEach(async (id) => {

@@ -253,6 +253,9 @@ export default class ProductView {
         }
       }
     });
+    this.btnDeleteSelected.addEventListener('click', (e) => {
+      showFlexElement(this.popupConfirm);
+    });
   };
 
   /**
@@ -263,21 +266,26 @@ export default class ProductView {
     this.btnConfirmDeletion.addEventListener('click', (e) => {
       e.preventDefault();
       const productId = this.storage.getKey('productId');
-      handler(this.userId, productId);
+      if (productId) {
+        handler(this.userId, productId);
+        this.storage.remove('productId');
+      } else {
+        handler(this.userId);
+      }
       hideElement(this.popupConfirm);
-      this.storage.remove('productId');
     });
   };
 
   /**
    * Click the product to add red border and send the productId to product-controller
-   * @param {Callback}  
+   * @param {Callback}
    */
   bindSelectProducts = (handler) => {
     this.productList.addEventListener('click', (e) => {
       if (e.target.className.indexOf('product-card') !== -1) {
         e.target.classList.toggle('product-selected');
         const productId = e.target.dataset.id;
+        console.log('id', productId);
         handler(productId);
       }
 
@@ -289,15 +297,9 @@ export default class ProductView {
       ) {
         e.target.parentElement.classList.toggle('product-selected');
         const productId = e.target.dataset.id;
+        console.log('id', productId);
         handler(productId);
       }
-    });
-  };
-
-  bindDeleteSelected = (handler) => {
-    this.btnDeleteSelected.addEventListener('click', (e) => {
-      e.preventDefault();
-      handler(this.userId);
     });
   };
 }
