@@ -27,12 +27,6 @@ footer, header, hgroup, menu, nav, section, img, label {
   display: block;
 }
 
-body {
-  line-height: 1;
-  font-family: var(--font-family-primary);
-  font-size: var(--font-size-primary);
-}
-
 ol, ul {
   list-style: none;
 }
@@ -50,19 +44,4 @@ q:before, q:after {
 table {
   border-collapse: collapse;
   border-spacing: 0;
-}
-
-button {
-  display: block;
-  cursor: pointer;
-  font-family: var(--font-family-primary);
-  transition: all 0.1s ease;
-}
-
-button:hover {
-  opacity: .8;
-}
-
-a {
-  text-decoration: none;
 }

@@ -54,7 +54,7 @@
   font-weight: var(--font-weight-subtitle);
   font-size: var(--font-size-tertiary);
   border: none;
-  border-radius: 5px;
+  border-radius: 10px;
   margin-top: 10px;
   letter-spacing: 1px;
   box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
@@ -67,7 +67,7 @@
   background-color: var(--bg-color-footer);
   color: var(--color-primary);
   border: none;
-  border-radius: 5px;
+  border-radius: 10px;
   margin-top: 10px;
   box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
   letter-spacing: 1px;
@@ -79,15 +79,10 @@
   text-align: center;
 }
 
-/* Default: Login Form is hidden */
-#loginForm {
+/* Default: Register Form is hidden */
+#registerForm {
   display: none;
 }
-
-/* Clear the padding left of the input image */
-/* .product-form input[product-image] {
-  padding: 3px;
-} */
 
 /* Product Form styles */
 .form-group textarea {

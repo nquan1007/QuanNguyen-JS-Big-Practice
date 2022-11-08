@@ -1,6 +1,11 @@
 {
   "users": [
-    
+    {
+      "name": "Quan Nguyen",
+      "email": "nquan1007@gmail.com",
+      "password": "quannguyen123",
+      "id": 1
+    }
   ],
   "products": [
     

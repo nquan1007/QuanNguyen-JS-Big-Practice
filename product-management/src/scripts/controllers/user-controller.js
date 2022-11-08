@@ -17,7 +17,7 @@ export default class UserController {
 
   /**
    * Handle registration
-   * @param {Object} user
+   * @param {Object}
    */
   handleRegister = async (user) => {
     this.view.showSpinner();
@@ -43,8 +43,8 @@ export default class UserController {
   };
 
   /**
-   * Handle Login
-   * @param {Object} user
+   * Handle login
+   * @param {Object}
    */
   handleLogin = async (user) => {
     this.view.showSpinner();
@@ -60,6 +60,7 @@ export default class UserController {
     } else {
       const password = await this.model.getPasswordByEmail(user.email);
       if (password !== user.password) {
+        this.view.hideSpinner();
         this.view.showError(
           this.view.loginForm['login-password'],
           MESSAGES.PASSWORD_INCORRECT

@@ -1,8 +1,7 @@
 const API_URLS = {
-  ROOT_URL: 'https://nquan-asnet-db.herokuapp.com',
+  ROOT_URL: 'https://database-sneakers-shop.herokuapp.com',
   USER: '/users',
-  PRODUCT: '/products'
+  PRODUCT: '/products',
 };
 
-// eslint-disable-next-line import/prefer-default-export
 export { API_URLS };

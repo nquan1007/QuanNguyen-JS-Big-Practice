@@ -1,6 +1,6 @@
 /**
- * Pass the image as Blob File type to convert to a string to save to the database
- * @param {File} file
+ * Pass the image as Blob File type to convert to a string
+ * @param {File}
  * @returns {String}
  */
 const convertToBase64 = (file) => {

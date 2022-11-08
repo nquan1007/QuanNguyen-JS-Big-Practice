@@ -35,11 +35,10 @@
   --color-error: red;
 
   /* background-color */
-  --bg-color-header: #0E2432;
+  --bg-color-header: #0e2432;
   --bg-color-footer: #1b1b1b;
-  --bg-btn-hover: #04AA6D;
   --bg-user-box: #1d4a66;
-  --bg-btn-add: rgb(74, 175, 74);
-  --bg-btn-delete: rgb(209, 87, 87);
-  --bg-btn-cancel: rgb(134, 128, 128);
+  --bg-btn-add: #4aaf4a;
+  --bg-btn-delete: #d15757;
+  --bg-btn-cancel: #868080;
 }

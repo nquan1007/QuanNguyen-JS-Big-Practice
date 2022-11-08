@@ -3,7 +3,7 @@ import { VALIDATION_REGEX } from '../constants/regex-value';
 
 /**
  * Check if the value of that element is blank or not
- * @param {DOM} element
+ * @param {DOM}
  * @returns {Boolean}
  */
 const isBlank = (element) => {
@@ -12,7 +12,7 @@ const isBlank = (element) => {
 
 /**
  * Pass the element to show the input error by adding the red border
- * @param {DOM} element
+ * @param {DOM}
  */
 const showInputError = (element) => {
   element.classList.add('error');
@@ -21,7 +21,7 @@ const showInputError = (element) => {
 
 /**
  * Pass the element to show the input success by adding the green border
- * @param {DOM} element
+ * @param {DOM}
  */
 const showInputSuccess = (element) => {
   element.classList.add('success');
@@ -29,8 +29,8 @@ const showInputSuccess = (element) => {
 };
 
 /**
- * Pass the element to get the invalid message element of the corresponding form group
- * @param {DOM} element
+ * Pass the element to get the invalid message element of the corresponding Form Group
+ * @param {DOM}
  * @returns {DOM}
  */
 const getInvalidMessageElement = (element) => {
@@ -39,13 +39,10 @@ const getInvalidMessageElement = (element) => {
 };
 
 /**
- * Check if the element value is blank or not
- * Pass the element with the regex value to validate whether it is valid or not
- * If the element value is invalid, the invalid message appears with the red border
- * If it is valid, its border is green and there is no invalid message anymore
- * @param {DOM} element
- * @param {String} regexValue
- * @param {String} message
+ * Validate valid format
+ * @param {DOM}
+ * @param {String}
+ * @param {String}
  */
 const validateValidFormat = (element, regexValue, message) => {
   const invalidMessage = getInvalidMessageElement(element);
@@ -56,12 +53,14 @@ const validateValidFormat = (element, regexValue, message) => {
       showInputError(element);
       return;
     }
+
     // Check if the element value is valid format or not
     if (!element.value.match(regexValue)) {
       invalidMessage.innerHTML = message;
       showInputError(element);
       return;
     }
+
     // Show the success information
     invalidMessage.innerHTML = '';
     showInputSuccess(element);
@@ -70,8 +69,7 @@ const validateValidFormat = (element, regexValue, message) => {
 
 /**
  * Check if the user uploads the correct image files format or not
- * If the image file format is invalid, the message appears
- * @param {DOM} element
+ * @param {DOM}
  */
 const validateImageFormat = (element) => {
   const invalidMessage = getInvalidMessageElement(element);
@@ -81,19 +79,21 @@ const validateImageFormat = (element) => {
       invalidMessage.innerHTML = MESSAGES.FIELD_REQUIRED;
       return;
     }
+
     // Check if the element value is valid format or not
     if (!element.value.match(VALIDATION_REGEX.FILE_FORMAT)) {
       invalidMessage.innerHTML = MESSAGES.FORMAT_INVALID;
       return;
     }
+
     invalidMessage.innerHTML = '';
   });
 };
 
 /**
  * Pass the password and confirm password elements to validate whether they match or not
- * @param {DOM} password
- * @param {DOM} confirmpassword
+ * @param {DOM}
+ * @param {DOM}
  */
 const validatePasswordMatch = (password, confirmpassword) => {
   const invalidMessage = getInvalidMessageElement(confirmpassword);
@@ -105,10 +105,31 @@ const validatePasswordMatch = (password, confirmpassword) => {
   });
 };
 
+/**
+ * Pass the form to clear the validation signals
+ * @param {DOM} form 
+ */
+const clearValidation = (form) => {
+  const inputs = form.querySelectorAll('input');
+  const messages = form.querySelectorAll('.form-message');
+  inputs.forEach((input) => {
+    if (input.classList.length !== 0) {
+      input.classList.remove('error');
+      input.classList.remove('success');
+    }
+  });
+  messages.forEach((message) => {
+    if (message.innerHTML !== '') {
+      message.innerHTML = '';
+    }
+  });
+};
+
 export {
   validateValidFormat,
   validateImageFormat,
   validatePasswordMatch,
   showInputError,
   getInvalidMessageElement,
+  clearValidation,
 };

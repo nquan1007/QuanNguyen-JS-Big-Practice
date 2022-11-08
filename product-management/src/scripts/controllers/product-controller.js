@@ -9,17 +9,17 @@ export default class ProductController {
     this.view.bindRenderProducts(this.renderProducts);
     this.view.bindOpenEditProductForm(this.handleShowEditForm);
     this.view.bindSubmitProduct(this.handleSubmitProduct);
-    // this.view.bindDeleteProduct(this.handleDeleteProduct);
+    this.view.bindDeleteProduct(this.handleDeleteProduct);
   };
 
   /**
    * Handle render products on UI by userId
-   * @param {Number} userId
+   * @param {Number}
    */
-  renderProducts = async (userId) => {
+  renderProducts = async (id) => {
     try {
       this.view.showSpinner();
-      const products = await this.model.getProductsByUserId(userId);
+      const products = await this.model.getProductsByUserId(id);
       this.view.renderProductList(products);
       this.view.hideSpinner();
     } catch (error) {
@@ -29,7 +29,7 @@ export default class ProductController {
 
   /**
    * Get the product id from view to show the data of the corresponding product on Product Form
-   * @param {Number} id
+   * @param {Number}
    */
   handleShowEditForm = async (id) => {
     try {
@@ -44,18 +44,18 @@ export default class ProductController {
 
   /**
    * Handle submit Product Form
-   * If the productId exists, execute editing product
-   * Otherwise, create a new product
-   * @param {Object} product
+   * @param {Object}
    */
   handleSubmitProduct = async (product) => {
     try {
       this.view.showSpinner();
       if (product.id) {
         await this.model.updateProduct(product);
+        // await this.renderProducts(product.userId);
         // Show success message in view
       } else {
         await this.model.createNewProduct(product);
+        // this.view.addNewProduct(product);
         // Show success message in view
       }
       await this.renderProducts(product.userId);
@@ -65,11 +65,19 @@ export default class ProductController {
     }
   };
 
-  // handleDeleteProduct = (id) => {
-  //   try {
-  //     console.log(id);
-  //   } catch (error) {
-  //     // Show error
-  //   }
-  // };
+  /**
+   * Handle delete product
+   * @param {Number}
+   * @param {Number}
+   */
+  handleDeleteProduct = async (userId, id) => {
+    try {
+      this.view.showSpinner();
+      await this.model.deleteProduct(id);
+      await this.renderProducts(userId);
+      this.view.hideSpinner();
+    } catch (error) {
+      // Show error
+    }
+  };
 }
