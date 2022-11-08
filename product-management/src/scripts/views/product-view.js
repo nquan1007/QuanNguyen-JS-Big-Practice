@@ -41,6 +41,7 @@ export default class ProductView {
     this.btnClosePopup = document.getElementById('btnClosePopup');
 
     this.btnAddNew = document.getElementById('btnAddNew');
+    this.btnDeleteSelected = document.getElementById('btnDeleteSelected');
 
     this.productList = document.getElementById('productList');
 
@@ -271,6 +272,34 @@ export default class ProductView {
       handler(this.userId, productId);
       hideElement(this.popupConfirm);
       this.storage.remove('productId');
+    });
+  };
+
+  bindSelectProducts = (handler) => {
+    this.productList.addEventListener('click', (e) => {
+      if (e.target.className.indexOf('product-card') !== -1) {
+        e.target.classList.toggle('product-selected');
+        const productId = e.target.dataset.id;
+        handler(productId);
+      }
+
+      if (
+        e.target.className.indexOf('item-image') !== -1 ||
+        e.target.className.indexOf('product-name') !== -1 ||
+        e.target.className.indexOf('product-price') !== -1 ||
+        e.target.className.indexOf('product-description') !== -1
+      ) {
+        e.target.parentElement.classList.toggle('product-selected');
+        const productId = e.target.dataset.id;
+        handler(productId);
+      }
+    });
+  };
+
+  bindDeleteSelected = (handler) => {
+    this.btnDeleteSelected.addEventListener('click', (e) => {
+      e.preventDefault();
+      handler(this.userId);
     });
   };
 }

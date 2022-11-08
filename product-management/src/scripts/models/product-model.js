@@ -4,6 +4,7 @@ import { API_URLS } from '../core/app-config';
 export default class ProductModel {
   constructor() {
     this.products = [];
+    this.productIds = [];
   }
 
   // Get all products
@@ -59,7 +60,7 @@ export default class ProductModel {
       (product) => result.id === product.id
     );
     this.products[index] = result;
-
+    
     return result;
   };
 
@@ -70,5 +71,18 @@ export default class ProductModel {
   deleteProduct = async (id) => {
     await ApiService.delete(`${API_URLS.PRODUCT}/${id}`);
     this.products = this.products.filter((product) => product.id !== id);
+  };
+
+  /**
+   * Pass the id to add or remove it in the productIds array
+   * @param {Number}
+   */
+  getSelectedProducts = (id) => {
+    const index = this.productIds.indexOf(id);
+    if (index !== -1) {
+      this.productIds.splice(index, 1);
+    } else {
+      this.productIds.push(id);
+    }
   };
 }

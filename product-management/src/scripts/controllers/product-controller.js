@@ -10,6 +10,8 @@ export default class ProductController {
     this.view.bindOpenEditProductForm(this.handleShowEditForm);
     this.view.bindSubmitProduct(this.handleSubmitProduct);
     this.view.bindDeleteProduct(this.handleDeleteProduct);
+    this.view.bindSelectProducts(this.handleSelectProducts);
+    this.view.bindDeleteSelected(this.handleDeleteSelected);
   };
 
   /**
@@ -79,5 +81,13 @@ export default class ProductController {
     } catch (error) {
       // Show error
     }
+  };
+
+  /**
+   * Get the productId from view to save to an array in product-model
+   * @param {Number}
+   */
+  handleSelectProducts = (id) => {
+    this.model.getSelectedProducts(id);
   };
 }
