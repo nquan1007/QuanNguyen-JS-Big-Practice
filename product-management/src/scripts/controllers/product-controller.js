@@ -18,10 +18,10 @@ export default class ProductController {
    * Handle render products on UI by userId
    * @param {Number}
    */
-  renderProducts = async (id) => {
+  renderProducts = async (userId) => {
     try {
       this.view.showSpinner();
-      const products = await this.model.getProductsByUserId(id);
+      const products = await this.model.getProductsByUserId(userId);
       this.view.renderProductList(products);
       this.view.hideSpinner();
     } catch (error) {
@@ -53,11 +53,9 @@ export default class ProductController {
       this.view.showSpinner();
       if (product.id) {
         await this.model.updateProduct(product);
-        // await this.renderProducts(product.userId);
         // Show success message in view
       } else {
         await this.model.createNewProduct(product);
-        // this.view.addNewProduct(product);
         // Show success message in view
       }
       await this.renderProducts(product.userId);
@@ -89,5 +87,16 @@ export default class ProductController {
    */
   handleSelectProducts = (id) => {
     this.model.getSelectedProducts(id);
+  };
+
+  handleDeleteSelected = async (userId) => {
+    try {
+      this.view.showSpinner();
+      await this.model.deleteSelectedProducts();
+      await this.renderProducts(userId);
+      this.view.hideSpinner();
+    } catch (error) {
+      // Show error
+    }
   };
 }

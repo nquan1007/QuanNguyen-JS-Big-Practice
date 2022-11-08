@@ -156,12 +156,6 @@ export default class ProductView {
     this.productList.innerHTML = result;
   };
 
-  // Add new product to the Products UI
-  addNewProduct = (product) => {
-    const newProduct = buildProductTemplate(product);
-    this.productList.innerHTML += newProduct;
-  };
-
   /**
    * Handle to open the Product Form
    * @param {Object}
@@ -275,6 +269,10 @@ export default class ProductView {
     });
   };
 
+  /**
+   * Click the product to add red border and send the productId to product-controller
+   * @param {Callback}  
+   */
   bindSelectProducts = (handler) => {
     this.productList.addEventListener('click', (e) => {
       if (e.target.className.indexOf('product-card') !== -1) {
