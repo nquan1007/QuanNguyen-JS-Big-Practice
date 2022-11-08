@@ -296,7 +296,7 @@ export default class ProductView {
         e.target.className.indexOf('product-description') !== -1
       ) {
         e.target.parentElement.classList.toggle('product-selected');
-        const productId = e.target.dataset.id;
+        const productId = e.target.parentElement.dataset.id;
         console.log('id', productId);
         handler(productId);
       }
