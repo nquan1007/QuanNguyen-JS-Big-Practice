@@ -11,7 +11,7 @@ export default class ProductController {
     this.view.bindSubmitProduct(this.handleSubmitProduct);
     this.view.bindDeleteProduct(this.handleDeleteProduct);
     this.view.bindSelectProducts(this.handleSelectProducts);
-    this.view.bindDeleteSelected(this.handleDeleteSelected);
+    // this.view.bindDeleteSelected(this.handleDeleteSelected);
   };
 
   /**
@@ -87,16 +87,5 @@ export default class ProductController {
    */
   handleSelectProducts = (id) => {
     this.model.getSelectedProducts(id);
-  };
-
-  handleDeleteSelected = async (userId) => {
-    try {
-      this.view.showSpinner();
-      await this.model.deleteSelectedProducts();
-      await this.renderProducts(userId);
-      this.view.hideSpinner();
-    } catch (error) {
-      // Show error
-    }
   };
 }
