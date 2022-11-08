@@ -60,6 +60,7 @@ export default class UserController {
     } else {
       const password = await this.model.getPasswordByEmail(user.email);
       if (password !== user.password) {
+        this.view.hideSpinner();
         this.view.showError(
           this.view.loginForm['login-password'],
           MESSAGES.PASSWORD_INCORRECT
