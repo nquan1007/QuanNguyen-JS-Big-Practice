@@ -293,4 +293,11 @@ export default class ProductView {
       }
     });
   };
+
+  bindDeleteSelected = (handler) => {
+    this.btnDeleteSelected.addEventListener('click', (e) => {
+      e.preventDefault();
+      handler(this.userId);
+    });
+  };
 }
