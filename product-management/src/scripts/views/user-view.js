@@ -5,6 +5,7 @@ import {
   validatePasswordMatch,
   getInvalidMessageElement,
   showInputError,
+  clearValidation,
 } from '../helpers/validation';
 import {
   showElement,
@@ -43,6 +44,7 @@ export default class UserView {
     e.preventDefault();
     showElement(this.registerForm);
     hideElement(this.loginForm);
+    clearValidation(this.registerForm);
   };
 
   // Show Login Form
@@ -50,6 +52,7 @@ export default class UserView {
     e.preventDefault();
     showElement(this.loginForm);
     hideElement(this.registerForm);
+    clearValidation(this.loginForm);
   };
 
   // Show the Spinner
@@ -62,10 +65,10 @@ export default class UserView {
     hideElement(this.indexSpinner);
   };
 
-  // Reset the value and green border of the input
-  resetInputValue = (element) => {
-    element.value = '';
-    element.classList.remove('success');
+  // Reset the value and green border of the password input
+  resetPassword = () => {
+    this.loginForm['login-password'].value = '';
+    this.loginForm['login-password'].classList.remove('success');
   };
 
   /**
@@ -118,7 +121,7 @@ export default class UserView {
       const email = this.registerForm['register-email'].value;
       const password = this.registerForm['register-password'].value;
       const user = { name, email, password };
-      
+
       handler(user);
     });
   };
