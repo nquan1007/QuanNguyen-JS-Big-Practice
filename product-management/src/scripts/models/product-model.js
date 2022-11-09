@@ -71,12 +71,18 @@ export default class ProductModel {
     }
   };
 
-  // Delete products having id in productIds array
-  deleteSelectedProducts = async () => {
+  /**
+   * Delete products having id in productIds array
+   * @param {Number}
+   */
+  deleteSelectedProducts = async (userId) => {
     if (this.productIds.length === 0) return;
-    this.productIds.forEach(async (id) => {
-      await this.deleteProduct(id);
+
+    this.productIds.forEach((id) => {
+      this.deleteProduct(id);
     });
+
+    this.getProductsByUserId(userId);
     this.productIds = [];
   };
 }

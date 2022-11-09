@@ -75,7 +75,7 @@ export default class ProductController {
       if (id) {
         await this.model.deleteProduct(id);
       } else {
-        await this.model.deleteSelectedProducts();
+        await this.model.deleteSelectedProducts(userId);
       }
       await this.renderProducts(userId);
       this.view.hideSpinner();
