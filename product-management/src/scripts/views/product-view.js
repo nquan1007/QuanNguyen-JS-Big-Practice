@@ -6,6 +6,7 @@ import { buildProductTemplate } from './templates/product-card';
 import { convertToBase64 } from '../helpers/files';
 import {
   clearValidation,
+  isFormValid,
   validateImageFormat,
   validateValidFormat,
 } from '../helpers/validation';
@@ -213,6 +214,8 @@ export default class ProductView {
   bindSubmitProduct = (handler) => {
     this.productForm.addEventListener('submit', async (e) => {
       e.preventDefault();
+      if (!isFormValid(this.productForm)) return;
+
       const productId = this.storage.getKey('productId');
       const convertedImage = await convertToBase64(
         this.productForm['product-image'].files[0]

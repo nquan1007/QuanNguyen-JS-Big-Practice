@@ -6,6 +6,7 @@ import {
   getInvalidMessageElement,
   showInputError,
   clearValidation,
+  isFormValid,
 } from '../helpers/validation';
 import {
   showElement,
@@ -117,6 +118,8 @@ export default class UserView {
   bindRegister = (handler) => {
     this.registerForm.addEventListener('submit', (e) => {
       e.preventDefault();
+      if (!isFormValid(this.registerForm)) return;
+
       const name = this.registerForm['register-name'].value;
       const email = this.registerForm['register-email'].value;
       const password = this.registerForm['register-password'].value;
@@ -147,6 +150,8 @@ export default class UserView {
   bindLogin = (handler) => {
     this.loginForm.addEventListener('submit', (e) => {
       e.preventDefault();
+      if (!isFormValid(this.loginForm)) return;
+      
       const email = this.loginForm['login-email'].value;
       const password = this.loginForm['login-password'].value;
       const user = { email, password };
