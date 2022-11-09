@@ -107,7 +107,7 @@ const validatePasswordMatch = (password, confirmpassword) => {
 
 /**
  * Pass the form to clear the validation signals
- * @param {DOM} form 
+ * @param {DOM} form
  */
 const clearValidation = (form) => {
   const inputs = form.querySelectorAll('input');
@@ -125,6 +125,26 @@ const clearValidation = (form) => {
   });
 };
 
+/**
+ * Validate the form before submit it
+ * @param {DOM}
+ * @returns {Boolean}
+ */
+const isFormValid = (form) => {
+  const errorMessages = form.querySelectorAll('.form-message');
+  const inputs = form.querySelectorAll('input');
+
+  for (let message of errorMessages) {
+    if (message.innerHTML !== '') return false;
+  }
+
+  for (let input of inputs) {
+    if (input.value === '') return false;
+  }
+
+  return true;
+};
+
 export {
   validateValidFormat,
   validateImageFormat,
@@ -132,4 +152,5 @@ export {
   showInputError,
   getInvalidMessageElement,
   clearValidation,
+  isFormValid,
 };

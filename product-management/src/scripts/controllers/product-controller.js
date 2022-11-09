@@ -10,16 +10,17 @@ export default class ProductController {
     this.view.bindOpenEditProductForm(this.handleShowEditForm);
     this.view.bindSubmitProduct(this.handleSubmitProduct);
     this.view.bindDeleteProduct(this.handleDeleteProduct);
+    this.view.bindSelectProducts(this.handleSelectProducts);
   };
 
   /**
    * Handle render products on UI by userId
    * @param {Number}
    */
-  renderProducts = async (id) => {
+  renderProducts = async (userId) => {
     try {
       this.view.showSpinner();
-      const products = await this.model.getProductsByUserId(id);
+      const products = await this.model.getProductsByUserId(userId);
       this.view.renderProductList(products);
       this.view.hideSpinner();
     } catch (error) {
@@ -51,11 +52,9 @@ export default class ProductController {
       this.view.showSpinner();
       if (product.id) {
         await this.model.updateProduct(product);
-        // await this.renderProducts(product.userId);
         // Show success message in view
       } else {
         await this.model.createNewProduct(product);
-        // this.view.addNewProduct(product);
         // Show success message in view
       }
       await this.renderProducts(product.userId);
@@ -73,11 +72,23 @@ export default class ProductController {
   handleDeleteProduct = async (userId, id) => {
     try {
       this.view.showSpinner();
-      await this.model.deleteProduct(id);
+      if (id) {
+        await this.model.deleteProduct(id);
+      } else {
+        await this.model.deleteSelectedProducts(userId);
+      }
       await this.renderProducts(userId);
       this.view.hideSpinner();
     } catch (error) {
       // Show error
     }
+  };
+
+  /**
+   * Get the productId from view to save to an array in product-model
+   * @param {Number}
+   */
+  handleSelectProducts = (id) => {
+    this.model.getSelectedProducts(id);
   };
 }

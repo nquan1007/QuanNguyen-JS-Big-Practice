@@ -5,6 +5,8 @@ import {
   validatePasswordMatch,
   getInvalidMessageElement,
   showInputError,
+  clearValidation,
+  isFormValid,
 } from '../helpers/validation';
 import {
   showElement,
@@ -43,6 +45,7 @@ export default class UserView {
     e.preventDefault();
     showElement(this.registerForm);
     hideElement(this.loginForm);
+    clearValidation(this.registerForm);
   };
 
   // Show Login Form
@@ -50,6 +53,7 @@ export default class UserView {
     e.preventDefault();
     showElement(this.loginForm);
     hideElement(this.registerForm);
+    clearValidation(this.loginForm);
   };
 
   // Show the Spinner
@@ -62,10 +66,10 @@ export default class UserView {
     hideElement(this.indexSpinner);
   };
 
-  // Reset the value and green border of the input
-  resetInputValue = (element) => {
-    element.value = '';
-    element.classList.remove('success');
+  // Reset the value and green border of the password input
+  resetPassword = () => {
+    this.loginForm['login-password'].value = '';
+    this.loginForm['login-password'].classList.remove('success');
   };
 
   /**
@@ -114,11 +118,13 @@ export default class UserView {
   bindRegister = (handler) => {
     this.registerForm.addEventListener('submit', (e) => {
       e.preventDefault();
+      if (!isFormValid(this.registerForm)) return;
+
       const name = this.registerForm['register-name'].value;
       const email = this.registerForm['register-email'].value;
       const password = this.registerForm['register-password'].value;
       const user = { name, email, password };
-      
+
       handler(user);
     });
   };
@@ -144,6 +150,8 @@ export default class UserView {
   bindLogin = (handler) => {
     this.loginForm.addEventListener('submit', (e) => {
       e.preventDefault();
+      if (!isFormValid(this.loginForm)) return;
+      
       const email = this.loginForm['login-email'].value;
       const password = this.loginForm['login-password'].value;
       const user = { email, password };

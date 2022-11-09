@@ -6,6 +6,7 @@ import { buildProductTemplate } from './templates/product-card';
 import { convertToBase64 } from '../helpers/files';
 import {
   clearValidation,
+  isFormValid,
   validateImageFormat,
   validateValidFormat,
 } from '../helpers/validation';
@@ -41,6 +42,7 @@ export default class ProductView {
     this.btnClosePopup = document.getElementById('btnClosePopup');
 
     this.btnAddNew = document.getElementById('btnAddNew');
+    this.btnDeleteSelected = document.getElementById('btnDeleteSelected');
 
     this.productList = document.getElementById('productList');
 
@@ -155,12 +157,6 @@ export default class ProductView {
     this.productList.innerHTML = result;
   };
 
-  // Add new product to the Products UI
-  addNewProduct = (product) => {
-    const newProduct = buildProductTemplate(product);
-    this.productList.innerHTML += newProduct;
-  };
-
   /**
    * Handle to open the Product Form
    * @param {Object}
@@ -218,6 +214,8 @@ export default class ProductView {
   bindSubmitProduct = (handler) => {
     this.productForm.addEventListener('submit', async (e) => {
       e.preventDefault();
+      if (!isFormValid(this.productForm)) return;
+
       const productId = this.storage.getKey('productId');
       const convertedImage = await convertToBase64(
         this.productForm['product-image'].files[0]
@@ -258,6 +256,9 @@ export default class ProductView {
         }
       }
     });
+    this.btnDeleteSelected.addEventListener('click', (e) => {
+      showFlexElement(this.popupConfirm);
+    });
   };
 
   /**
@@ -268,9 +269,38 @@ export default class ProductView {
     this.btnConfirmDeletion.addEventListener('click', (e) => {
       e.preventDefault();
       const productId = this.storage.getKey('productId');
-      handler(this.userId, productId);
+      if (productId) {
+        handler(this.userId, productId);
+        this.storage.remove('productId');
+      } else {
+        handler(this.userId);
+      }
       hideElement(this.popupConfirm);
-      this.storage.remove('productId');
+    });
+  };
+
+  /**
+   * Click the product to add red border and send the productId to product-controller
+   * @param {Callback}
+   */
+  bindSelectProducts = (handler) => {
+    this.productList.addEventListener('click', (e) => {
+      if (e.target.className.indexOf('product-card') !== -1) {
+        e.target.classList.toggle('product-selected');
+        const productId = e.target.dataset.id;
+        handler(productId);
+      }
+
+      if (
+        e.target.className.indexOf('item-image') !== -1 ||
+        e.target.className.indexOf('product-name') !== -1 ||
+        e.target.className.indexOf('product-price') !== -1 ||
+        e.target.className.indexOf('product-description') !== -1
+      ) {
+        e.target.parentElement.classList.toggle('product-selected');
+        const productId = e.target.parentElement.dataset.id;
+        handler(productId);
+      }
     });
   };
 }

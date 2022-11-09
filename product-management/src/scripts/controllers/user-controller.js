@@ -21,7 +21,9 @@ export default class UserController {
    */
   handleRegister = async (user) => {
     this.view.showSpinner();
+
     const hasUser = await this.model.hasUser(user.email);
+
     if (hasUser) {
       this.view.hideSpinner();
       this.view.showError(
@@ -48,14 +50,16 @@ export default class UserController {
    */
   handleLogin = async (user) => {
     this.view.showSpinner();
+
     const hasUser = await this.model.hasUser(user.email);
+
     if (!hasUser) {
       this.view.hideSpinner();
       this.view.showError(
         this.view.loginForm['login-email'],
         MESSAGES.EMAIL_NON_EXISTED
       );
-      this.view.resetInputValue(this.view.loginForm['login-password']);
+      this.view.resetPassword();
       return;
     } else {
       const password = await this.model.getPasswordByEmail(user.email);
@@ -65,7 +69,7 @@ export default class UserController {
           this.view.loginForm['login-password'],
           MESSAGES.PASSWORD_INCORRECT
         );
-        this.view.resetInputValue(this.view.loginForm['login-password']);
+        this.view.resetPassword();
         return;
       }
     }

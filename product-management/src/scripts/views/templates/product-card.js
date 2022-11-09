@@ -9,11 +9,9 @@ const buildProductTemplate = (product) => {
         <i class="fa-solid fa-xmark"></i>
       </button>
       <img src="${image}" alt="item-iame" class="item-image" />
-      <div class="product-info">
-        <p class="product-name text-secondary">${name}</p>
-        <p class="product-price text-price">${price}<span> VND</span></p>
-        <p class="product-description text-primary">${description}</p>
-      </div>
+      <p class="product-name text-secondary">${name}</p>
+      <p class="product-price text-price">${price}<span> VND</span></p>
+      <p class="product-description text-primary">${description}</p>
     </article>`;
   return productCard;
 };

@@ -3,13 +3,12 @@ import { API_URLS } from '../core/app-config';
 
 export default class ProductModel {
   constructor() {
-    this.products = [];
+    this.productIds = [];
   }
 
   // Get all products
   getAllProducts = async () => {
-    this.products = await ApiService.getList(API_URLS.PRODUCT);
-    return this.products;
+    return await ApiService.getList(API_URLS.PRODUCT);
   };
 
   /**
@@ -30,8 +29,7 @@ export default class ProductModel {
    * @param {Object}
    */
   createNewProduct = async (product) => {
-    const result = await ApiService.create(API_URLS.PRODUCT, product);
-    this.products.push(result);
+    await ApiService.create(API_URLS.PRODUCT, product);
   };
 
   /**
@@ -49,18 +47,7 @@ export default class ProductModel {
    * @returns {Object}
    */
   updateProduct = async (product) => {
-    const result = await ApiService.update(
-      `${API_URLS.PRODUCT}/${product.id}`,
-      product
-    );
-
-    // Get the index of that product to replace with a new one
-    const index = this.products.findIndex(
-      (product) => result.id === product.id
-    );
-    this.products[index] = result;
-
-    return result;
+    await ApiService.update(`${API_URLS.PRODUCT}/${product.id}`, product);
   };
 
   /**
@@ -69,6 +56,33 @@ export default class ProductModel {
    */
   deleteProduct = async (id) => {
     await ApiService.delete(`${API_URLS.PRODUCT}/${id}`);
-    this.products = this.products.filter((product) => product.id !== id);
+  };
+
+  /**
+   * Pass the id to add or remove it in the productIds array
+   * @param {Number}
+   */
+  getSelectedProducts = (id) => {
+    const index = this.productIds.indexOf(id);
+    if (index !== -1) {
+      this.productIds.splice(index, 1);
+    } else {
+      this.productIds.push(id);
+    }
+  };
+
+  /**
+   * Delete products having id in productIds array
+   * @param {Number}
+   */
+  deleteSelectedProducts = async (userId) => {
+    if (this.productIds.length === 0) return;
+
+    this.productIds.forEach((id) => {
+      this.deleteProduct(id);
+    });
+
+    this.getProductsByUserId(userId);
+    this.productIds = [];
   };
 }
