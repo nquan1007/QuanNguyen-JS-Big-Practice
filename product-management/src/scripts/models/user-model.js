@@ -14,7 +14,7 @@ export default class UserModel {
 
   /**
    * Check if the email is existed in the database or not
-   * @param {String}
+   * @param {String} email
    * @returns {Boolean}
    */
   hasUser = async (email) => {
@@ -25,7 +25,7 @@ export default class UserModel {
 
   /**
    * Create new user
-   * @param {Object}
+   * @param {Object} user
    */
   createNewUser = async (user) => {
     await ApiService.create(API_URLS.USER, user);
@@ -33,7 +33,7 @@ export default class UserModel {
 
   /**
    * Pass the email to get the corresponding password in the database
-   * @param {String}
+   * @param {String} email
    * @returns {String}
    */
   getPasswordByEmail = async (email) => {
@@ -44,7 +44,7 @@ export default class UserModel {
 
   /**
    * Pass the email to get the corresponding user's name
-   * @param {String}
+   * @param {String} email
    * @returns {String}
    */
   getNameByEmail = async (email) => {
@@ -55,7 +55,7 @@ export default class UserModel {
 
   /**
    * Pass the email to get the corresponding user's id
-   * @param {String}
+   * @param {String} email
    * @returns {Number}
    */
   getIdByEmail = async (email) => {

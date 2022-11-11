@@ -74,8 +74,8 @@ export default class UserView {
 
   /**
    * Pass the element and errorMessage to show the error signals
-   * @param {DOM}
-   * @param {String}
+   * @param {DOM} element
+   * @param {String} errorMessage
    */
   showError = (element, errorMessage) => {
     const invalidMessage = getInvalidMessageElement(element);
@@ -113,7 +113,7 @@ export default class UserView {
 
   /**
    * Handle submit the Register Form
-   * @param {Callback}
+   * @param {Callback} handler
    */
   bindRegister = (handler) => {
     this.registerForm.addEventListener('submit', (e) => {
@@ -145,7 +145,7 @@ export default class UserView {
 
   /**
    * Handle submit the Login Form
-   * @param {Callback}
+   * @param {Callback} handler
    */
   bindLogin = (handler) => {
     this.loginForm.addEventListener('submit', (e) => {
