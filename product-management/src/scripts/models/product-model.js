@@ -10,7 +10,7 @@ export default class ProductModel {
 
   /**
    * Get the userId's products
-   * @param {Number}
+   * @param {Number} userId
    * @returns {Array}
    */
   getProductsByUserId = async (userId) => {
@@ -23,7 +23,7 @@ export default class ProductModel {
 
   /**
    * Create a new product
-   * @param {Object}
+   * @param {Object} product
    */
   createNewProduct = async (product) => {
     await ApiService.create(API_URLS.PRODUCT, product);
@@ -31,7 +31,7 @@ export default class ProductModel {
 
   /**
    * Get the product by its id
-   * @param {Number}
+   * @param {Number} id
    * @returns {Object}
    */
   getProductById = async (id) => {
@@ -40,7 +40,7 @@ export default class ProductModel {
 
   /**
    * Update product
-   * @param {Object}
+   * @param {Object} product
    * @returns {Object}
    */
   updateProduct = async (product) => {
@@ -49,7 +49,7 @@ export default class ProductModel {
 
   /**
    * Delete product
-   * @param {Number}
+   * @param {Number} id
    */
   deleteProduct = async (id) => {
     await ApiService.delete(`${API_URLS.PRODUCT}/${id}`);
@@ -57,7 +57,9 @@ export default class ProductModel {
 
   /**
    * Delete products having id in productIds array
-   * @param {Number}
+   * @param {Number} userId 
+   * @param {Array} ids 
+   * @returns 
    */
   deleteSelectedProducts = async (userId, ids) => {
     if (ids.length === 0) return;

@@ -14,7 +14,7 @@ export default class ProductController {
 
   /**
    * Handle render products on UI by userId
-   * @param {Number}
+   * @param {Number} userId
    */
   renderProducts = async (userId) => {
     try {
@@ -29,7 +29,7 @@ export default class ProductController {
 
   /**
    * Get the product id from view to show the data of the corresponding product on Product Form
-   * @param {Number}
+   * @param {Number} id
    */
   handleShowEditForm = async (id) => {
     try {
@@ -44,7 +44,7 @@ export default class ProductController {
 
   /**
    * Handle submit Product Form
-   * @param {Object}
+   * @param {Object} product
    */
   handleSubmitProduct = async (product) => {
     try {
@@ -65,8 +65,9 @@ export default class ProductController {
 
   /**
    * Handle delete product
-   * @param {Number}
-   * @param {Number}
+   * @param {Number} userId 
+   * @param {Array} productIds 
+   * @param {Number} id 
    */
   handleDeleteProduct = async (userId, productIds, id) => {
     try {

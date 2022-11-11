@@ -145,7 +145,7 @@ export default class ProductView {
 
   /**
    * Pass the products to render them on the UI
-   * @param {Array}
+   * @param {Array} products
    */
   renderProductList = (products) => {
     let result = '';
@@ -161,7 +161,7 @@ export default class ProductView {
 
   /**
    * Handle to open the Product Form
-   * @param {Object}
+   * @param {Object} product
    */
   openProductForm = (product) => {
     showFlexElement(this.popupProductForm);
@@ -183,7 +183,7 @@ export default class ProductView {
 
   /**
    * Get the userId and pass to the controller to renders its products
-   * @param {Callback}
+   * @param {Callback} handler
    */
   bindRenderProducts = (handler) => {
     handler(this.userId);
@@ -191,7 +191,7 @@ export default class ProductView {
 
   /**
    * Click the Edit Product Button on the Product Card to pass the id to product-controller
-   * @param {Callback}
+   * @param {Callback} handler
    */
   bindOpenEditProductForm(handler) {
     this.productList.addEventListener('click', (e) => {
@@ -211,7 +211,7 @@ export default class ProductView {
    * Submit the Product Form
    * If productId exists, pass the productInput with the productId
    * Otherwise, pass the productInput without the productId
-   * @param {Callback}
+   * @param {Callback} handler
    */
   bindSubmitProduct = (handler) => {
     this.productForm.addEventListener('submit', async (e) => {
@@ -278,7 +278,7 @@ export default class ProductView {
 
   /**
    * Click the product to add red border and send the productId to product-controller
-   * @param {Callback}
+   * @param {Callback} handler
    */
   bindSelectProducts = () => {
     this.productList.addEventListener('click', (e) => {
@@ -304,7 +304,7 @@ export default class ProductView {
 
   /**
    * Confirm the deletion to pass the userId and productId to the controller
-   * @param {Callback}
+   * @param {Callback} handler
    */
   bindDeleteProduct = (handler) => {
     this.btnConfirmDeletion.addEventListener('click', (e) => {
