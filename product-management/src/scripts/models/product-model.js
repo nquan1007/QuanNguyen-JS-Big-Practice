@@ -2,10 +2,7 @@ import { ApiService } from '../core/api-service';
 import { API_URLS } from '../core/app-config';
 
 export default class ProductModel {
-  constructor() {
-    this.productIds = [];
-  }
-
+  
   // Get all products
   getAllProducts = async () => {
     return await ApiService.getList(API_URLS.PRODUCT);
@@ -59,30 +56,16 @@ export default class ProductModel {
   };
 
   /**
-   * Pass the id to add or remove it in the productIds array
-   * @param {Number}
-   */
-  getSelectedProducts = (id) => {
-    const index = this.productIds.indexOf(id);
-    if (index !== -1) {
-      this.productIds.splice(index, 1);
-    } else {
-      this.productIds.push(id);
-    }
-  };
-
-  /**
    * Delete products having id in productIds array
    * @param {Number}
    */
-  deleteSelectedProducts = async (userId) => {
-    if (this.productIds.length === 0) return;
+  deleteSelectedProducts = async (userId, ids) => {
+    if (ids.length === 0) return;
 
-    this.productIds.forEach((id) => {
+    ids.forEach((id) => {
       this.deleteProduct(id);
     });
 
     this.getProductsByUserId(userId);
-    this.productIds = [];
   };
 }

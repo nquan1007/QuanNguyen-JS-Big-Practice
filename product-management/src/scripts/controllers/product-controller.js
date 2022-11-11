@@ -10,7 +10,6 @@ export default class ProductController {
     this.view.bindOpenEditProductForm(this.handleShowEditForm);
     this.view.bindSubmitProduct(this.handleSubmitProduct);
     this.view.bindDeleteProduct(this.handleDeleteProduct);
-    this.view.bindSelectProducts(this.handleSelectProducts);
   };
 
   /**
@@ -69,26 +68,18 @@ export default class ProductController {
    * @param {Number}
    * @param {Number}
    */
-  handleDeleteProduct = async (userId, id) => {
+  handleDeleteProduct = async (userId, productIds, id) => {
     try {
       this.view.showSpinner();
       if (id) {
         await this.model.deleteProduct(id);
       } else {
-        await this.model.deleteSelectedProducts(userId);
+        await this.model.deleteSelectedProducts(userId, productIds);
       }
       await this.renderProducts(userId);
       this.view.hideSpinner();
     } catch (error) {
       // Show error
     }
-  };
-
-  /**
-   * Get the productId from view to save to an array in product-model
-   * @param {Number}
-   */
-  handleSelectProducts = (id) => {
-    this.model.getSelectedProducts(id);
   };
 }

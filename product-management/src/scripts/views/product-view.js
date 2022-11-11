@@ -21,6 +21,7 @@ export default class ProductView {
     this.storage = new LocalStorage();
     this.userId = this.storage.getKey('userId');
     this.userName = this.storage.getKey('userName');
+    this.productIds = [];
   }
 
   initialize = () => {
@@ -29,6 +30,7 @@ export default class ProductView {
     this.bindEventListeners();
     this.handleProductFormValidate();
     this.bindOpenConfirmPopup();
+    this.bindSelectProducts();
   };
 
   queryElements = () => {
@@ -262,33 +264,28 @@ export default class ProductView {
   };
 
   /**
-   * Confirm the deletion to pass the userId and productId to the controller
-   * @param {Callback}
+   * Pass the id to add it to the selected products array
+   * @param {Number} id
    */
-  bindDeleteProduct = (handler) => {
-    this.btnConfirmDeletion.addEventListener('click', (e) => {
-      e.preventDefault();
-      const productId = this.storage.getKey('productId');
-      if (productId) {
-        handler(this.userId, productId);
-        this.storage.remove('productId');
-      } else {
-        handler(this.userId);
-      }
-      hideElement(this.popupConfirm);
-    });
+  addToSelectedArray = (id) => {
+    const index = this.productIds.indexOf(id);
+    if (index !== -1) {
+      this.productIds.splice(index, 1);
+    } else {
+      this.productIds.push(id);
+    }
   };
 
   /**
    * Click the product to add red border and send the productId to product-controller
    * @param {Callback}
    */
-  bindSelectProducts = (handler) => {
+  bindSelectProducts = () => {
     this.productList.addEventListener('click', (e) => {
       if (e.target.className.indexOf('product-card') !== -1) {
         e.target.classList.toggle('product-selected');
         const productId = e.target.dataset.id;
-        handler(productId);
+        this.addToSelectedArray(productId);
       }
 
       if (
@@ -299,8 +296,30 @@ export default class ProductView {
       ) {
         e.target.parentElement.classList.toggle('product-selected');
         const productId = e.target.parentElement.dataset.id;
-        handler(productId);
+        this.addToSelectedArray(productId);
       }
+      this.storage.setKey('productIds', this.productIds);
+    });
+  };
+
+  /**
+   * Confirm the deletion to pass the userId and productId to the controller
+   * @param {Callback}
+   */
+  bindDeleteProduct = (handler) => {
+    this.btnConfirmDeletion.addEventListener('click', (e) => {
+      e.preventDefault();
+      const productId = this.storage.getKey('productId');
+      const productIds = this.storage.getKey('productIds');
+      const productIdsToString = JSON.parse('[' + productIds + ']');
+      if (productId) {
+        handler(this.userId, productIdsToString, productId);
+        this.storage.remove('productId');
+      } else {
+        handler(this.userId, productIdsToString);
+        this.storage.remove('productIds');
+      }
+      hideElement(this.popupConfirm);
     });
   };
 }
