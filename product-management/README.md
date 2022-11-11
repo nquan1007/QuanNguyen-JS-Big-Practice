@@ -2,7 +2,8 @@
 
 ## OVERVIEW
 
-This document provides the information about the JavaScript Big Practice during the Agility IO's intership period: Build a website to manage the sneaker products:
+This document provides the information about the JavaScript Big Practice during the Agility IO's internship period: Build a website to manage the sneaker products:
+
 - User can create account and manage their products after login
 - In Products Page, website will show the list of products on UI, and user can add, edit, delete one or more products.
 
@@ -13,7 +14,7 @@ This document provides the information about the JavaScript Big Practice during 
 - Understand and apply MVC pattern.
 - Use JSON server to manage the data and Axios to call API.
 - Form Validation.
-- Login, Signup features.
+- Login, Register features.
 - Get familiar with Chrome DevTools for debugging.
 
 ## TECHNICAL
@@ -30,9 +31,11 @@ This document provides the information about the JavaScript Big Practice during 
 - Actual: From 12/10/2022 to 9/11/2022 (19 working days).
 
 ## TEAM SIZE
+
 - 1 developer
 
 ## EDITOR
+
 - Visual Studio Code
 
 ## REQUIREMENTS
@@ -54,11 +57,12 @@ Build a online shopping website to manage sneakers products
 1. Clone repository: `git clone https://github.com/nquan1007/QuanNguyen-JS-Big-Practice`
 2. Check out branch: `git checkout develop`
 3. CD to the main folder: `cd ./QuanNguyen-JS-Big-Practice`
-3. CD to the project folder: `cd ./product-management`
-3. Install packages: `npm i`
-4. Install posthtml-include: `npm i posthtml-include`
-5. Run the project: `npm start`
+4. CD to the project folder: `cd ./product-management`
+5. Install packages: `npm i`
+6. Install posthtml-include: `npm i posthtml-include`
+7. Run the project: `npm start`
 
 ## AUTHOR
+
 - Quan Nguyen
 - Email: `nquan1007@gmail.com`
